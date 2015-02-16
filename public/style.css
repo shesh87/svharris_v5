@@ -1,11 +1,35 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+}
+p {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 400;
+}
 header {
 	border-bottom: 1px solid #ccc;
 }
 .navbar img {
 	float: left;
 }
+.navbar ul {
+	padding-top: 19px;
+}
 .hr-title {
 	border-bottom: 1px solid #eee;
-	margin: 0 0 20px;
+	margin: 0 0 40px;
 	width: 60%;
+}
+.navbar {
+	background-color: #fff;
+	border-bottom: 1px solid #333;
+}
+main {
+	margin-top: 80px;
+}
+.project-row {
+	margin-bottom: 40px;
+}
+.project-row img {
+	margin-bottom: 20px;
 }
