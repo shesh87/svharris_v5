@@ -1,0 +1,110 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400; /*or 300*/
+	letter-spacing: 1px;
+}
+p {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 400;
+	color: #333;
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+a:hover {
+	color: #333;
+	text-decoration: none;
+}
+a:active {
+	color: #333;
+}
+a:visited {
+	color: #333;
+}
+.navbar img {
+	float: left;
+}
+.navbar ul {
+	padding-top: 19px;
+}
+.hr-title {
+	border-bottom: 1px solid #eee;
+	margin: 0 0 40px;
+	width: 60%;
+}
+.navbar {
+	background-color: #fff;
+	border-bottom: 1px solid orange;
+}
+main {
+	margin-top: 80px;
+}
+.project-row {
+	margin-bottom: 40px;
+}
+.project-row img {
+	margin-bottom: 20px;
+}
+.project-row h3:hover {
+	border-bottom: 1px solid orange;
+	padding-bottom: 5px;
+	width: 30%;
+}
+.project-title {
+	padding-bottom: 6px;
+}
+.project-row a {
+
+}
+ul.list-inline {
+	font-size: 20px;
+}
+.footer-row {
+	background-color: orange;
+	text-align: center;
+	padding-top: 1%;
+	margin-top: 45px;
+}
+.center-div {
+	margin: 0 auto;
+	float: none;
+}
+footer {
+
+}
+.project-txt span {
+	font-weight: 700;
+}
+.project-img {
+	width: 100%;
+}
+
+
+/*RESPONSIVE SLIDER CSS*/
+.centered-btns_nav {
+  z-index: 3;
+  position: absolute;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  top: 50%;
+  left: 0;
+  opacity: 0.7;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-decoration: none;
+  height: 61px;
+  width: 38px;
+  background: transparent url("../../img/themes.gif") no-repeat left top;
+  margin-top: -45px;
+  }
+.next {
+	left: auto;
+	background-position: right top;
+	right: 0;
+}
+
+
+
+
+
+
