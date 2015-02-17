@@ -6,10 +6,46 @@
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"> -->
 	<link rel="stylesheet" type="text/css" href="../public/css/responsiveslides.css">
-	<!-- <link rel="stylesheet" type="text/css" href="../public/css/themes.css"> -->
+	<link rel="stylesheet" type="text/css" href="../public/css/themes.css">
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+	<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+
+      // Slideshow 1
+      $("#slider1").responsiveSlides({
+        auto: false,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 800,
+        namespace: "centered-btns"
+      });
+
+      // Slideshow 2
+      $("#slider2").responsiveSlides({
+        auto: false,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 800,
+        namespace: "transparent-btns"
+      });
+
+      // Slideshow 3
+      $("#slider3").responsiveSlides({
+        auto: false,
+        pager: false,
+        nav: true,
+        speed: 500,
+        maxwidth: 800,
+        namespace: "large-btns"
+      });
+
+    });
+  </script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -28,15 +64,30 @@
 
 		<main class="clearfix">
 			<div class="proj-img-container col-sm-9">
+				<!--PROJECT IMAGE SLIDER-->
 				<!-- <img src="../img/stationery.jpg" class="project-img"> -->
-				<ul class="rslides">
-				  <li><img src="../img/1.jpg" alt=""></li>
-				  <li><img src="../img/2.jpg" alt=""></li>
-				  <li><img src="../img/3.jpg" alt=""></li>
-				</ul>
-				<a class="centered-btns_nav centered-btns1_nav prev"></a>
-				<a class="centered-btns_nav centered-btns1_nav next"></a>
+				<div class="rslides_container">
+					<ul class="rslides centered-btns centered-btns1" id="slider1">
+					  <li class="centered-btns1_s0"><img src="../img/1.jpg" alt=""></li>
+					  <li class="centered-btns1_s1"><img src="../img/2.jpg" alt=""></li>
+					  <li class="centered-btns1_s2"><img src="../img/3.jpg" alt=""></li>
+					</ul>
+					<a class="centered-btns_nav centered-btns1_nav prev"></a>
+					<a class="centered-btns_nav centered-btns1_nav next"></a>
+					<ul class="centered-btns_tabs centered-btns1_tabs">
+						<li class="centered-btns1_s1 centered-btns_here">
+							<a href="#" class="centered-btns1_s1">1</a>
+						</li>
+						<li class="centered-btns1_s2">
+							<a href="#" class="centered-btns1_s2">2</a>
+						</li>
+						<li class="centered-btns1_s3">
+							<a href="#" class="centered-btns1_s3">3</a>
+						</li>
+					</ul>
+				</div>
 			</div>
+
 			<div class="project-txt col-sm-3">
 				<h4>Mac Mania Branding</h4>
 					
