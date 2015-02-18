@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"> -->
 	<link rel="stylesheet" type="text/css" href="../public/css/responsiveslides.css">
-	<link rel="stylesheet" type="text/css" href="../public/css/themes.css">
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
@@ -27,42 +26,44 @@
 				</nav>
 		</header>
 
-		<main class="clearfix">
-			<div class="proj-img-container col-sm-9">
+		<!--MAIN PROJECT-->
+		<main class="clearfix project-main">
+			<div class="proj-img-container col-sm-9 clearfix">
 				<!--PROJECT IMAGE SLIDER-->
-				<!-- <img src="../img/stationery.jpg" class="project-img"> -->
 				<div class="rslides_container">
 					<ul class="rslides centered-btns centered-btns1" id="slider1">
 					  <li class="centered-btns1_s0"><img src="../img/1.jpg" alt=""></li>
 					  <li class="centered-btns1_s1"><img src="../img/2.jpg" alt=""></li>
 					  <li class="centered-btns1_s2"><img src="../img/3.jpg" alt=""></li>
 					</ul>
-					<a class="centered-btns_nav centered-btns1_nav prev"></a>
-					<a class="centered-btns_nav centered-btns1_nav next"></a>
 				</div>
 			</div>
-
-			<div class="project-txt col-sm-3">
+			<!--PROJECT BIO-->
+			<div class=" project-txt-container project-txt col-sm-3">
 				<h4>Mac Mania Branding</h4>
-					
-					<strong>Company: </strong><p style="margin-left: 10px;">Mac Mania</p>
+					<!-- <strong>Company: </strong><p style="margin-left: 10px;">Mac Mania</p>
 					<strong>Objective: </strong><p style="margin-left: 10px;">Create a new branding campaign for Mac Mania specifically including a new logo, business cards and letterhead.</p>
 					<strong>Year: </strong><p style="margin-left: 10px;">2009</p>
 					<strong>Tools: </strong><p style="margin-left: 10px;">Sketching, Illustrator.</p>
-				<hr style="border: 1px solid #000;">
-				<p><span>Company:</span> Mac Mania<br></p>
-				<p><span>Objective:</span> Create a new branding campaign for Mac Mania specifically including a new logo, business cards and letterhead.<br></p>
-				<p><span>Year: </span>2009</p>
-				<p><span>Tools:</span> Sketching, Illustrator.<br></p>
+				<hr style="border: 1px solid #000;"> -->
+				<p><span>Company:<br></span>Mac Mania<br></p>
+				<p><span>Objective:<br></span>Create a new branding campaign for Mac Mania specifically including a new logo, business cards and letterhead.<br></p>
+				<p><span>Year:<br></span>2009</p>
+				<p><span>Tools:<br></span>Sketching, Illustrator.<br></p>
 			</div>
 		</main>
-
-
-		<div class="row footer-row">
-			<footer class="center-div col-sm-6">
-				<p><a href="http://facebook.com/sheonnavonharris">Designed by Sheonna Von Harris</a> | Copyright 2015</p>
-			</footer>
+		<!--NEXT BUTTONS-->
+		<div class="row button-container clearfix">
+			<div class="prev"><a href="web-proj-4.html"><--------</a></div>
+			<div class="next"><a href="web-proj-2.html">--------></a></div>
 		</div>
+
+
+		<footer class="row footer-row">
+			<div class="center-div col-sm-6">
+				<p><a href="http://facebook.com/sheonnavonharris">Designed by Sheonna Von Harris</a> | Copyright 2015</p>
+			</div>
+		</footer>
 
 	</div>
 
@@ -81,7 +82,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../public/js/responsiveslides.js"></script>
 <script>
-    // You can also use "$(window).load(function() {"
+    // SLIDER FUNCTION
     $(function () {
 
       $("#slider1").responsiveSlides({
