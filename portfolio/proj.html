@@ -10,42 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
-	<script>
-    // You can also use "$(window).load(function() {"
-    $(function () {
 
-      // Slideshow 1
-      $("#slider1").responsiveSlides({
-        auto: false,
-        pager: true,
-        nav: true,
-        speed: 500,
-        maxwidth: 800,
-        namespace: "centered-btns"
-      });
-
-      // Slideshow 2
-      $("#slider2").responsiveSlides({
-        auto: false,
-        pager: true,
-        nav: true,
-        speed: 500,
-        maxwidth: 800,
-        namespace: "transparent-btns"
-      });
-
-      // Slideshow 3
-      $("#slider3").responsiveSlides({
-        auto: false,
-        pager: false,
-        nav: true,
-        speed: 500,
-        maxwidth: 800,
-        namespace: "large-btns"
-      });
-
-    });
-  </script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -74,17 +39,6 @@
 					</ul>
 					<a class="centered-btns_nav centered-btns1_nav prev"></a>
 					<a class="centered-btns_nav centered-btns1_nav next"></a>
-					<ul class="centered-btns_tabs centered-btns1_tabs">
-						<li class="centered-btns1_s1 centered-btns_here">
-							<a href="#" class="centered-btns1_s1">1</a>
-						</li>
-						<li class="centered-btns1_s2">
-							<a href="#" class="centered-btns1_s2">2</a>
-						</li>
-						<li class="centered-btns1_s3">
-							<a href="#" class="centered-btns1_s3">3</a>
-						</li>
-					</ul>
 				</div>
 			</div>
 
@@ -127,10 +81,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../public/js/responsiveslides.js"></script>
 <script>
-  $(function() {
-    $(".rslides").responsiveSlides();
-  });
-</script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+
+      $("#slider1").responsiveSlides({
+        auto: false,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 800,
+        namespace: "centered-btns"
+      });
+
+    });
+  </script>
 <script src="../public/js/function.js"></script>
 </body>
 </html>
