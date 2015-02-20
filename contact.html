@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sheonna Von Harris</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.css"> -->
+	<link rel="stylesheet" type="text/css" href="public/font-awesome-4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="container-fluid">
+		<!--NAVIGATION ROW-->
+		<header class="row navbar-container">
+				<nav class="navbar navbar-fixed-top col-sm-12">
+					<!-- <img src="img/svh-logo.png"> -->
+					<ul class="list-inline">
+						<!-- <li><a href="index.html">Home</a></li> -->
+						<li><a href="portfolio.html">Portfolio</a></li>
+						<li><a href="resume.html">Resume</a></li>
+						<li><a href="http://blog.svharris.com">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+		</header>
+		<!--CONTACT-->
+		<main class="clearfix main-contact">
+			<!--HERO IMAGE-->
+			<div class="row hero-image-contact clearfix">
+				<img src="img/702337_10101669334896332_1977801391_n.jpg">
+			</div>
+			<div class="form col-sm-6">
+				<h3>MESSAGE ME</h3><hr class="hr-title">
+				<!--CONTACT FORM-->
+				<form action="http://www.svharris.com/cgi-sys/formmail.pl" method="POST" class="contact-form">
+					<input type="hidden" name="recipient" value="hello@svharris.com">
+					<!-- <label for="name">Name:</label> -->
+					<input type="text" id="name" name="name" placeholder="Name"><br>
+					<!-- <label for="email">Email:</label> -->
+					<input type="email" id="email" name="email" placeholder="Email"><br>
+					<!-- <label for="subject">Subject:</label> -->
+					<input type="textfield" id="subject" name="subject" placeholder="Subject"><br>
+					<!-- <label for="message">Message:</label> -->
+					<textarea id="message" name="message" placeholder="Message" cols="50" rows="5"></textarea><br>
+					<button type="submit">Submit</button>
+					<input type="hidden" name="redirect" value="http://svharris.com/redirect-path">
+				</form>
+			</div>
+			<div class="about col-sm-6">
+				<h3>CONTACT ME</h3><hr class="hr-title">
+				<!--SMALL BIO-->
+				<div class="bio">
+					<p>Hello! Thanks for visiting my portfolio website! Please get in touch with me if you want to discuss career opportunities, freelance gigs or if you just want to say "How do ya do?".</p>
+				</div>
+				<!--CONTACT INFO-->
+				<div class="contact-tab">
+					<p>
+						<span class="fa fa-envelope"></span><a href="mailto:hello@svharris.com">hello@svharris.com</a>
+					</p>
+					<p>
+						<span class="fa fa-phone"></span><a href="tel:14074541721">(407) 454-1721</a>
+					</p>
+					<ul class="list-inline social">
+						<li>
+							<a class="fa fa-github" href="https://github.com/shesh87" target="_blank"></a>
+						</li>
+						<li>
+							<a class="fa fa-linkedin" href="https://twitter.com/shevonharris" target="_blank"></a>
+						</li>
+						<li>
+							<a class="fa fa-twitter" href="https://www.linkedin.com/pub/sheonna-von-harris/5a/9a6/76b" target="_blank"></a>
+						</li>
+						<li>
+							<a class="fa fa-facebook" href="https://www.facebook.com/Sheonnavonharris" target="_blank"></a>
+						</li>
+						<li>
+							<a class="fa fa-pinterest" href="https://www.pinterest.com/svonharris/" target="_blank"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+
+
+
+		<div class="row footer-row">
+			<footer class="center-div col-sm-6">
+				<p><a href="http://facebook.com/sheonnavonharris">Designed by Sheonna Von Harris | Copyright 2015</a></p>
+			</footer>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="public/js/function.js"></script>
+<script type="text/javascript"> 
+function hgsubmit() 
+{ 
+if (/\S+/.test(document.hgmailer.name.value) == false) alert ("Please provide your name."); 
+else if (/^\S+@[a-z0-9_.-]+\.[a-z]{2,6}$/i.test(document.hgmailer.email.value) == false) alert ("A valid email address is required."); 
+ else if (/\S+/.test(document.hgmailer.comment.value) == false) alert ("Your email content is needed."); 
+  else { 
+       document.hgmailer.submit(); 
+       alert ('Thank you!\nYour email is sent.'); 
+       } 
+} 
+</script>
+</body>
+</html>
+
+
+
+
+
+
