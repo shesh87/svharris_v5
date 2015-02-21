@@ -3,6 +3,7 @@ $('').on('hover', function() {
 })
 
 
+//MY ATTEMPT TO CREATE A SLIDING NAVIGATION. NOT RESPONSIVE READY THOUGH.
 // $('.js-btn-nav').on('click touchstart', function() {
 // 	var clicks = $(this).data("clicks");
 // 	if (!clicks) {
@@ -30,7 +31,7 @@ $('.js-btn-nav').on('click touchstart', function() {
 	$('.js-navbar-sml').slideToggle();
 });
 
-if ('.navbar-sml')
+if ('.navbar-sml').
 
 
 
