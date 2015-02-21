@@ -1,3 +1,5 @@
+Sheonna Von Harris's Portfolio Website Redesign
+
 I am recreating my portfolio website in under ONE WEEK!
 The website should hit these marks:
 

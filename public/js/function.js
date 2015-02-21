@@ -31,7 +31,7 @@ $('.js-btn-nav').on('click touchstart', function() {
 	$('.js-navbar-sml').slideToggle();
 });
 
-if ('.navbar-sml').
+// if ('.navbar-sml').
 
 
 
