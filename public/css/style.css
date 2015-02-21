@@ -132,7 +132,10 @@ ul.list-inline {
 	width: 100%;
 }
 .project-main {
-	margin-top: 60px; /*100*/
+	margin-top: 92px;
+}
+main {
+  margin-top: 135px;
 }
 .project-txt h4 {
 	margin-top: 0;
@@ -364,6 +367,14 @@ textarea {
     border-bottom: 1px solid #EB7F00;
     height: 60px;
   }
+  .navbar-sml-container a.logo {
+    position: absolute;
+    margin: 4px 0 0 10px;
+  }
+  .navbar-sml-container a.logo img {
+    height: 50px;
+    width: 110px;
+  }
   .btn-nav {
     width: 60px;
     height: 50px;
@@ -376,9 +387,12 @@ textarea {
     position: absolute;
     right: 0;
     border: none;
-    margin-top: 6px;
+    margin-top: 5px;
   }
-  .btn-nav:before {
+  .fa-bars {
+    color: #333;
+  }
+  .fa-bars-active {
     color: #EB7F00;
   }
   .navbar-sml {
@@ -388,7 +402,7 @@ textarea {
     z-index: 1;*/
     /*right: -335px;*/
     /*top: 0;*/
-    border-left: 1px solid #EB7F00;
+    border-left: 1px solid #eee;
     z-index: 4;
     position: absolute;
     right: 0;

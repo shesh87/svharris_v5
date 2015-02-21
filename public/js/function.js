@@ -28,7 +28,8 @@ $('').on('hover', function() {
 
 
 $('.js-btn-nav').on('click touchstart', function() {
-	$('.js-navbar-sml').slideToggle();
+	$('.js-navbar-sml').slideToggle(350, 'linear');
+	$('.btn-nav.fa-bars').toggleClass('fa-bars-active');
 });
 
 // if ('.navbar-sml').
