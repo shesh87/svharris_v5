@@ -23,28 +23,42 @@
 					</ul>
 				</nav>
 				<!--SMALL SLIDE NAVIGATION-->
-				<div class="move js-move clearfix col-sm-5" style="display: none;">
-				<button type="button" class="fa fa-twitter btn-nav js-btn-nav"></button>
-				<div class="col-sm-9 navbar-sml">
-					<ul class="navbar-slide-links">
-						<li><a href="portfolio.html">Portfolio</a></li>
-						<li><a href="resume.html">Resume</a></li>
-						<li><a href="http://blog.svharris.com">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
+				<!-- <nav class="move js-move clearfix  col-sm-12" style="display: none;">
+					<button type="button" class="fa fa-twitter btn-nav js-btn-nav"></button>
+					<div class="col-sm-6 navbar-sml">
+						<ul class="navbar-slide-links">
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="resume.html">Resume</a></li>
+							<li><a href="http://blog.svharris.com">Blog</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</nav> -->
+
+
+				<div class="navbar-sml-container">
+					<button type="button" class="fa fa-bars btn-nav js-btn-nav"></button>
+					<div class="navbar-sml js-navbar-sml" style="display: none;">
+						<ul class="navbar-slide-links">
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="resume.html">Resume</a></li>
+							<li><a href="http://blog.svharris.com">Blog</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
 				</div>
 		</header>
-		
+
+
 		<!--CONTACT-->
 		<main class="clearfix main-contact js-main-contact">
 			<!--HERO IMAGE-->
 			<div class="row hero-image-contact clearfix">
 				<img src="img/702337_10101669334896332_1977801391_n.jpg">
 			</div>
-			<div class="form col-sm-7">
+			<!--CONTACT FORM-->
+			<div class="form col-sm-6">
 				<h3>MESSAGE ME</h3><hr class="hr-title">
-				<!--CONTACT FORM-->
 				<form action="http://www.svharris.com/cgi-sys/formmail.pl" method="POST" class="contact-form">
 					<input type="hidden" name="recipient" value="hello@svharris.com">
 					<!-- <label for="name">Name:</label> -->
@@ -59,13 +73,13 @@
 					<input type="hidden" name="redirect" value="http://svharris.com/redirect-path">
 				</form>
 			</div>
-			<div class="about col-sm-5">
-				<h3>CONTACT ME</h3><hr class="hr-title-contact">
-				<!--SMALL BIO-->
+			<!--SMALL BIO-->
+			<div class="about col-sm-6">
+				<h3>CONTACT ME</h3><hr class="hr-title">
 				<div class="bio">
 					<p>Hello! Thanks for visiting my portfolio website! Please get in touch with me if you want to discuss career opportunities, freelance gigs or if you just want to say "How do ya do?".</p>
 				</div>
-				<!--CONTACT INFO-->
+				<!--CONTACT/SOCIAL INFO-->
 				<div class="contact-tab">
 					<p>
 						<span class="fa fa-envelope"></span><a href="mailto:hello@svharris.com">hello@svharris.com</a>
