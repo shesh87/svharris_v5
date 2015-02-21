@@ -110,7 +110,7 @@ ul.list-inline {
 	background-color: #EB7F00;
 	text-align: center;
 	padding-top: 1%;
-	margin-top: 40px;
+	margin-top: 80px;
 }
 .center-div {
 	margin: 0 auto;
@@ -123,23 +123,22 @@ ul.list-inline {
 	width: 100%;
 }
 .project-main {
-	margin-top: 100px;
+	margin-top: 60px; /*100*/
 }
 .project-txt h4 {
 	margin-top: 0;
 }
 .button-container {
-	margin: 0 20px;
-	position: absolute;
-	top: 511px;
-	left: 10px;
+	margin: 20px;
 }
 .button-container .next {
 	float: right;
 	display: inline-block;
+  font-size: 40px;
 }
 .button-container .prev {
 	display: inline-block;
+  font-size: 40px;
 }
 .social .fa {
   font-size: 30px;
@@ -157,7 +156,7 @@ span.fa-envelope {
   font-size: 18px;
 }
 .bio {
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 .contact-form input {
   margin-bottom: 15px;
@@ -168,17 +167,14 @@ textarea {
   resize: none;
   margin-bottom: 10px;
 }
-footer {
-  position: absolute;
-  bottom: 0;
-}
+
 .main-contact {
   margin-top: 55px;
 }
 .hero-image-contact {
   height: 400px;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .hero-image-contact img {
   position: relative;
@@ -336,22 +332,75 @@ footer {
 
 /*MEDIA QUERIES*/
 @media (max-width: 890px) {
-	.proj-img-container {
-		width: 100%;
-	}
-	.project-txt-container {
-		width: 100%;
-	}
-	.project-txt h4 {
-		color: red;
-	}
+  
+  /*SLIDE NAVIGATION*/
+  .navbar {
+    border-bottom: none;
+  }
+  .navbar-slide {
+    display: inline-block !important;
+    margin: 0;
+    padding: 0;
+  }
+  .navbar-fixed-top {
+    display: none;
+  }
+  .btn-nav {
+    width: 60px;
+    height: 50px;
+    color: #fff;
+    background-color: #000;
+    padding: 5px;
+    font-size: 40px;
+    /*position: fixed;
+    z-index: 1;
+    right: 0;*/
+    float: left;
+    outline: none;
+  }
+  .navbar-sml {
+    background-color: #fff;
+    height: 100%;
+   /* position: fixed;
+    z-index: 1;*/
+    /*right: -335px;*/
+    /*top: 0;*/
+    border-left: 1px solid #EB7F00;
+  }
+  .move {
+    display: block !important;
+    float: right;
+    position: fixed;
+    right: -290px;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+  }
+  ul.navbar-slide-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.navbar-slide-links li {
+    margin-bottom: 10px;
+  }
+  ul.navbar-slide-links li a {
+    font-size: 25px;
+  }
+  /*.main-contact {
+    margin-top: 0;
+    position: relative;
+  }*/
+  .main-move {
+    position: relative;
+    right: 237px;
+  }
+
 }
 
-@media (max-width: 640px) {
-	.project-txt h4 {
-		color: blue;
-	}
-}
+/*@media (max-width: 640px) {
+
+}*/
 
 
 
