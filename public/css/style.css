@@ -69,13 +69,8 @@ a:visited {
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300; /*or 300*/
 	letter-spacing: 1px;
-  font-size: 20px;
+  font-size: 23px;
 }
-/*.project-txt strong {
-	font-family: 'Oswald', sans-serif;
-	font-weight: 400;
-	letter-spacing: 1px;
-}*/
 .hr-title {
 	border-bottom: 1px solid #eee;
 	margin: 0 0 40px;
@@ -131,17 +126,18 @@ ul.list-inline {
 .project-img {
 	width: 100%;
 }
-.project-main {
-	margin-top: 92px;
-}
 main {
-  margin-top: 135px;
+  margin-top: 70px;
+}
+.web h2 {
+  margin-top: 0;
 }
 .project-txt h4 {
 	margin-top: 0;
 }
 .button-container {
-	margin: 20px 16px;
+	margin: 0 16px 0;
+  clear: both;
 }
 .button-container .next {
 	float: right;
@@ -201,6 +197,9 @@ textarea {
 .project-row .img-container img {
   float: none;
 }
+header {
+  height: 91px;
+}
 
 
 
@@ -230,7 +229,7 @@ textarea {
   position: absolute;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   top: 50%;
-  left: 24px;
+  left: 44px;
   opacity: 1.0;
   text-indent: -9999px;
   overflow: hidden;
@@ -248,7 +247,7 @@ textarea {
 .centered-btns_nav.next {
   left: auto;
   background-position: right top;
-  right: 24px;
+  right: 44px;
   }
 
 .transparent-btns_nav {
@@ -330,9 +329,7 @@ textarea {
 .proj-img-container .rslides_container:hover > a.next {
   display: inline-block !important;
 }
-#slider1 {
-  max-width: 100% !important;
-}
+
 
 
 
@@ -349,15 +346,6 @@ textarea {
 /*MEDIA QUERIES*/
 @media (max-width: 890px) {
   
-  /*SLIDE NAVIGATION*/
-  /*.navbar {
-    border-bottom: none;
-  }*/
-  /*.navbar-slide {
-    display: inline-block !important;
-    margin: 0;
-    padding: 0;
-  }*/
   .navbar-fixed-top {
     display: none;
   }
@@ -398,10 +386,6 @@ textarea {
   .navbar-sml {
     background-color: #fff;
     height: 100%;
-   /* position: fixed;
-    z-index: 1;*/
-    /*right: -335px;*/
-    /*top: 0;*/
     border-left: 1px solid #eee;
     z-index: 4;
     position: absolute;
@@ -411,13 +395,6 @@ textarea {
   }
   .move {
     display: block !important;
-    /*float: right;
-    position: fixed;
-    right: 0;
-    right: -290px;
-    top: 0;
-    z-index: 1;
-    height: 100%;*/
     padding: 0;
   }
   ul.navbar-slide-links {
@@ -442,10 +419,9 @@ textarea {
   .main-contact {
     margin-top: 0px;
   }
-  /*.main-move {
-    position: relative;
-    right: 237px;
-  }*/
+  main {
+    margin-top: 50px;
+  }
   .form {
     margin-bottom: 75px;
   }
