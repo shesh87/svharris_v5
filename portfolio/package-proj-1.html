@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sheonna Von Harris</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../public/font-awesome-4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/responsiveslides.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<!--NAVIGATION ROW-->
+		<header class="row navbar-container">
+				<nav class="navbar navbar-fixed-top col-sm-12">
+					<ul class="list-inline">
+						<li class="logo">
+							<a href="index.html"><img class="logo" src="../img/general/logo.png" alt="Sheonna Von Harris logo"></a>
+						</li>
+						<li><a href="../portfolio.html">Portfolio</a></li>
+						<li><a href="../resume.html">Resume</a></li>
+						<li><a href="http://blog.svharris.com">Blog</a></li>
+						<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				<!--MOBILE NAVIAGTION-->
+				<div class="navbar-sml-container" style="display: none;">
+					<a class="logo" href="index.html"><img src="../img/general/logo.png" alt="Sheonna Von Harris logo"></a>
+					<button type="button" class="fa fa-bars btn-nav js-btn-nav"></button>
+					<div class="navbar-sml js-navbar-sml" style="display: none;">
+						<ul class="navbar-slide-links">
+							<a href="../portfolio.html"><li>Portfolio</li></a>
+							<a href="../resume.html"><li>Resume</li></a>
+							<a href="http://blog.svharris.com"><li>Blog</li></a>
+							<a href="../contact.html"><li>Contact</li></a>
+						</ul>
+					</div>
+				</div>
+		</header>
+
+		<!--MAIN PROJECT-->
+		<main class="clearfix project-main">
+			<!--PROJECT IMAGE SLIDER-->
+			<div class="proj-img-container col-sm-9 clearfix">
+				<div class="rslides_container">
+					<ul class="rslides centered-btns centered-btns1" id="slider1">
+					  <li class="centered-btns1_s0"><img src="../img/package/kaskadecd-1.jpg" alt="Recording artist Kaskade CD cover design 1"></li>
+					  <li class="centered-btns1_s1"><img src="../img/package/kaskadecd-2.jpg" alt="Recording artist Kaskade CD cover design 2"></li>
+					  <li class="centered-btns1_s1"><img src="../img/package/kaskadecd-3.jpg" alt="Recording artist Kaskade CD cover design 3"></li>
+					</ul>
+				</div>
+			</div>
+			<!--PROJECT BIO-->
+			<div class=" project-txt-container project-txt col-sm-3">
+				<h4>Mac Mania Branding</h4>
+				<p><span>Company:<br></span>
+					Mac Mania<br>
+				</p>
+				<p><span>Objective:<br></span>
+					Create a new branding campaign for Mac Mania specifically including a new logo, business cards and letterhead.<br>
+				</p>
+				<p><span>Year:<br></span>
+					2009
+				</p>
+				<p><span>Tools:<br></span>
+					Sketching, Illustrator.<br>
+				</p>
+			</div>
+			<!--NEXT BUTTONS-->
+			<div class="row button-container">
+				<div class="prev"><a class="fa fa-long-arrow-left" href="package-proj-4.html"></a></div>
+				<div class="next"><a class="fa fa-long-arrow-right" href="package-proj-2.html"></a></div>
+			</div>
+		</main>
+		
+
+
+		<footer class="row footer-row">
+			<div class="center-div col-sm-6">
+				<p><a href="http://facebook.com/sheonnavonharris">Designed by Sheonna Von Harris</a> | Copyright 2015</p>
+			</div>
+		</footer>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="../public/js/responsiveslides.js"></script>
+<script>
+    // SLIDER FUNCTION
+    $(function () {
+
+      $("#slider1").responsiveSlides({
+        auto: false,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 800,
+        namespace: "centered-btns"
+      });
+
+    });
+  </script>
+<script src="../public/js/function.js"></script>
+</body>
+</html>
+
+
+
+
+
+

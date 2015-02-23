@@ -98,7 +98,7 @@ main {
 .project-row .project a:hover h3 {
   border-bottom: 1px solid #EB7F00;
   padding-bottom: 5px;
-  width: 38%;
+  /*width: 100%;*/
 }
 
 .project-title {
