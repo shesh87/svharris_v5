@@ -10,6 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Oswald', sans-serif;
 	font-weight: 400; /*or 300*/
 	letter-spacing: 1px;
+  line-height: 30px;
 }
 h1 {
 	font-size: 48px;
@@ -93,12 +94,12 @@ main {
 }
 .project-row img {
 	margin-bottom: 20px;
-  max-width: 70%;
+  max-width: 75%;
 }
 .project-row .project a:hover h3 {
   border-bottom: 1px solid #EB7F00;
   padding-bottom: 5px;
-  /*width: 100%;*/
+  width: 80%;
 }
 
 .project-title {
@@ -112,9 +113,11 @@ ul.list-inline {
 }
 .footer-row {
 	background-color: #EB7F00;
-	text-align: center;
-	padding-top: 1%;
-	margin-top: 80px;
+  text-align: center;
+  padding-top: 1%;
+  margin-top: 80px;
+  position: relative;
+  bottom: 0;
 }
 .center-div {
 	margin: 0 auto;
@@ -182,14 +185,8 @@ textarea {
   margin-top: 40px;
 }
 .hero-image-contact {
-  height: 400px;
   overflow: hidden;
   margin-bottom: 50px;
-}
-.hero-image-contact img {
-  position: relative;
-  top: -228px;
-  width: 100%;
 }
 .project-row .img-container {
   text-align: center;
@@ -197,11 +194,36 @@ textarea {
 .project-row .img-container img {
   float: none;
 }
+.hero-image-contact ul.rslides {
+  /*max-width: 100% !important;*/
+}
+.main-contact {
+  margin-top: 0;
+}
+.hero-image-contact .rslides_container .rslides li {
+  height: 400px;
+}
 header {
   height: 91px;
 }
-
-
+.footer-social {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.footer-social .fa {
+  margin: 0 5px;
+}
+.footer-row-redirect {
+  background-color: #EB7F00;
+  text-align: center;
+  padding-top: 1%;
+  margin-top: 80px;
+  position: absolute;
+  width: 100%;
+}
+.project-main a {
+  color: #EB7F00;
+}
 
 
 
@@ -215,6 +237,8 @@ header {
 /*RESPONSIVE SLIDER CSS*/
 .rslides {
   margin: 0 auto;
+  list-style-type: none;
+  padding: 0;
   }
 
 .rslides_container {
@@ -257,7 +281,7 @@ header {
   top: 0;
   left: 0;
   display: block;
-  background: #fff; /* Fix for IE6-9 */
+  background: #fff;  /*Fix for IE6-9 */
   opacity: 0;
   filter: alpha(opacity=1);
   width: 48%;
@@ -329,6 +353,53 @@ header {
 .proj-img-container .rslides_container:hover > a.next {
   display: inline-block !important;
 }
+/*SPLASH PAGE STUFF*/
+.splash h1 {
+  font-size: 55px;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 4px 4px 5px #333;
+  margin-bottom: 4%;
+}
+.splash h2 {
+  margin-bottom: 3%;
+}
+
+.splash {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 1%;
+}
+.splash {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  padding: 5% 0;
+  margin-top: 3%;
+}
+.splash a {
+  color: #f8931e;
+}
+.splash-bckgrd .logo {
+  width: 300px;
+  margin: 0 auto 6%;
+}
+.bckgrd-img {
+  background-image: url(http://media-cache-ak0.pinimg.com/736x/65/f8/15/65f815cea692adecca257208e84f20d4.jpg);
+  background-size: cover;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  height: 800px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+.main-splash {
+  margin-top: 0;
+}
 
 
 
@@ -348,6 +419,9 @@ header {
   
   .navbar-fixed-top {
     display: none;
+  }
+  .navbar-container {
+    height: 60px;
   }
   .navbar-sml-container {
     display: block !important;
@@ -375,7 +449,7 @@ header {
     position: absolute;
     right: 0;
     border: none;
-    margin-top: 5px;
+    margin: 5px 10px;
   }
   .fa-bars {
     color: #333;
@@ -390,7 +464,8 @@ header {
     z-index: 4;
     position: absolute;
     right: 0;
-    width: 50%;
+    top: 61px;
+    width: 100%;
     padding: 15px;
   }
   .move {
@@ -430,11 +505,8 @@ header {
   }
 
   /* PORTFOLIO PAGE */
-  .project-main {
-    margin-top: 0;
-  }
   .project-row .project a:hover > h3 {
-    width: 60%;
+    width: 100%;
   }
   .project-row {
     margin-bottom: 0;
@@ -443,9 +515,58 @@ header {
     margin-bottom: 100px;
   }
 
-/*@media (max-width: 640px) {
+  /*PROJECT PAGES*/
+  .proj-img-container {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  .project-txt-container {
+    width: 100%;
+  }
+  .proj-img-container .rslides_container:hover > a.prev {
+    display: none !important;
+  }
+  .proj-img-container .rslides_container:hover > a.next {
+    display: none !important;
+  }
 
-}*/
+  /*CONTACT PAGE*/
+  .hero-image-contact .rslides_container .rslides li {
+    height: auto;
+  }
+
+}
+
+
+
+
+@media (max-width: 640px) {
+
+  .project-title {
+  text-align: center;
+  }
+  .project a p {
+    text-align: center;
+  }
+  .project-row .project a:hover > h3 {
+    width: 100%;
+  }
+  .project p {
+  font-size: 19px;
+  }
+
+}
+
+
+
+@viewport {
+    zoom: 1.0;
+    width: extend-to-zoom;
+}
+@-ms-viewport{
+    width: extend-to-zoom;
+    zoom: 1.0;
+}
 
 
 
