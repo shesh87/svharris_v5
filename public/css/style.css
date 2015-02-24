@@ -225,6 +225,71 @@ header {
   color: #EB7F00;
 }
 
+/*SPLASH PAGE STUFF*/
+.splash h1 {
+  font-size: 55px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 3px 2px 5px #333;
+  margin-bottom: 4%;
+}
+.splash h2 {
+  margin-bottom: 3%;
+}
+.splash {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 1%;
+}
+.splash {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  padding: 5% 0;
+  margin-top: 3%;
+}
+.splash-links a {
+  color: #fff;
+  text-shadow: 1px 1px 7px #333;
+}
+.splash-bckgrd .logo {
+  margin: 0 auto 50px;
+  display: block;
+}
+.bckgrd-img {
+  background-image: url('../../img/general/color17.png');
+  background-size: cover;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  height: 800px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+.main-splash {
+  margin-top: 0;
+}
+.splash-bckgrd span {
+  color: #EB7F00;
+}
+.splash-social {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  /*bottom: 20px;*/
+  font-size: 30px;
+  margin: 0 5px;
+}
+.splash-social .fa {
+    margin-right: 3.3%;
+  }
+.splash-social .fa:last-child {
+  margin-right: 0;
+}
+
 
 
 
@@ -353,53 +418,7 @@ header {
 .proj-img-container .rslides_container:hover > a.next {
   display: inline-block !important;
 }
-/*SPLASH PAGE STUFF*/
-.splash h1 {
-  font-size: 55px;
-  letter-spacing: 4px;
-  color: #fff;
-  text-shadow: 4px 4px 5px #333;
-  margin-bottom: 4%;
-}
-.splash h2 {
-  margin-bottom: 3%;
-}
 
-.splash {
-  text-align: center;
-  margin: 0 auto;
-  padding-top: 1%;
-}
-.splash {
-  position: relative;
-  z-index: 2;
-  margin: 0 auto;
-  padding: 5% 0;
-  margin-top: 3%;
-}
-.splash a {
-  color: #f8931e;
-}
-.splash-bckgrd .logo {
-  width: 300px;
-  margin: 0 auto 6%;
-}
-.bckgrd-img {
-  background-image: url(http://media-cache-ak0.pinimg.com/736x/65/f8/15/65f815cea692adecca257208e84f20d4.jpg);
-  background-size: cover;
-  display: block;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  height: 800px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 1;
-}
-.main-splash {
-  margin-top: 0;
-}
 
 
 
@@ -540,6 +559,20 @@ header {
 
 
 
+@media (max-width: 530px) {
+
+  .splash h1 {
+    line-height: 60px;
+  }
+  .splash h2 {
+    line-height: 45px;
+  }
+
+}
+
+
+
+
 @media (max-width: 640px) {
 
   .project-title {
@@ -554,8 +587,21 @@ header {
   .project p {
   font-size: 19px;
   }
+  .splash h1 {
+    margin-bottom: 8%;
+    font-size: 45px;
+  }
+  .splash h2  {
+    font-size: 30px;
+  }
+  .flex-direction-nav {
+  display: none;
+  }
 
 }
+
+
+
 
 
 
