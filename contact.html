@@ -6,34 +6,36 @@
 	<title>Sheonna Von Harris</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="public/font-awesome-4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="public/css/responsiveslides.css">
+	<link rel="stylesheet" type="text/css" href="public/css/flexslider.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="public/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="container-fluid">
+	
+	<div id="top" class="container-fluid">
 		<!--NAVIGATION ROW-->
 		<header class="row navbar-container">
 				<nav class="navbar navbar-fixed-top col-sm-12">
 					<ul class="list-inline">
 						<li class="logo">
 							<a href="index.html"><img src="img/general/logo.png" alt="Sheonna Von Harris logo"></a>
+							<p>Sheonna Von Harris</p>
 						</li>
 						<li><a href="portfolio.html">Portfolio</a></li>
-						<li><a href="resume.html">Resume</a></li>
+						<!-- <li><a href="resume.html">Resume</a></li> -->
 						<li><a href="http://blog.svharris.com">Blog</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</nav>
 				<!--MOBILE NAVIAGTION-->
 				<div class="navbar-sml-container" style="display: none;">
-					<a class="logo" href="index.html"><img src="img/general/logo.png" alt="Sheonna Von Harris logo"></a>
+					<a class="logo" href="index.html"><img src="img/general/logo.png" alt="Sheonna Von Harris logo"><p>Sheonna Von Harris</p></a>
 					<button type="button" class="fa fa-bars btn-nav js-btn-nav"></button>
 					<div class="navbar-sml js-navbar-sml" style="display: none;">
 						<ul class="navbar-slide-links">
 							<a href="portfolio.html"><li>Portfolio</li></a>
-							<a href="resume.html"><li>Resume</li></a>
+							<!-- <a href="resume.html"><li>Resume</li></a> -->
 							<a href="http://blog.svharris.com"><li>Blog</li></a>
 							<a href="contact.html"><li>Contact</li></a>
 						</ul>
@@ -46,13 +48,12 @@
 		<main class="clearfix main-contact js-main-contact">
 			<!--HERO IMAGE-->
 			<div class="row hero-image-contact clearfix">
-				<!-- <img src="img/702337_10101669334896332_1977801391_n.jpg"> -->
-				<div class="rslides_container">
-					<ul class="rslides centered-btns centered-btns1" id="slider1">
+				<div class="flexslider">
+					<ul class="slides">
 					  <li class="centered-btns1_s0"><img src="img/general/contact-1.jpg" alt="Photo of the day and life of Sheonna Von Harris"></li>
 					  <li class="centered-btns1_s1"><img src="img/general/contact-2.jpg" alt="Photo of the day and life of Sheonna Von Harris"></li>
 					  <li class="centered-btns1_s1"><img src="img/general/contact-3.jpg" alt="Photo of the day and life of Sheonna Von Harris"></li>
-					  <li class="centered-btns1_s1"><img src="img/general/contact-5.jpg" alt="Photo of the day and life of Sheonna Von Harris"></li>
+					  <li class="centered-btns1_s1"><img src="img/general/contact-4.jpg" alt="Photo of the day and life of Sheonna Von Harris"></li>
 					</ul>
 				</div>
 			</div>
@@ -108,21 +109,16 @@
 			</div>
 		</main>
 
+		<!--BACK TO TOP BUTTON-->
+		<a href="#top" class="btn-up fa fa-chevron-circle-up" style="display: none;"></a>
 
 
 		<div class="row footer-row">
 			<footer class="center-div col-sm-6">
-				<!-- <div class="footer-social">
-					<a class="fa fa-github" href="http://github.com/shesh87" target="_blank"></a>
-					<a class="fa fa-linkedin" href="http://www.linkedin.com/pub/sheonna-von-harris/5a/9a6/76b" target="_blank"></a>
-					<a class="fa fa-twitter" href="http://twitter.com/shevonharris" target="_blank"></a>
-					<a class="fa fa-facebook" href="http://www.facebook.com/Sheonnavonharris" target="_blank"></a>
-					<a class="fa fa-pinterest" href="http://www.pinterest.com/svonharris/" target="_blank"></a>
-				</div> -->
 				<p><a href="http://facebook.com/sheonnavonharris">Sheonna Von Harris | Copyright 2015</a></p>
 			</footer>
 		</div>
-
+		
 	</div>
 
 
@@ -138,7 +134,7 @@
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="../public/js/jquery.flexslider-min.js"></script>
+<script src="public/js/jquery.flexslider-min.js"></script>
 <script>
 	// Can also be used with $(document).ready()
 	$(window).load(function() {
