@@ -255,10 +255,6 @@ header {
 }
 .splash {
   text-align: center;
-  margin: 0 auto;
-  padding-top: 1%;
-}
-.splash {
   position: relative;
   z-index: 2;
   margin: 0 auto;
@@ -426,7 +422,7 @@ header {
     margin-top: 36px;
   }
   main {
-    margin-top: 60px;
+    margin-top: 76px;
   }
   .form {
     margin-bottom: 75px;
