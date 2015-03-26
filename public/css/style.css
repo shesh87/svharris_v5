@@ -368,7 +368,7 @@ header {
     height: 50px;
     color: #fff;
     background-color: #fff;
-    font-size: 40px;
+    font-size: 40px !important;
     float: right;
     outline: none;
     z-index: 5;
@@ -376,7 +376,8 @@ header {
     right: 0;
     top: 12px;
     border: none;
-    margin: 5px 10px;
+    margin: 0;
+    padding: 0;
   }
   .fa-bars {
     color: #333;
@@ -387,11 +388,10 @@ header {
   .navbar-sml {
     background-color: #fff;
     height: 100%;
-    border-left: 1px solid #eee;
     z-index: 11;
     position: absolute;
     right: 0;
-    top: 61px;
+    top: 96px;
     width: 100%;
     padding: 15px;
   }
@@ -441,6 +441,9 @@ header {
   .project h3.project-title {
     font-size: 28px;
   }
+  .hr-title {
+    width: 100%;
+  }
 
   /*PROJECT PAGES*/
   .proj-img-container {
@@ -457,7 +460,7 @@ header {
     position: fixed;
     bottom: 110px;
     right: 0;
-    margin: 10px 30px;
+    margin: 10px 8px;
     font-size: 45px;
   }
   a.btn-up {
