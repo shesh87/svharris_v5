@@ -37,7 +37,7 @@ app.factory("projectService", function() {
 			objective: "A one color design brochure project for a fictitious company turned into a full blown logo design and branding campaign for my mom's event planning aspirations.",
 			year: "2010",
 			tools: "InDesign, Photoshop, Illustrator, sketching",
-			photos: ["fab-1.jpg", "fab-2.jpg", "fab-3.jpg", "fab-4.jpg", "fab-5.jpg"]
+			photos: [{name: "fab-1.jpg", alttext: "Fabulous Occasions images"}, {name: "fab-1.jpg", alttext: "Fabulous Occasions images"}, {name: "fab-2.jpg", alttext: "Fabulous Occasions images"}, {name: "fab-3.jpg", alttext: "Fabulous Occasions images"}, {name: "fab-4.jpg", alttext: "Fabulous Occasions images"}, {name: "fab-5.jpg", alttext: "Fabulous Occasions images"}]
 		},
 		{
 			category: "web",
