@@ -96,7 +96,7 @@ a:visited {
 	border-bottom: 1px solid #EB7F00;
 }
 main {
-	margin-top: 80px;
+	margin-top: 70px;
 }
 .project-row {
 	margin-bottom: 55px;
@@ -137,9 +137,6 @@ ul.list-inline {
 }
 .project-img {
 	width: 100%;
-}
-main {
-  margin-top: 70px;
 }
 .web h2 {
   margin-top: 0;
@@ -202,6 +199,7 @@ textarea {
 }
 .project-row .img-container img {
   float: none;
+  max-width: 209px;
 }
 .hero-image-contact ul.rslides {
   /*max-width: 100% !important;*/
