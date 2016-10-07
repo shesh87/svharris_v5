@@ -13,40 +13,52 @@
 </head>
 <body>
 
-	<div id="top" class="container-fluid">
+	<div id="top" class="">
 		<!--NAVIGATION ROW-->
-		<header class="row navbar-container">
-				<nav class="navbar navbar-fixed-top col-sm-12">
-					<ul class="list-inline">
-						<li class="logo">
-							<a href="#/portfolio">
-								<img src="../img/general/logo.png" alt="Sheonna Von Harris logo">
-							</a>
-							<p>Sheonna Von Harris</p>
+		<header class="navbar">
+				<nav class="navbar-nav">
+					<div class="logo">
+						<a href="#/portfolio">
+							<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
+							<p class="logo-subtext">Sheonna Von Harris</p>
+						</a>
+					</div>
+					<ul class="navbar-nav-list">
+						<li class="navbaritem">
+							<a href="#/portfolio" class="navbaritem-link">Portfolio</a>
 						</li>
-						<li><a href="#/portfolio">Portfolio</a></li>
-						<li><a href="#/resume">Resume</a></li>
-						<li><a href="http://blog.svharris.com">Blog</a></li>
-						<li><a href="#/contact">Contact</a></li>
+						<li class="navbaritem">
+							<a href="#/resume" class="navbaritem-link">Resume</a>
+						</li>
+						<li class="navbaritem">
+							<a href="http://blog.svharris.com" class="navbaritem-link">Blog</a>
+						</li>
+						<li class="navbaritem">
+							<a href="#/contact" class="navbaritem-link">Contact</a>
+						</li>
 					</ul>
+					<div class="navbar-nav-mobile">
+						<div class="moblebtn">
+							<button type="button" class="fa fa-bars mobilebtn-btn js-btn-nav"></button>
+						</div>
+					</div>
 				</nav>
 				<!--MOBILE NAVIAGTION-->
-				<div class="navbar-sml-container" style="display: none;">
-					<a class="logo" href="#/portfolio">
-						<img src="../img/general/logo.png" alt="Sheonna Von Harris logo">
-						<p>Sheonna Von Harris</p>
-					</a>
-					<div>
-						<button type="button" class="fa fa-bars btn-nav js-btn-nav"></button>
-					</div>
-					<div class="navbar-sml js-navbar-sml" style="display: none;">
-						<ul class="navbar-slide-links">
-							<li><a href="#/portfolio">Portfolio</a></li>
-							<li><a href="#/resume">Resume</a></li>
-							<li><a href="http://blog.svharris.com">Blog</a></li>
-							<li><a href="#/contact">Contact</a></li>
-						</ul>
-					</div>
+				<div class="mobilenav js-navbar-sml">
+					<ul class="mobilenav-links">
+						<li class="navbaritem">
+							<a href="#/portfolio" class="navbaritem-link">Portfolio</a>
+						</li>
+						<li class="navbaritem">
+							<a href="#/resume" class="navbaritem-link">Resume</a>
+						</li>
+						<li class="navbaritem">
+							<a href="http://blog.svharris.com" class="navbaritem-link">Blog</a>
+						</li>
+						<li class="navbaritem">
+							<a href="#/contact" class="navbaritem-link">Contact</a>
+						</li>
+					</ul>
 				</div>
 		</header>
 
@@ -54,7 +66,7 @@
 
 
 		<!--MAIN PROJECT-->
-		<main ng-view></main>
+		<main class="main" ng-view></main>
 		
 
 

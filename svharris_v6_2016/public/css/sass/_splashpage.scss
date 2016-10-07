@@ -1,0 +1,62 @@
+//SPLASH PAGE STUFF
+
+.splash h1 {
+  font-size: 55px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 3px 2px 5px $medium-gray;
+  margin-bottom: 4%;
+}
+.splash h2 {
+  margin-bottom: 3%;
+}
+.splash {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  padding: 5% 0;
+  margin-top: 3%;
+}
+.splash-links a {
+  color: #fff;
+  text-shadow: 1px 1px 7px $medium-gray;
+}
+.splash-bckgrd .logo {
+  margin: 0 auto 50px;
+  display: block;
+}
+.bckgrd-img {
+  background-image: url('../../img/general/color17.png');
+  background-size: cover;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  height: 800px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+.main-splash {
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+.splash-bckgrd span {
+  color: #EB7F00;
+}
+.splash-social {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  /*bottom: 20px;*/
+  font-size: 30px;
+  margin: 0 5px;
+}
+.splash-social .fa {
+    margin-right: 3.3%;
+  }
+.splash-social .fa:last-child {
+  margin-right: 0;
+}

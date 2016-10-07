@@ -1,0 +1,17 @@
+{
+  "name": "svharris_v6_2016",
+  "version": "1.0.0",
+  "description": "6th re-design of the sheonna harris portfolio website",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-sass": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

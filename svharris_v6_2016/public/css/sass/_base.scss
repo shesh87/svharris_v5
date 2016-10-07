@@ -1,0 +1,99 @@
+body {
+	font-family: $fontfamily-text, sans-serif;
+	font-weight: $normal;
+	font-size: 1em;
+} 
+*, *:before, *:after {
+    @include box-sizing(border-box);
+}
+p {
+	font-family: $fontfamily-text, sans-serif;
+	color: $medium-gray;
+	font-size: 1em;
+    line-height: 18px;
+}
+img {
+    max-width: 100%;
+    border: none;
+    vertical-align: middle;
+}
+
+
+/*  FONT  ============================================================================= */
+h1, h2, h3, h4, h5, h6 {
+	font-family: $fontfamily-header, sans-serif;
+	font-weight: $bold;
+	letter-spacing: 1px;
+  	line-height: 1;
+}
+
+h1 {
+	font-size: 3em; //48px
+	margin: 24px 0;
+}
+h2 {
+	font-size: 2.5em; //40px
+	margin: 20px 0;
+}
+h3 {
+	font-size: 2em; //32px
+	margin: 18px 0;
+}
+h4 {
+	font-size: 1.5em; //24px
+	margin: 14px 0;
+}
+h5 {
+	font-size: 1em; //16px
+	margin: 10px 0;
+}
+h6 {
+	font-size: .5em; //8px
+	margin: 6px 0;
+}
+
+
+::-webkit-input-placeholder {
+   color: $placeholder-text;
+   opacity: .7;
+}
+
+:-moz-placeholder {
+   color: $placeholder-text; 
+   opacity: .7;
+}
+
+::-moz-placeholder {
+   color: $placeholder-text; 
+   opacity: .7; 
+}
+
+:-ms-input-placeholder {  
+	color: $placeholder-text; 
+   opacity: .7;
+}
+input {
+	border: 0;
+	&:focus {
+	    border: 0;
+	    outline: 0;
+	}
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+/*
+@font-face{ 
+	font-family: 'UpperEastSide-webfont';
+	src: url('fonts/UpperEastSide-webfont.eot');
+	src: url('fonts/UpperEastSide-webfont.eot?iefix') format('eot'),
+	     url('fonts/UpperEastSide-webfont.woff') format('woff'),
+	     url('fonts/UpperEastSide-webfont.ttf') format('truetype'),
+	     url('fonts/UpperEastSide-webfont.svg#webfont') format('svg');
+}
+@import url(https://fonts.googleapis.com/css?family=Italianno);
+@import url(https://fonts.googleapis.com/css?family=Stalemate);
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
+*/
