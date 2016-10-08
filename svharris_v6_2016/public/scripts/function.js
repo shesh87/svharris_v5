@@ -7,10 +7,9 @@ $('.js-mobilenav').on('click', function() {
 
 
 $('.js-backtotop').on('click', function(event){
-  event.preventDefault();
-  $('body').animate({
-    scrollTop: 0,
-    }, 700
-  );
+	event.preventDefault();
+	$('body').animate({
+		scrollTop: 0,}, 700
+	);
 });
 

@@ -1,5 +1,4 @@
 require "rubygems"
-require "Date"
 require "sinatra"
 require "pry"
 require "sinatra/reloader" if development?
@@ -7,9 +6,6 @@ require "json"
 require "logger"
 require "json/ext"
 enable :logger
-# before do
-#     content_type 'application/json'
-# end
 
 
 get '/' do

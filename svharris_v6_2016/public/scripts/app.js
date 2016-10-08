@@ -1,14 +1,14 @@
-var app = angular.module("myApp", ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute']);
 
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/portfolio', {
 			templateUrl: '/portfolio.html',
-			controller: "PortfolioCtrl"
+			controller: 'PortfolioCtrl'
 		})
 		.when('/projects/:id', {
 			templateUrl: '/projects/:id',
-			controller: "ProjectCtrl"
+			controller: 'ProjectCtrl'
 		})
 		.when('/resume', {
 			templateUrl: '/resume'
@@ -21,11 +21,11 @@ app.config(function($routeProvider) {
 	});
 });
 
-app.factory("navigationService", function() {
+app.factory('navigationService', function() {
 	var navlinks = [
 		{
-			name: "portfolio",
-			http: "portfolio"
+			name: 'portfolio',
+			http: 'portfolio'
 		},
 		{
 			name: "resume",
@@ -45,7 +45,7 @@ app.factory("navigationService", function() {
 		getLinks: function() {
 			return navlinks;
 		}
-	}
+	};
 });
 
 app.factory("socialMediaService", function() {
@@ -76,7 +76,7 @@ app.factory("socialMediaService", function() {
 		getSocial: function() {
 			return socialmedia;
 		}
-	}
+	};
 });
 
 
@@ -174,10 +174,6 @@ app.factory("projectService", function() {
 		}
 	}
 
-	function findProject(project) { 
-	    return project.link === currentId;
-	}
-
 	return {
 		getPrint: function() {
 			return print;
@@ -191,7 +187,7 @@ app.factory("projectService", function() {
 		getProjects: function() {
 			return projects;
 		}
-	}
+	};
 });
 
 
@@ -206,7 +202,7 @@ app.controller('ProjectCtrl', function($scope, projectService, $routeParams) {
 	var currentId = $routeParams.id;
 
 	function findProject(project) { 
-	    return project.link === currentId;
+		return project.link === currentId;
 	}
 	var projid = projectService.getProjects();
 	$scope.projectDetails = projid.find(findProject);
