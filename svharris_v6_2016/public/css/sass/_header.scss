@@ -1,7 +1,11 @@
 .navbar {
+    width: 100%;
     background-color: $default-white;
     border-bottom: 1px solid $logo-orange;
     padding: 10px 0;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
     .navbar-nav {
         @extend .container;
@@ -23,15 +27,19 @@
 
         .navbar-nav-list {
             display: inline-block;
+            text-transform: capitalize;
             padding: 0;
             margin: 0;
-            @include bp(mobile) {display: none;}
+            @include bp(mobile) {
+                display: none;
+                margin-top: 20px;
+            }
         }
             .navbaritem {
+                display: inline-block;
                 letter-spacing: 1px;
                 font-size: 23px;
                 list-style: none;
-                display: inline-block;
                 padding: 0 10px;
                 &:last-child {
                     border: none;
@@ -48,28 +56,21 @@
             }
                 .navbaritem-link {
                     &:hover {
-                        //color: $logo-orange;
+                        color: $logo-orange;
                     }
                 }
 
-        .navbar-nav-mobile {
+        .mobilenav {
             display: none;
-            @include bp(mobile) {
-                display: block;
-                float: right;
-            }            
+            font-size: 2.5em;
+            background-color: $default-white;
+            float: right;
+            padding: 0;
+            border: none;
+            &:focus {outline: none;}
+            &.active {color: $logo-orange;}
+            @include bp(mobile) {display: block;}
         }
-            .mobilenav {
-                display: none;
-            }
-                .mobilenav-links {
-                    padding: 0;
-                    margin: 16px 0 0;
-                }
-
-
-
-
 
 
 

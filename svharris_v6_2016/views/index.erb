@@ -13,88 +13,46 @@
 </head>
 <body>
 
-	<div id="top" class="">
-		<!--NAVIGATION ROW-->
-		<header class="navbar">
-				<nav class="navbar-nav">
-					<div class="logo">
-						<a href="#/portfolio">
-							<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
-							<p class="logo-subtext">Sheonna Von Harris</p>
-						</a>
-					</div>
-					<ul class="navbar-nav-list">
-						<li class="navbaritem">
-							<a href="#/portfolio" class="navbaritem-link">Portfolio</a>
-						</li>
-						<li class="navbaritem">
-							<a href="#/resume" class="navbaritem-link">Resume</a>
-						</li>
-						<li class="navbaritem">
-							<a href="http://blog.svharris.com" class="navbaritem-link">Blog</a>
-						</li>
-						<li class="navbaritem">
-							<a href="#/contact" class="navbaritem-link">Contact</a>
-						</li>
-					</ul>
-					<div class="navbar-nav-mobile">
-						<div class="moblebtn">
-							<button type="button" class="fa fa-bars mobilebtn-btn js-btn-nav"></button>
-						</div>
-					</div>
-				</nav>
-				<!--MOBILE NAVIAGTION-->
-				<div class="mobilenav js-navbar-sml">
-					<ul class="mobilenav-links">
-						<li class="navbaritem">
-							<a href="#/portfolio" class="navbaritem-link">Portfolio</a>
-						</li>
-						<li class="navbaritem">
-							<a href="#/resume" class="navbaritem-link">Resume</a>
-						</li>
-						<li class="navbaritem">
-							<a href="http://blog.svharris.com" class="navbaritem-link">Blog</a>
-						</li>
-						<li class="navbaritem">
-							<a href="#/contact" class="navbaritem-link">Contact</a>
-						</li>
-					</ul>
-				</div>
-		</header>
-
-
-
-
-		<!--MAIN PROJECT-->
-		<main class="main" ng-view></main>
-		
-
-
-
-
-		<!--BACK TO TOP BUTTON-->
-		<a href="#top" class="btn-up fa fa-chevron-circle-up" style="display: none;"></a>
-
-		<footer class="row footer-row">
-			<div class="center-div col-sm-6">
-				<div class="footer-social">
-					<a class="fa fa-github" href="http://github.com/shesh87" target="_blank"></a>
-					<a class="fa fa-linkedin" href="http://www.linkedin.com/pub/sheonna-von-harris/5a/9a6/76b" target="_blank"></a>
-					<a class="fa fa-twitter" href="http://twitter.com/shevonharris" target="_blank"></a>
-					<a class="fa fa-facebook" href="http://www.facebook.com/Sheonnavonharris" target="_blank"></a>
-					<a class="fa fa-pinterest" href="http://www.pinterest.com/svonharris/" target="_blank"></a>
-				</div>
-				<p><a href="http://facebook.com/sheonnavonharris">Sheonna Von Harris | Copyright 2015</a></p>
+	<!--NAVIGATION ROW-->
+	<header id="top" class="navbar" ng-controller="HeaderCtrl">
+		<nav class="navbar-nav">
+			<div class="logo">
+				<a href="#/portfolio">
+					<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
+					<p class="logo-subtext">Sheonna Von Harris</p>
+				</a>
 			</div>
-		</footer>
+			<button type="button" class="mobilenav fa fa-bars js-mobilenav"></button style="display: none;">
+			<ul class="navbar-nav-list js-navlist">
+				<li class="navbaritem" ng-repeat="navlink in navlinks">
+					<a href="#/{{navlink.http}}" class="navbaritem-link">{{navlink.name}}</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
 
-	</div>
 
 
 
+	<!--MAIN PROJECT-->
+	<main class="main" ng-view></main>
+	
 
 
 
+	<!--BACK TO TOP BUTTON-->
+	<a href="#top" class="backtotop fa fa-chevron-circle-up js-backtotop"></a>
+
+	<footer class="footer" ng-controller="FooterCtrl">
+		<ul class="footer-social">
+			<li class="footer-social-item" ng-repeat="smedia in smedias">
+				<a class="fa fa-{{smedia.name}}" href="http://{{smedia.http}}" target="_blank"></a>
+			</li>
+		</ul>
+		<p class="footer-copyright">
+			<a href="http://facebook.com/sheonnavonharris">Sheonna Von Harris | Copyright 2015</a>
+		</p>
+	</footer>
 
 
 

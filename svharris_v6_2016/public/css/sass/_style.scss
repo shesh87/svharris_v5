@@ -15,22 +15,12 @@
 }
 
 
-a {
-	text-decoration: none;
-	color: $medium-gray;
-    &:hover {
-        text-decoration: underline;
-    }
-    &:active {
-        color: $medium-gray;
-    }
-    &:visited {
-        color: $medium-gray;
-    }
-}
+
 
 .main {
     min-height: 550px;
+    margin-top: 120px;
+    @extend .container;
 }
 
 
@@ -69,15 +59,7 @@ main {
 ul.list-inline {
 	font-size: 20px;
 }
-.footer-row {
-    background-color: $logo-orange;
-    text-align: center;
-    margin-top: 80px;
-}
-.center-div {
-	margin: 0 auto;
-	float: none;
-}
+
 .project-txt span {
 	font-weight: 700;
 }
@@ -156,21 +138,7 @@ textarea {
 .hero-image-contact .rslides_container .rslides li {
   height: 400px;
 }
-.footer-social {
-  font-size: 30px;
-  margin-bottom: 5px;
-}
-.footer-social .fa {
-  margin: 0 5px;
-}
-.footer-row-redirect {
-  background-color: #EB7F00;
-  text-align: center;
-  padding-top: 1%;
-  margin-top: 80px;
-  position: absolute;
-  width: 100%;
-}
+
 .project-main a {
   color: #EB7F00;
 }

@@ -21,6 +21,64 @@ app.config(function($routeProvider) {
 	});
 });
 
+app.factory("navigationService", function() {
+	var navlinks = [
+		{
+			name: "portfolio",
+			http: "portfolio"
+		},
+		{
+			name: "resume",
+			http: "resume"
+		},
+		{
+			name: "blog",
+			http: "http://blog.svharris.com"
+		},
+		{
+			name: "contact",
+			http: "contact"
+		}
+	];
+
+	return {
+		getLinks: function() {
+			return navlinks;
+		}
+	}
+});
+
+app.factory("socialMediaService", function() {
+	var socialmedia = [
+		{
+			name: "github",
+			http: "github.com/shesh87"
+		},
+		{
+			name: "linkedin",
+			http: "www.linkedin.com/pub/sheonna-von-harris/5a/9a6/76b"
+		},
+		{
+			name: "twitter",
+			http: "twitter.com/shevonharris"
+		},
+		{
+			name: "facebook",
+			http: "www.facebook.com/Sheonnavonharris"
+		},
+		{
+			name: "pinterest",
+			http: "www.pinterest.com/svonharris/"
+		}
+	];
+
+	return {
+		getSocial: function() {
+			return socialmedia;
+		}
+	}
+});
+
 
 app.factory("projectService", function() {
 
@@ -154,6 +212,14 @@ app.controller('ProjectCtrl', function($scope, projectService, $routeParams) {
 	$scope.projectDetails = projid.find(findProject);
 
 	$scope.imgs = $scope.projectDetails.photos;
+});
+
+app.controller('FooterCtrl', function($scope, socialMediaService) {
+	$scope.smedias = socialMediaService.getSocial();
+});
+
+app.controller('HeaderCtrl', function($scope, navigationService) {
+	$scope.navlinks = navigationService.getLinks();
 });
 
 

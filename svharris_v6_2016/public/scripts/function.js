@@ -1,25 +1,16 @@
-$('.js-btn-nav').on('click', function() {
-	$('.js-navbar-sml').slideToggle(350, 'linear');
-	$('.btn-nav.fa-bars').toggleClass('fa-bars-active');
+$('.js-mobilenav').on('click', function() {
+	$('.js-navlist').slideToggle(350, 'linear');
+	$('.mobilenav').toggleClass('active');
 });
 
 
 
 
-$('.btn-up').on('click', function(event){
+$('.js-backtotop').on('click', function(event){
   event.preventDefault();
   $('body').animate({
     scrollTop: 0,
     }, 700
   );
 });
-
-
-
-
-
-
-
-
-
 
