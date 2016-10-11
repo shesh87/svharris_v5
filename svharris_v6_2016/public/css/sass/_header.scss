@@ -2,7 +2,7 @@
     width: 100%;
     background-color: $default-white;
     border-bottom: 1px solid $logo-orange;
-    padding: 10px 0;
+    padding: 12px 0;
     position: fixed;
     top: 0;
     z-index: 1;
@@ -30,6 +30,8 @@
             text-transform: capitalize;
             padding: 0;
             margin: 0;
+            position: relative;
+            top: 9px;
             @include bp(mobile) {
                 display: none;
                 margin-top: 20px;
@@ -38,9 +40,10 @@
             .navbaritem {
                 display: inline-block;
                 letter-spacing: 1px;
-                font-size: 23px;
+                font-size: 1.3em;
                 list-style: none;
-                padding: 0 10px;
+                padding-left: 10px;
+                padding-right: 10px;
                 &:last-child {
                     border: none;
                     padding-bottom: 0;
@@ -55,9 +58,8 @@
                 }
             }
                 .navbaritem-link {
-                    &:hover {
-                        color: $logo-orange;
-                    }
+                    display: block;
+                    overflow: hidden;
                 }
 
         .mobilenav {
@@ -70,6 +72,43 @@
             &:focus {outline: none;}
             &.active {color: $logo-orange;}
             @include bp(mobile) {display: block;}
+        }
+
+
+
+        .navbaritem-link-roll {
+            overflow: hidden;
+            position: relative;
+            line-height: 1;
+        }
+            .rollitem {
+                display: block;
+                -webkit-transition: all .5s cubic-bezier(.6,0,.6,1);
+                transition: all .5s cubic-bezier(.6,0,.6,1);
+                &:last-child {
+                    position: absolute;
+                    left: 0;
+                    top: 26px;
+                }
+                .navbaritem-link:hover & {
+                    -webkit-transform: translateY(-125%);
+                    transform: translateY(-125%);
+                }
+            }
+
+        .bottom-line {
+            border-bottom: 2px solid $logo-orange;
+            margin-top: 2px;
+            -webkit-transform: translateX(-101%);
+            transform: translateX(-101%);
+            -webkit-transition: -webkit-transform .5s cubic-bezier(.6,0,.6,1);
+            transition: -webkit-transform .5s cubic-bezier(.6,0,.6,1);
+            transition: transform .5s cubic-bezier(.6,0,.6,1);
+            transition: transform .5s cubic-bezier(.6,0,.6,1),-webkit-transform .5s cubic-bezier(.6,0,.6,1);
+            .navbaritem-link:hover & {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
         }
 
 

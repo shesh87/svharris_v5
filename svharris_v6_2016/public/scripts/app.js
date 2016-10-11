@@ -28,16 +28,16 @@ app.factory('navigationService', function() {
 			http: 'portfolio'
 		},
 		{
-			name: "resume",
-			http: "resume"
+			name: 'resume',
+			http: 'resume'
 		},
 		{
-			name: "blog",
-			http: "http://blog.svharris.com"
+			name: 'blog',
+			http: 'http://blog.svharris.com'
 		},
 		{
-			name: "contact",
-			http: "contact"
+			name: 'contact',
+			http: 'contact'
 		}
 	];
 
@@ -165,14 +165,36 @@ app.factory("projectService", function() {
 	var mobile = [];
 
 	for (var i = 0; i < projects.length; i++) {
-		if (projects[i].category === "print") {
+		if (projects[i].category === 'print') {
 			print.push(projects[i]);
-		} else if (projects[i].category === "web") {
+		} else if (projects[i].category === 'web') {
 			web.push(projects[i]);
-		} else if (projects[i].category === "mobile") {
+		} else if (projects[i].category === 'mobile') {
 			mobile.push(projects[i]);
 		}
 	}
+
+	var allCategories = [
+		{
+			category: 'print', 
+			array: print
+		},
+		{
+			category: 'web', 
+			array: web
+		},
+		{
+			category: 'mobile', 
+			array: mobile
+		}
+	];
+
+	// var allCate = [];
+	// function findCate(cate) {
+			// allCate.push(cate.array);
+			// console.log(cheese[2]);
+	// }
+	// allCategories.forEach(findCate);
 
 	return {
 		getPrint: function() {
@@ -184,6 +206,9 @@ app.factory("projectService", function() {
 		getMobile: function() {
 			return mobile;
 		},
+		getCategories: function() {
+			return allCategories;
+		},
 		getProjects: function() {
 			return projects;
 		}
@@ -192,9 +217,14 @@ app.factory("projectService", function() {
 
 
 app.controller('PortfolioCtrl', function($scope, projectService) {
-	$scope.prints = projectService.getPrint();
-	$scope.webs = projectService.getWeb();
-	$scope.mobiles = projectService.getMobile();
+	var allProjects = projectService.getCategories();
+	$scope.allProjects = allProjects;
+	
+	$scope.now = [];
+	for (var i = 0; i < allProjects.length; i++) {
+		var n = allProjects[i].category === ;
+		$scope.now.push(allProjects[i].array[i]);
+	}
 });
 
 
@@ -210,9 +240,11 @@ app.controller('ProjectCtrl', function($scope, projectService, $routeParams) {
 	$scope.imgs = $scope.projectDetails.photos;
 });
 
+
 app.controller('FooterCtrl', function($scope, socialMediaService) {
 	$scope.smedias = socialMediaService.getSocial();
 });
+
 
 app.controller('HeaderCtrl', function($scope, navigationService) {
 	$scope.navlinks = navigationService.getLinks();

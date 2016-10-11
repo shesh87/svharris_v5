@@ -1,7 +1,24 @@
 <div class="container-fluid" ng-controller="PortfolioCtrl">
 
+	<!--project ROW 0-->
+	<div class="project-row web" ng-repeat="project in allProjects">
+		<h2>{{project.category}}</h2>
+		<hr class="hr-title">
+		<ul>
+			<li class="project" ng-repeat="n in now">
+				<a href="#/projects/{{n.link}}">
+					<div class="img-container">
+						<img src="/img/{{n.thumbnail}}" alt="{{n.alttext}}">
+					</div>
+					<h3 class="project-title">{{n.title}}</h3>
+					<p>{{n.description}}</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+
 	<!--project ROW 1-->
-	<div class="project-row web">
+	<!-- <div class="project-row web">
 		<h2>Web</h2>
 		<hr class="hr-title">
 		<ul>
@@ -15,9 +32,9 @@
 				</a>
 			</li>
 		</ul>
-	</div>
+	</div> -->
 	<!--project ROW 2-->
-	<div class="project-row mobile">
+	<!-- <div class="project-row mobile">
 		<h2>Mobile</h2>
 		<hr class="hr-title">
 		<ul>
@@ -32,8 +49,8 @@
 			</li>
 		</ul>
 	</div>
-	<!--project ROW 1-->
-	<div class="project-row print">
+ -->	<!--project ROW 1-->
+	<!-- <div class="project-row print">
 		<h2>Print</h2>
 		<hr class="hr-title">
 		<ul>
@@ -47,6 +64,6 @@
 				</a>
 			</li>
 		</ul>
-	</div>
+	</div> -->
 
 </div>
