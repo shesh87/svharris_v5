@@ -84,7 +84,7 @@ app.factory("projectService", function() {
 
 	var projects = [
 		{
-			category: "print",
+			category: "branding",
 			link: "faboccasions.html",
 			thumbnail: "fab-tb.jpg",
 			alttext: "Fabulous Occasions Branding",
@@ -160,56 +160,47 @@ app.factory("projectService", function() {
 		}
 	];
 
-	var print = [];
-	var web = [];
-	var mobile = [];
 
-	for (var i = 0; i < projects.length; i++) {
-		if (projects[i].category === 'print') {
-			print.push(projects[i]);
-		} else if (projects[i].category === 'web') {
-			web.push(projects[i]);
-		} else if (projects[i].category === 'mobile') {
-			mobile.push(projects[i]);
+
+	var allProjects = [];
+	function addObj(obj, index) {
+		allProjects[index].contents.push(obj);
+	}
+	function createObj(obj, name) {
+		var newObj = {
+			category: name,
+			contents: [obj]
+		};
+		allProjects.push(newObj);
+	}
+	function findCate(obj) {
+		if (allProjects.length === 0) {
+			createObj(obj, obj.category);
+		} else {
+			var objCount = 0;
+			for (var i = 0; i < allProjects.length; i++) {
+				if (obj.category === allProjects[i].category) { // web.intoam === web.kingtut
+					objCount += 1;
+					var index = i;
+				}
+			}
+			if (objCount === 0) {
+				createObj(obj, obj.category);
+			} else {
+				addObj(obj, index);
+			}
 		}
 	}
+	for (var i = 0; i < projects.length; i++) {
+		findCate(projects[i]);
+	}
 
-	var allCategories = [
-		{
-			category: 'print', 
-			array: print
-		},
-		{
-			category: 'web', 
-			array: web
-		},
-		{
-			category: 'mobile', 
-			array: mobile
-		}
-	];
-
-	// var allCate = [];
-	// function findCate(cate) {
-			// allCate.push(cate.array);
-			// console.log(cheese[2]);
-	// }
-	// allCategories.forEach(findCate);
 
 	return {
-		getPrint: function() {
-			return print;
+		getProjectCate: function() {
+			return allProjects;
 		},
-		getWeb: function() {
-			return web;
-		},
-		getMobile: function() {
-			return mobile;
-		},
-		getCategories: function() {
-			return allCategories;
-		},
-		getProjects: function() {
+		getAllProjects: function() {
 			return projects;
 		}
 	};
@@ -217,14 +208,7 @@ app.factory("projectService", function() {
 
 
 app.controller('PortfolioCtrl', function($scope, projectService) {
-	var allProjects = projectService.getCategories();
-	$scope.allProjects = allProjects;
-	
-	$scope.now = [];
-	for (var i = 0; i < allProjects.length; i++) {
-		var n = allProjects[i].category === ;
-		$scope.now.push(allProjects[i].array[i]);
-	}
+	$scope.allProjects = projectService.getProjectCate();
 });
 
 

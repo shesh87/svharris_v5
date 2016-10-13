@@ -1,40 +1,25 @@
 <div class="container-fluid" ng-controller="PortfolioCtrl">
 
-	<!--project ROW 0-->
-	<div class="project-row web" ng-repeat="project in allProjects">
-		<h2>{{project.category}}</h2>
-		<hr class="hr-title">
-		<ul>
-			<li class="project" ng-repeat="n in now">
-				<a href="#/projects/{{n.link}}">
-					<div class="img-container">
-						<img src="/img/{{n.thumbnail}}" alt="{{n.alttext}}">
-					</div>
-					<h3 class="project-title">{{n.title}}</h3>
-					<p>{{n.description}}</p>
-				</a>
-			</li>
-		</ul>
+	<div class="container-fluid" ng-controller="PortfolioCtrl">
+		<div class="project-row {{project.category}}" ng-repeat="project in allProjects">
+			<h2 class="project-header">{{project.category}}</h2>
+			<hr class="hr-title">
+			<ul>
+				<li class="project" ng-repeat="content in project.contents">
+				<!-- content in project[index].contents -->
+					<a href="#/projects/{{content.link}}">
+						<div class="img-container">
+							<img src="/img/{{content.thumbnail}}" alt="{{content.alttext}}">
+						</div>
+						<h3 class="project-title">{{content.title}}</h3>
+						<p>{{content.description}}</p>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 
-	<!--project ROW 1-->
-	<!-- <div class="project-row web">
-		<h2>Web</h2>
-		<hr class="hr-title">
-		<ul>
-			<li class="project" ng-repeat="web in webs">
-				<a href="#/projects/{{web.link}}">
-					<div class="img-container">
-						<img src="/img/{{web.thumbnail}}" alt="{{web.alttext}}">
-					</div>
-					<h3 class="project-title">{{web.title}}</h3>
-					<p>{{web.description}}</p>
-				</a>
-			</li>
-		</ul>
-	</div> -->
-	<!--project ROW 2-->
-	<!-- <div class="project-row mobile">
+		<!-- <div class="project-row mobile">
 		<h2>Mobile</h2>
 		<hr class="hr-title">
 		<ul>
@@ -49,21 +34,6 @@
 			</li>
 		</ul>
 	</div>
- -->	<!--project ROW 1-->
-	<!-- <div class="project-row print">
-		<h2>Print</h2>
-		<hr class="hr-title">
-		<ul>
-			<li class="project" ng-repeat="print in prints">
-				<a href="#/projects/{{print.link}}">
-					<div class="img-container">
-						<img src="/img/{{print.thumbnail}}" alt="{{print.alttext}}">
-					</div>
-					<h3 class="project-title">{{print.title}}</h3>
-					<p>{{print.description}}</p>
-				</a>
-			</li>
-		</ul>
-	</div> -->
+ -->
 
 </div>
