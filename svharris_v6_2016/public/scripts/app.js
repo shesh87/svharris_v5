@@ -3,7 +3,7 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/portfolio', {
-			templateUrl: '/portfolio.html',
+			templateUrl: '/portfolio',
 			controller: 'PortfolioCtrl'
 		})
 		.when('/projects/:id', {
@@ -13,6 +13,14 @@ app.config(function($routeProvider) {
 		.when('/resume', {
 			templateUrl: '/resume'
 		})
+		.when('/blog', {
+			templateUrl: '/blog',
+			controller: 'BlogCtrl'
+		})
+		.when('/blog/:id', {
+			templateUrl: '/blog/:id',
+			controller: 'BlogCtrl'
+		})
 		.when('/contact', {
 			templateUrl: '/contact'
 		})
@@ -20,6 +28,50 @@ app.config(function($routeProvider) {
 		redirectTo: '/portfolio'
 	});
 });
+
+app.factory('blogService', function(linkService) {
+	var blogEntries = [
+		{
+			date: new Date(), // new Date()
+			title: 'Don\'t Forget Sinatra',
+			image: 'sinatra.jpg',
+			post: 'Recently have only been coding and producing projects in Rails so I could get a feel for the framework. However, the other day I wanted to try writing a simple app in Sinatra and that\'s when I realized I had FORGETTEN Sinatra!'
+		},
+		{
+			date: new Date('Thu Apr 3 2016'),
+			title: 'Bacon ipsum',
+			image: 'bacon.jpg',
+			post: 'Bacon ipsum dolor amet shank tenderloin drumstick, corned beef pork chop biltong filet mignon.'
+		},
+		{
+			date: new Date('Thu Mar 23 2016'),
+			title: 'U.S.A. only $3.99',
+			image: 'something.jpg',
+			post: 'Bacon ipsum dolor amet shank tenderloin drumstick, corned beef pork chop chuck fatback landjaeger pig sausage pastrami tail venison biltong filet mignon. Cupim pig jowl chicken. Kevin hamburger biltong strip steak fatback jerky meatloaf, kielbasa bacon ham hock pork.'
+		}
+	];
+
+	linkService.createLink(blogEntries);
+
+	function shorten() {
+		for (var i = 0; i < blogEntries.length; i++) {
+			if (blogEntries[i].post.length > 100) {
+				var shorten = blogEntries[i].post.substring(0, 100) + '...';
+				blogEntries[i].shortenedPost = shorten;
+			}
+		}
+		return blogEntries;
+	}
+
+	return {
+		getEntriesShort: shorten,
+		getEntries: function() {
+			return blogEntries;
+		}
+	};
+});
+
+
 
 app.factory('navigationService', function() {
 	var navlinks = [
@@ -33,7 +85,7 @@ app.factory('navigationService', function() {
 		},
 		{
 			name: 'blog',
-			http: 'http://blog.svharris.com'
+			http: 'blog'
 		},
 		{
 			name: 'contact',
@@ -80,12 +132,11 @@ app.factory("socialMediaService", function() {
 });
 
 
-app.factory("projectService", function() {
+app.factory("projectService", function(linkService) {
 
 	var projects = [
 		{
-			category: "branding",
-			link: "faboccasions.html",
+			category: "print",
 			thumbnail: "fab-tb.jpg",
 			alttext: "Fabulous Occasions Branding",
 			description: "Braning campaign for a event planning business.",
@@ -130,7 +181,7 @@ app.factory("projectService", function() {
 			category: "mobile",
 			link: "mobile-proj-1.html",
 			thumbnail: "handson-tb.jpg",
-			alttext: "United Way HandsOn Suncast mobile app",
+			alttext: "United Way HandsOn Suncoast mobile app",
 			title: "HandsOn",
 			description: "Non Profit United Way division in Tampa, FL."
 		},
@@ -161,45 +212,48 @@ app.factory("projectService", function() {
 	];
 
 
+	linkService.createLink(projects);
 
-	var allProjects = [];
-	function addObj(obj, index) {
-		allProjects[index].contents.push(obj);
-	}
-	function createObj(obj, name) {
-		var newObj = {
-			category: name,
-			contents: [obj]
-		};
-		allProjects.push(newObj);
-	}
-	function findCate(obj) {
-		if (allProjects.length === 0) {
-			createObj(obj, obj.category);
-		} else {
-			var objCount = 0;
-			for (var i = 0; i < allProjects.length; i++) {
-				if (obj.category === allProjects[i].category) { // web.intoam === web.kingtut
-					objCount += 1;
-					var index = i;
-				}
-			}
-			if (objCount === 0) {
+	function sections() {
+		var allProjects = [];
+		function addObj(obj, index) {
+			allProjects[index].contents.push(obj);
+		}
+		function createObj(obj, name) {
+			var newObj = {
+				category: name,
+				contents: [obj]
+			};
+			allProjects.push(newObj);
+		}
+		function findCate(obj) {
+			if (allProjects.length === 0) {
 				createObj(obj, obj.category);
 			} else {
-				addObj(obj, index);
+				var objCount = 0;
+				for (var i = 0; i < allProjects.length; i++) {
+					if (obj.category === allProjects[i].category) { // web.intoam === web.kingtut
+						objCount += 1;
+						var index = i;
+					}
+				}
+				if (objCount === 0) {
+					createObj(obj, obj.category);
+				} else {
+					addObj(obj, index);
+				}
 			}
 		}
-	}
-	for (var i = 0; i < projects.length; i++) {
-		findCate(projects[i]);
-	}
+		for (var i = 0; i < projects.length; i++) {
+			findCate(projects[i]);
+		}
+
+		return allProjects;
+	}	
 
 
 	return {
-		getProjectCate: function() {
-			return allProjects;
-		},
+		getSections: sections,
 		getAllProjects: function() {
 			return projects;
 		}
@@ -207,21 +261,47 @@ app.factory("projectService", function() {
 });
 
 
-app.controller('PortfolioCtrl', function($scope, projectService) {
-	$scope.allProjects = projectService.getProjectCate();
+app.factory('linkService', function($routeParams) {
+	function pageId(array) {
+		var currentId = $routeParams.id;
+		for (var i = 0; i < array.length; i++) {
+			if (array[i].link === currentId) {
+				return array[i];
+			}
+		}
+	}
+
+	function linkGenerator(elm, index, array) {
+		var title = array[index].title;
+		var link = title.replace(/[^\w\s]/g, '').split(' ').join('-').toLowerCase();
+		array[index].link = link;
+	}
+
+	return {
+		findId: function(array) {
+			return pageId(array);
+		},
+		createLink: function(array) {
+			array.forEach(linkGenerator);
+		}
+	};
 });
 
 
-app.controller('ProjectCtrl', function($scope, projectService, $routeParams) {
-	var currentId = $routeParams.id;
+//////////////////////////////////////////////////////////////////////////
 
-	function findProject(project) { 
-		return project.link === currentId;
-	}
-	var projid = projectService.getProjects();
-	$scope.projectDetails = projid.find(findProject);
 
+
+app.controller('PortfolioCtrl', function($scope, projectService) {
+	$scope.allProjects = projectService.getSections();
+});
+
+
+app.controller('ProjectCtrl', function($scope, projectService, linkService) {
+	var projID = projectService.getAllProjects();
+	$scope.projectDetails = linkService.findId(projID);
 	$scope.imgs = $scope.projectDetails.photos;
+	// OR ng-repeat="photo in projectDetails.photos"
 });
 
 
@@ -234,8 +314,10 @@ app.controller('HeaderCtrl', function($scope, navigationService) {
 	$scope.navlinks = navigationService.getLinks();
 });
 
-
-
-
+app.controller('BlogCtrl', function($scope, blogService, linkService) {
+	$scope.entries = blogService.getEntriesShort();
+	var p = blogService.getEntries();
+	$scope.post = linkService.findId(p);
+});
 
 

@@ -1,0 +1,15 @@
+<div class="blog" ng-controller="BlogCtrl">
+	<h2 class="blog-header">Blog Posts</h2>
+	<ul class="blog-list">
+		<li class="blog-list-item" ng-repeat="entry in entries">
+			<img class="blog-list-item-photo" src="/img/{{entry.image}}">
+			<p class="blog-list-item-date">{{entry.date | date : 'MMM d, y'}}</p>
+			<a class="blog-list-item-link" href="#/blog/{{entry.link}}">
+				<h3 class="blog-list-item-header">{{entry.title}}</h3>
+			</a>
+			<p id="js-blogsnippet" class="blog-list-item-snippet">{{entry.shortenedPost}}</p>
+			<a href="#/blog/{{entry.link}}">Read More</a>
+			<hr>
+		</li>
+	</ul>
+</div>

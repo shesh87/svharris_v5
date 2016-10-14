@@ -16,7 +16,7 @@ get '/404.html' do
 	send_file 'views/partials/404.html'
 end
 
-get '/portfolio.html' do
+get '/portfolio' do
 	send_file 'views/partials/portfolio.html'
 end
 
@@ -26,6 +26,14 @@ end
 
 get '/resume' do
 	send_file 'views/partials/resume.html'
+end
+
+get '/blog' do
+	send_file 'views/partials/blog.html'
+end
+
+get '/blog/:id' do
+	send_file 'views/partials/posttemp.html'
 end
 
 get '/contact' do
