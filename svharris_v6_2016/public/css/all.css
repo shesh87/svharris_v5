@@ -2558,7 +2558,7 @@ html[xmlns] .flexslider .slides {
   padding: 0;
   margin: 0;
   position: relative;
-  top: 10px; }
+  top: 9px; }
   @media only screen and (max-width: 767px) {
     .navbar-nav-list {
       display: none;
@@ -2613,7 +2613,7 @@ html[xmlns] .flexslider .slides {
   .rollitem:last-child {
     position: absolute;
     left: 0;
-    top: 30px; }
+    top: 26px; }
   .navbaritem-link:hover .rollitem {
     transform: translateY(-125%); }
 

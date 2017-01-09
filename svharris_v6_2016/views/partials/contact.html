@@ -1,1 +1,42 @@
-<h1>CONTACT PAGE</h1>
+<div  ng-controller="ContactCtrl">
+	<section class="form">
+		<h3 class="form-header">MESSAGE ME</h3><hr class="hr-title">
+		<form action="http://www.svharris.com/cgi-sys/formmail.pl" method="POST" class="form-list">
+			<input type="hidden" name="recipient" value="hello@svharris.com">
+			<label class="form-list-field" for="name">Name:
+				<input type="text" id="name" name="name" placeholder="Name">
+			</label>
+			<label class="form-list-field" for="email">Email:
+				<input type="email" id="email" name="email" placeholder="Email">
+			</label>
+			<label class="form-list-field" for="subject">Subject:
+				<input type="textfield" id="subject" name="subject" placeholder="Subject">
+			</label>
+			<label class="form-list-field" for="message">Message:
+				<textarea id="message" name="message" placeholder="Message"></textarea>
+			</label>
+			<button class="form-list-btn" type="submit">Submit</button>
+			<input type="hidden" name="thankyou" value="http://svharris.com/thankyou.html">
+		</form>
+	</section>
+	<!--SMALL BIO-->
+	<section class="about">
+		<h3>CONTACT ME</h3><hr class="hr-title">
+		<div class="bio">
+			<p>Hello! Thanks for visiting my portfolio website. Please get in touch with me if you want to discuss career opportunities, freelance gigs or if you just want to say "Hi".</p>
+		</div>
+		<!--CONTACT/SOCIAL INFO-->
+		<div class="contact-tab">
+			<ul>
+				<li>
+					<span class="fa fa-phone"></span>
+					<a href="tel:14074541721">(407) 454-1721</a>
+				</li>
+				<li>
+					<span class="fa fa-envelope"></span>
+				<a href="mailto:hello@svharris.com">hello@svharris.com</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+</div>

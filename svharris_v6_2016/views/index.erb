@@ -15,7 +15,7 @@
 
 	<!--NAVIGATION ROW-->
 	<header id="top" class="navbar" ng-controller="HeaderCtrl">
-		<!-- <nav class="navbar-nav">
+		<nav class="navbar-nav">
 			<div class="logo">
 				<a href="#/portfolio">
 					<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
@@ -28,8 +28,8 @@
 					<a href="#/{{navlink.http}}" class="navbaritem-link">{{navlink.name}}</a>
 				</li>
 			</ul>
-		</nav> -->
-		<nav class="navbar-nav">
+		</nav>
+		<!-- <nav class="navbar-nav">
 			<div class="logo">
 				<a href="#/portfolio">
 					<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
@@ -39,7 +39,7 @@
 			<button type="button" class="mobilenav fa fa-bars js-mobilenav"></button style="display: none;">
 			<ul class="navbar-nav-list js-navlist">
 				<li class="navbaritem" ng-repeat="navlink in navlinks">
-					<a href="#/{{navlink.http}}" class="navbaritem-link {{navlink.name}}"><!-- {{navlink.name}} -->
+					<a href="#/{{navlink.http}}" class="navbaritem-link {{navlink.name}}">
 						<div class="navbaritem-link-roll">
 							<span class="rollitem">{{navlink.name}}</span>
 							<span class="rollitem">{{navlink.name}}</span>
@@ -48,7 +48,7 @@
 					</a>
 				</li>
 			</ul>
-		</nav>
+		</nav> -->
 	</header>
 
 
@@ -70,7 +70,7 @@
 			</li>
 		</ul>
 		<p class="footer-copyright">
-			<a href="http://facebook.com/sheonnavonharris">Sheonna Von Harris | Copyright 2015</a>
+			<span>Sheonna Von Harris | Copyright 2017</span>
 		</p>
 	</footer>
 
@@ -84,9 +84,9 @@
 <script>
 	// Can also be used with $(document).ready()
 	$(window).load(function() {
-	  $('.flexslider').flexslider({
-	    animation: "slide"
-	  });
+		$('.flexslider').flexslider({
+			animation: "slide"
+		});
 	});
 </script>
 <script src="scripts/function.js"></script>

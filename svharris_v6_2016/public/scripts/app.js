@@ -11,7 +11,8 @@ app.config(function($routeProvider) {
 			controller: 'ProjectCtrl'
 		})
 		.when('/resume', {
-			templateUrl: '/resume'
+			templateUrl: '/resume',
+			controller: 'ResumeCtrl'
 		})
 		.when('/blog', {
 			templateUrl: '/blog',
@@ -22,7 +23,8 @@ app.config(function($routeProvider) {
 			controller: 'BlogCtrl'
 		})
 		.when('/contact', {
-			templateUrl: '/contact'
+			templateUrl: '/contact',
+			controller: 'ContactCtrl'
 		})
 	.otherwise({
 		redirectTo: '/portfolio'
@@ -208,6 +210,14 @@ app.factory("projectService", function(linkService) {
 			alttext: "ROC Resto Lounge mobile app",
 			title: "ROC Resto",
 			description: "Eat, drink, shop and dance all in one place."
+		},
+		{
+			category: 'code',
+			link: 'code-proj-4.html',
+			thumbnail: '',
+			alttext: '',
+			title: '',
+			description: ''
 		}
 	];
 
@@ -261,6 +271,109 @@ app.factory("projectService", function(linkService) {
 });
 
 
+app.factory('carrerService', function() {
+	var pastCareers = [
+		{
+			company: 'bizcard xpress',
+			timeline_start: 2011,
+			timeline_end: 2012,
+			title: 'graphics engineer',
+			facts: ['number 1.2 Bacon ipsum dolor amet meatball landjaeger jerky, brisket prosciutto rump corned beef pork belly ham burgdoggen bresaola kevin t-bone pancetta.', 'number 2.2 Capicola t-bone cupim flank swine chuck prosciutto turkey shankle pastrami ham turducken.', 'Sirloin frankfurter leberkas, tongue rump beef turducken salami alcatra filet mignon chicken landjaeger.']
+		},
+		{
+			company: 'bside studios',
+			timeline_start: 2012,
+			timeline_end: 2012,
+			title: 'web intern',
+			facts: ['number 1.2 Bacon ipsum dolor amet meatball landjaeger jerky, brisket prosciutto rump corned beef pork belly ham burgdoggen bresaola kevin t-bone pancetta.', 'number 2.2 Capicola t-bone cupim flank swine chuck prosciutto turkey shankle pastrami ham turducken.', 'Sirloin frankfurter leberkas, tongue rump beef turducken salami alcatra filet mignon chicken landjaeger.']
+		},
+		{
+			company: 'npsapps',
+			timeline_start: 2012,
+			timeline_end: 2014,
+			title: 'mobile app designer',
+			facts: ['number 1 Bacon ipsum dolor amet meatball landjaeger jerky, brisket prosciutto rump corned beef pork belly ham burgdoggen bresaola kevin t-bone pancetta.', 'number 2 Capicola t-bone cupim flank swine chuck prosciutto turkey shankle pastrami ham turducken.', 'Sirloin frankfurter leberkas, tongue rump beef turducken salami alcatra filet mignon chicken landjaeger.']
+		}
+	];
+
+	var schools = [
+		{
+			name: 'university of central florida',
+			timeline_start: 2005,
+			timeline_end: 2008,
+			major: 'multimedia'
+		},
+		{
+			name: 'broward college',
+			timeline_start: 2010,
+			timeline_end: 2012,
+			major: 'grahpic design',
+			degree: 'graphic technology A.S.'
+		},
+		{
+			name: 'valencia community college',
+			timeline_start: 2009,
+			timeline_end: 2010,
+			major: 'graphic design',
+			degree: 'certificate'
+		}
+
+	];
+
+	var skills = [
+		{
+			category: 'operating systems',
+			list: ['windows vista /7/ 8/10', 'mac OS X yosemite/el capitan/sierra']
+		},
+		{
+			category: 'programing languages',
+			list: [ 'javascript', 'ruby', 'html', 'css']
+		},
+		{
+			category: 'databases',
+			list: ['mongodb']
+		},
+		{
+			category: 'graphic design',
+			list: ['photoshop', 'illustration', 'indesign', 'pageplus', 'photoplus', 'drawplus']
+		},
+		{
+			category: 'web development',
+			list: ['angular', 'rails', 'ajax', 'json', 'jQuery', 'bootstrap', 'APIs', 'sinatra', 'wordpress', 'Drupal', 'git']
+		}
+	];
+
+	pastCareers.forEach(function(n) {
+		var j = n.facts[0];
+		n.factOne = j;
+	});
+
+	function compare(a,b) {
+		if (a.timeline_start < b.timeline_start) {
+			return -1;
+		}
+		if (a.timeline_start > b.timeline_start) {
+			return 1;
+		}
+		return 0;
+	}
+
+	return {
+		getCareers: function() {
+			pastCareers.sort(compare);
+			return pastCareers;
+		},
+		getSchools: function() {
+			schools.sort(compare);
+			return schools;
+		},
+		getSkills: function() {
+			return skills;
+		}
+	};
+});
+
+
 app.factory('linkService', function($routeParams) {
 	function pageId(array) {
 		var currentId = $routeParams.id;
@@ -300,18 +413,16 @@ app.controller('PortfolioCtrl', function($scope, projectService) {
 app.controller('ProjectCtrl', function($scope, projectService, linkService) {
 	var projID = projectService.getAllProjects();
 	$scope.projectDetails = linkService.findId(projID);
-	$scope.imgs = $scope.projectDetails.photos;
-	// OR ng-repeat="photo in projectDetails.photos"
-});
-
-
-app.controller('FooterCtrl', function($scope, socialMediaService) {
-	$scope.smedias = socialMediaService.getSocial();
 });
 
 
 app.controller('HeaderCtrl', function($scope, navigationService) {
 	$scope.navlinks = navigationService.getLinks();
+});
+
+
+app.controller('FooterCtrl', function($scope, socialMediaService) {
+	$scope.smedias = socialMediaService.getSocial();
 });
 
 app.controller('BlogCtrl', function($scope, blogService, linkService) {
@@ -320,4 +431,20 @@ app.controller('BlogCtrl', function($scope, blogService, linkService) {
 	$scope.post = linkService.findId(p);
 });
 
+app.controller('ResumeCtrl', function($scope, carrerService) {
+	$scope.careers = carrerService.getCareers();
+	$scope.schools = carrerService.getSchools();
+	$scope.skills = carrerService.getSkills();
+	// $scope.getRating = function(rate) {
+	// 	var indexArray = [];
+	// 	for (var i=0; i < rate; i++) {
+	// 		indexArray.push('num' + i);
+	// 	}
+	// 	return indexArray;
+	// };
+});
+
+app.controller('ContactCtrl', function($scope, socialMediaService) {
+	$scope.smedias = socialMediaService.getSocial();
+});
 
