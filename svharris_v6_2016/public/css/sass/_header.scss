@@ -13,10 +13,11 @@
         .logo {
             display: inline-block;
             margin-right: 20px;
+            vertical-align: bottom;
         }
             .logo-img {
                 width: 121px;
-                margin: 0 0 5px;
+                margin-bottom: 8px;
             }
             .logo-subtext {
                 font-size: 1.25em;
@@ -28,10 +29,10 @@
         .navbar-nav-list {
             display: inline-block;
             text-transform: capitalize;
-            padding: 0;
-            margin: 0;
-            position: relative;
-            top: 9px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            line-height: 1;
+            vertical-align: bottom;
             @include bp(mobile) {
                 display: none;
                 margin-top: 20px;
@@ -59,7 +60,7 @@
             }
                 .navbaritem-link {
                     display: block;
-                    overflow: hidden;
+                    &:hover {color: $medium-gray;}
                 }
 
         .mobilenav {

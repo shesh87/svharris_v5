@@ -1,40 +1,47 @@
 <div  ng-controller="ContactCtrl">
-	<section class="form">
-		<h3 class="form-header">MESSAGE ME</h3><hr class="hr-title">
-		<form action="http://www.svharris.com/cgi-sys/formmail.pl" method="POST" class="form-list">
+	<section class="contact--section contact--section__form">
+		<h3 class="contact--header contact--header__form">MESSAGE ME</h3>
+		<form action="http://www.svharris.com/cgi-sys/formmail.pl" method="POST" class="contactform--list">
 			<input type="hidden" name="recipient" value="hello@svharris.com">
-			<label class="form-list-field" for="name">Name:
-				<input type="text" id="name" name="name" placeholder="Name">
+			<label class="contactform--field" for="name">
+				<span class="contact-field--item contact-field--item__name">Name:</span>
+				<input class="contact-field--item contact-field--item__input" type="text" id="name" name="name" placeholder="Name">
 			</label>
-			<label class="form-list-field" for="email">Email:
-				<input type="email" id="email" name="email" placeholder="Email">
+			<label class="contactform--field" for="email">
+				<span class="contact-field--item contact-field--item__email">Email:</span>
+				<input class="contact-field--item contact-field--item__input" type="email" id="email" name="email" placeholder="Email">
 			</label>
-			<label class="form-list-field" for="subject">Subject:
-				<input type="textfield" id="subject" name="subject" placeholder="Subject">
+			<label class="contactform--field" for="subject">
+				<span class="contact-field--item contact-field--item__subject">Subject:</span>
+				<input class="contact-field--item contact-field--item__input" type="textfield" id="subject" name="subject" placeholder="Subject">
 			</label>
-			<label class="form-list-field" for="message">Message:
-				<textarea id="message" name="message" placeholder="Message"></textarea>
+			<label class="contactform--field" for="message">
+				<span class="contact-field--item contact-field--item__message">Message:</span>
+				<textarea class="contact-field--item contact-field--item__textarea" id="message" name="message" placeholder="Message"></textarea>
 			</label>
-			<button class="form-list-btn" type="submit">Submit</button>
+			<button class="contactform--field-btn" type="submit">Submit</button>
 			<input type="hidden" name="thankyou" value="http://svharris.com/thankyou.html">
 		</form>
 	</section>
-	<!--SMALL BIO-->
-	<section class="about">
-		<h3>CONTACT ME</h3><hr class="hr-title">
-		<div class="bio">
-			<p>Hello! Thanks for visiting my portfolio website. Please get in touch with me if you want to discuss career opportunities, freelance gigs or if you just want to say "Hi".</p>
+
+	<section class="contact--section contact--section__about">
+		<h3 class="contact--header contact--header__
+		about">CONTACT ME</h3>
+		<div class="contact--bio">
+			<p class="contact--bio-text">Hello! Thanks for visiting my portfolio website. Please get in touch with me if you want to discuss career opportunities, freelance gigs or if you just want to say "Hi".</p>
 		</div>
-		<!--CONTACT/SOCIAL INFO-->
-		<div class="contact-tab">
-			<ul>
-				<li>
-					<span class="fa fa-phone"></span>
-					<a href="tel:14074541721">(407) 454-1721</a>
+		<div class="contact--links">
+			<ul class="contactlinks-list">
+				<li class="contactlinks-list--item">
+					<a class="contactlinks-item-link" href="tel:14074541721">
+						<span class="contactlinks-item-icon fa fa-phone"></span>
+						(407) 454-1721</a>
 				</li>
-				<li>
-					<span class="fa fa-envelope"></span>
-				<a href="mailto:hello@svharris.com">hello@svharris.com</a>
+				<li class="contactlinks-list--item">
+					<a class="contactlinks-item-link" href="mailto:hello@svharris.com">
+						<span class="contactlinks-item-icon fa fa-envelope"></span>
+						hello@svharris.com
+					</a>
 				</li>
 			</ul>
 		</div>

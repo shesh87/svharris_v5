@@ -1,0 +1,37 @@
+.project--row {
+	margin-bottom: 55px;
+}
+.project-category {
+	text-transform: capitalize;
+    @extend .hr-title;
+}
+.project--list {
+	text-align: center;
+	@include bp(tablet-min) {
+		display: inline-block;
+		width: 25%;
+		text-align: left;
+	    padding-left: 10px;
+	    padding-right: 10px;
+	}
+}
+.project-thumbnail {
+    max-height: 180px;
+	margin-bottom: 20px;
+	@include bp(tablet-min) {
+		max-height: 220px;
+	}
+}
+.project-title {
+	font-size: 1.75em;
+	padding-bottom: 6px;
+
+	.project--list:hover & {
+		border-bottom: 1px solid $logo-orange;
+		padding-bottom: 5px;
+	}
+}
+.project-content {
+    margin-top: 10px;
+}
+

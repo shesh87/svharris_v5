@@ -2,6 +2,10 @@
     "env": {
         "browser": true
     },
+    "globals": {
+        "angular": 1,
+        "$": true
+    },
     "extends": "eslint:recommended",
     "rules": {
         "indent": [
@@ -12,10 +16,10 @@
             "error",
             "unix"
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
+        // "quotes": [
+        //     "error",
+        //     "single"
+        // ],
         "semi": [
             "error",
             "always"

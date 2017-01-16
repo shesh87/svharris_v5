@@ -1,22 +1,18 @@
-<div class="container-fluid" ng-controller="PortfolioCtrl">
+<div class="content-container" ng-controller="PortfolioCtrl">
 
-	<div class="container-fluid" ng-controller="PortfolioCtrl">
-		<div class="project-row {{project.category}}" ng-repeat="project in allProjects">
-			<h2 class="project-header">{{project.category}}</h2>
-			<hr class="hr-title">
-			<ul>
-				<li class="project" ng-repeat="content in project.contents">
-				<!-- content in project[index].contents -->
-					<a href="#/projects/{{content.link}}">
-						<div class="img-container">
-							<img src="/img/{{content.thumbnail}}" alt="{{content.alttext}}">
-						</div>
-						<h3 class="project-title">{{content.title}}</h3>
-						<p>{{content.description}}</p>
-					</a>
-				</li>
-			</ul>
+	<div class="project--row project--row__{{project.category}}" ng-repeat="project in allProjects">
+		<div class="project--header">
+			<h2 class="project-category">{{project.category}}</h2>
 		</div>
+		<ul class="project--body">
+			<li class="project--list" ng-repeat="content in project.contents">
+				<a class="project-link" href="#/projects/{{content.link}}">
+					<img class="project-thumbnail" src="/img/{{content.thumbnail}}" alt="{{content.alttext}}">
+					<h3 class="project-title">{{content.title}}</h3>
+					<p class="project-content">{{content.description}}</p>
+				</a>
+			</li>
+		</ul>
 	</div>
 	
 </div>

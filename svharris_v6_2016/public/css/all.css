@@ -367,7 +367,8 @@ p {
   font-family: Quicksand, sans-serif;
   color: #333333;
   font-size: 1em;
-  line-height: 18px; }
+  line-height: 20px;
+  margin: 0; }
 
 a {
   color: #333333;
@@ -376,11 +377,18 @@ a {
     color: #333333; }
   a:visited {
     color: #333333; }
+  a:hover {
+    color: rgba(51, 51, 51, 0.48); }
 
 img {
   max-width: 100%;
   border: none;
   vertical-align: middle; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
 
 /*  FONT  ============================================================================= */
 h1, h2, h3, h4, h5, h6 {
@@ -430,27 +438,22 @@ h6 {
   opacity: .7; }
 
 input {
-  border: 0; }
-  input:focus {
-    border: 0;
-    outline: 0; }
+  border: 1px solid rgba(51, 51, 51, 0.48); }
+
+input:focus, button:focus, textarea:focus {
+  outline: 2px solid #EB7F00; }
 
 .clearfix {
   overflow: auto; }
 
-/*
-@font-face{ 
-	font-family: 'UpperEastSide-webfont';
-	src: url('fonts/UpperEastSide-webfont.eot');
-	src: url('fonts/UpperEastSide-webfont.eot?iefix') format('eot'),
-	     url('fonts/UpperEastSide-webfont.woff') format('woff'),
-	     url('fonts/UpperEastSide-webfont.ttf') format('truetype'),
-	     url('fonts/UpperEastSide-webfont.svg#webfont') format('svg');
-}
-@import url(https://fonts.googleapis.com/css?family=Italianno);
-@import url(https://fonts.googleapis.com/css?family=Stalemate);
-@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
-*/
+.hr-title, .project-category, .contact--header {
+  border-bottom: 2px solid #eeeeee;
+  padding-bottom: 2px;
+  margin-bottom: 40px; }
+  @media only screen and (min-width: 768px) {
+    .hr-title, .project-category, .contact--header {
+      width: 60%; } }
+
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -472,127 +475,6 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0); }
-
-/* makes the font 33% larger relative to the icon container */
-.fa-lg {
-  font-size: 1.33333333em;
-  line-height: 0.75em;
-  vertical-align: -15%; }
-
-.fa-2x {
-  font-size: 2em; }
-
-.fa-3x {
-  font-size: 3em; }
-
-.fa-4x {
-  font-size: 4em; }
-
-.fa-5x {
-  font-size: 5em; }
-
-.fa-fw {
-  width: 1.28571429em;
-  text-align: center; }
-
-.fa-ul {
-  padding-left: 0;
-  margin-left: 2.14285714em;
-  list-style-type: none; }
-
-.fa-ul > li {
-  position: relative; }
-
-.fa-li {
-  position: absolute;
-  left: -2.14285714em;
-  width: 2.14285714em;
-  top: 0.14285714em;
-  text-align: center; }
-
-.fa-li.fa-lg {
-  left: -1.85714286em; }
-
-.fa-border {
-  padding: .2em .25em .15em;
-  border: solid 0.08em #eeeeee;
-  border-radius: .1em; }
-
-.pull-right {
-  float: right; }
-
-.pull-left {
-  float: left; }
-
-.fa.pull-left {
-  margin-right: .3em; }
-
-.fa.pull-right {
-  margin-left: .3em; }
-
-.fa-spin {
-  animation: fa-spin 2s infinite linear; }
-
-.fa-pulse {
-  animation: fa-spin 1s infinite steps(8); }
-
-@keyframes fa-spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(359deg); } }
-
-.fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-  transform: rotate(90deg); }
-
-.fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-  transform: rotate(180deg); }
-
-.fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  transform: rotate(270deg); }
-
-.fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
-  transform: scale(-1, 1); }
-
-.fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
-  transform: scale(1, -1); }
-
-:root .fa-rotate-90,
-:root .fa-rotate-180,
-:root .fa-rotate-270,
-:root .fa-flip-horizontal,
-:root .fa-flip-vertical {
-  -webkit-filter: none;
-          filter: none; }
-
-.fa-stack {
-  position: relative;
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  vertical-align: middle; }
-
-.fa-stack-1x,
-.fa-stack-2x {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  text-align: center; }
-
-.fa-stack-1x {
-  line-height: inherit; }
-
-.fa-stack-2x {
-  font-size: 2em; }
-
-.fa-inverse {
-  color: #ffffff; }
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
@@ -2539,11 +2421,12 @@ html[xmlns] .flexslider .slides {
 
 .logo {
   display: inline-block;
-  margin-right: 20px; }
+  margin-right: 20px;
+  vertical-align: bottom; }
 
 .logo-img {
   width: 121px;
-  margin: 0 0 5px; }
+  margin-bottom: 8px; }
 
 .logo-subtext {
   font-size: 1.25em;
@@ -2555,10 +2438,10 @@ html[xmlns] .flexslider .slides {
 .navbar-nav-list {
   display: inline-block;
   text-transform: capitalize;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  top: 9px; }
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  vertical-align: bottom; }
   @media only screen and (max-width: 767px) {
     .navbar-nav-list {
       display: none;
@@ -2584,8 +2467,9 @@ html[xmlns] .flexslider .slides {
       padding: 0 15px 7px; } }
 
 .navbaritem-link {
-  display: block;
-  overflow: hidden; }
+  display: block; }
+  .navbaritem-link:hover {
+    color: rgba(51, 51, 51, 0.48); }
 
 .mobilenav {
   display: none;
@@ -2648,10 +2532,13 @@ html[xmlns] .flexslider .slides {
   padding: 0;
   margin: 0 0 7px; }
 
-.footer-social-item {
+.footer-social--item {
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px; }
+
+.footer-social--item--link:hover {
+  color: rgba(51, 51, 51, 0.48); }
 
 .footer-copyright {
   margin: 0; }
@@ -2666,11 +2553,14 @@ html[xmlns] .flexslider .slides {
 
 .container, .navbar-nav, .main {
   min-width: 320px;
-  max-width: 1024px;
+  padding: 0 15px;
   margin: 0 auto; }
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (min-width: 1024px) {
     .container, .navbar-nav, .main {
-      padding: 0 15px; } }
+      max-width: 1106px; } }
+  @media only screen and (min-width: 1280px) {
+    .container, .navbar-nav, .main {
+      padding: 0; } }
 
 .center-div {
   margin: 0 auto;
@@ -2679,46 +2569,6 @@ html[xmlns] .flexslider .slides {
 .main {
   min-height: 550px;
   margin-top: 120px; }
-
-.hr-title {
-  border-bottom: 1px solid #eeeeee;
-  margin: 0 0 40px;
-  width: 60%; }
-
-.hr-title-contact {
-  border-bottom: 1px solid #eeeeee;
-  margin: 0 0 40px;
-  width: 80%; }
-
-.project-row {
-  margin-bottom: 55px; }
-
-.project-row img {
-  margin-bottom: 20px;
-  max-width: 75%; }
-
-.project-row .project a:hover h3 {
-  border-bottom: 1px solid #EB7F00;
-  padding-bottom: 5px;
-  width: 80%; }
-
-.project-title {
-  padding-bottom: 6px; }
-
-ul.list-inline {
-  font-size: 20px; }
-
-.project-txt span {
-  font-weight: 700; }
-
-.project-img {
-  width: 100%; }
-
-.web h2 {
-  margin-top: 0; }
-
-.project-txt h4 {
-  margin-top: 0; }
 
 .button-container {
   margin: 0 16px 0;
@@ -2729,71 +2579,6 @@ ul.list-inline {
   display: inline-block;
   font-size: 40px; }
 
-.button-container .prev {
-  display: inline-block;
-  font-size: 40px; }
-
-.social .fa {
-  font-size: 30px;
-  color: #EB7F00; }
-
-span.fa {
-  margin-right: 10px; }
-
-span.fa-phone {
-  font-size: 24px;
-  position: relative;
-  top: 4px; }
-
-span.fa-envelope {
-  font-size: 18px; }
-
-.bio {
-  margin-bottom: 40px; }
-
-.contact-form input {
-  margin-bottom: 15px;
-  width: 75%;
-  height: 27px; }
-
-textarea {
-  resize: none;
-  margin-bottom: 10px;
-  width: 75%;
-  border: 1px solid #ccc; }
-
-.main-contact {
-  margin-top: 40px; }
-
-.hero-image-contact {
-  overflow: hidden;
-  margin-bottom: 50px; }
-
-.project-row .img-container {
-  text-align: center; }
-
-.project-row .img-container img {
-  float: none;
-  max-width: 209px; }
-
-.hero-image-contact ul.rslides {
-  /*max-width: 100% !important;*/ }
-
-.main-contact {
-  margin-top: 0; }
-
-.hero-image-contact .rslides_container .rslides li {
-  height: 400px; }
-
-.project-main a {
-  color: #EB7F00; }
-
-.flex-direction-nav a {
-  color: #EB7F00; }
-
-.hero-image-contact .flex-direction-nav {
-  display: none; }
-
 @viewport {
   zoom: 1.0;
   width: extend-to-zoom; }
@@ -2801,3 +2586,91 @@ textarea {
 @-ms-viewport {
   width: extend-to-zoom;
   zoom: 1.0; }
+
+.project--row {
+  margin-bottom: 55px; }
+
+.project-category {
+  text-transform: capitalize; }
+
+.project--list {
+  text-align: center; }
+  @media only screen and (min-width: 768px) {
+    .project--list {
+      display: inline-block;
+      width: 25%;
+      text-align: left;
+      padding-left: 10px;
+      padding-right: 10px; } }
+
+.project-thumbnail {
+  max-height: 180px;
+  margin-bottom: 20px; }
+  @media only screen and (min-width: 768px) {
+    .project-thumbnail {
+      max-height: 220px; } }
+
+.project-title {
+  font-size: 1.75em;
+  padding-bottom: 6px; }
+  .project--list:hover .project-title {
+    border-bottom: 1px solid #EB7F00;
+    padding-bottom: 5px; }
+
+.project-content {
+  margin-top: 10px; }
+
+.contact--section {
+  margin-bottom: 70px;
+  /*&__form {	
+	    margin-bottom: 40px;
+	    @include bp(tablet-min) {margin-bottom: 0;}
+	}
+	&__about {
+		margin-bottom: 70px;
+		@include bp(tablet-min) {margin-bottom: 0;}
+	}*/ }
+  @media only screen and (min-width: 768px) {
+    .contact--section {
+      width: 50%;
+      float: left;
+      padding-right: 40px;
+      margin-bottom: 0; } }
+
+.contactform--field {
+  display: block;
+  margin-bottom: 15px; }
+
+.contact-field--item {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px; }
+  @media only screen and (min-width: 1024px) {
+    .contact-field--item {
+      width: 80%; } }
+  .contact-field--item__input, .contact-field--item__textarea {
+    padding: 11px 5px 9px; }
+  .contact-field--item__textarea {
+    resize: none;
+    min-height: 60px; }
+
+.contactform--field-btn {
+  background: #EB7F00;
+  border: none;
+  color: white;
+  padding: 10px 15px 6px;
+  border-radius: 5px; }
+  .contactform--field-btn:hover {
+    background: #c26900; }
+
+.contact--bio {
+  margin-bottom: 15px; }
+
+.contactlinks-list--item {
+  padding-left: 15px;
+  margin-bottom: 15px; }
+
+.contactlinks-item-icon {
+  color: #EB7F00;
+  font-size: 18px;
+  padding-right: 8px; }

@@ -1,200 +1,43 @@
-
-
 .container {
-    min-width: 320px;
-    max-width: 1024px;
-    margin: 0 auto;
-    @include bp(small-desktop-max) {
-        padding: 0 15px;
-    }
+	min-width: 320px;
+	padding: 0 15px;
+	margin: 0 auto;
+	@include bp(small-desktop-min) {
+	    max-width: 1106px;
+	}
+	@include bp(medium-desktop-min) {
+		padding: 0;
+	}
 }
 
 .center-div {
-  margin: 0 auto;
-  float: none !important;
+	margin: 0 auto;
+	float: none !important;
 }
 
 .main {
-    min-height: 550px;
-    margin-top: 120px;
-    @extend .container;
+	min-height: 550px;
+	margin-top: 120px;
+	@extend .container;
 }
 
-.hr-title {
-	border-bottom: 1px solid $light-gray;
-	margin: 0 0 40px;
-	width: 60%;
-}
-.hr-title-contact {
-  border-bottom: 1px solid $light-gray;
-  margin: 0 0 40px;
-  width: 80%;
-}
 
-main {
-}
-.project-row {
-	margin-bottom: 55px;
-}
-.project-row img {
-	margin-bottom: 20px;
-  max-width: 75%;
-}
-.project-row .project a:hover h3 {
-  border-bottom: 1px solid #EB7F00;
-  padding-bottom: 5px;
-  width: 80%;
-}
 
-.project-title {
-	padding-bottom: 6px;
-}
-.project-row a {
 
-}
-ul.list-inline {
-	font-size: 20px;
-}
 
-.project-txt span {
-	font-weight: 700;
-}
-.project-img {
-	width: 100%;
-}
-.web h2 {
-  margin-top: 0;
-}
-.project-txt h4 {
-	margin-top: 0;
-}
+
+
+
+
 .button-container {
 	margin: 0 16px 0;
-  clear: both;
+	clear: both;
 }
 .button-container .next {
 	float: right;
 	display: inline-block;
-  font-size: 40px;
+	font-size: 40px;
 }
-.button-container .prev {
-	display: inline-block;
-  font-size: 40px;
-}
-.social .fa {
-  font-size: 30px;
-  color: #EB7F00;
-}
-span.fa {
-  margin-right: 10px;
-}
-span.fa-phone {
-  font-size: 24px;
-  position: relative;
-  top: 4px;
-}
-span.fa-envelope {
-  font-size: 18px;
-}
-.bio {
-  margin-bottom: 40px;
-}
-.contact-form input {
-  margin-bottom: 15px;
-  width: 75%;
-  height: 27px;
-}
-textarea {
-  resize: none;
-  margin-bottom: 10px;
-  width: 75%;
-  border: 1px solid #ccc;
-}
-
-.main-contact {
-  margin-top: 40px;
-}
-.hero-image-contact {
-  overflow: hidden;
-  margin-bottom: 50px;
-}
-.project-row .img-container {
-  text-align: center;
-}
-.project-row .img-container img {
-  float: none;
-  max-width: 209px;
-}
-.hero-image-contact ul.rslides {
-  /*max-width: 100% !important;*/
-}
-.main-contact {
-  margin-top: 0;
-}
-.hero-image-contact .rslides_container .rslides li {
-  height: 400px;
-}
-
-.project-main a {
-  color: #EB7F00;
-}
-.flex-direction-nav a {
-  color: #EB7F00;
-}
-.hero-image-contact .flex-direction-nav {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@viewport {
-    zoom: 1.0;
-    width: extend-to-zoom;
-}
-@-ms-viewport{
-    width: extend-to-zoom;
-    zoom: 1.0;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 

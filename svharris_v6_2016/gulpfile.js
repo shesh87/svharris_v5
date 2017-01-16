@@ -8,7 +8,7 @@ var eslint = require('gulp-eslint');
 
 gulp.task('default', ['styles', 'lint'], function() {
 	gulp.watch('public/css/sass/**/*.scss', ['styles']);
-	gulp.watch('public/scripts/**/*.js', ['lint']);
+	gulp.watch('public/scripts/*.js', ['lint']);
 	// browserSync.init({
 	// 	server: './views/index.erb'
 	// });
@@ -25,7 +25,10 @@ gulp.task('styles', function() {
 });
 
 gulp.task('lint', function () {
-	return gulp.src(['public/scripts/**/*.js'])
+	return gulp.src([
+		'!public/scripts/jquery.flexslider-min.js',
+		'public/scripts/*.js'
+	])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
 		.pipe(eslint())

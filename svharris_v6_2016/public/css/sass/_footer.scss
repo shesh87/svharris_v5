@@ -22,11 +22,14 @@
 		padding: 0;
 		margin: 0 0 7px;
 	}
-		.footer-social-item {
+		.footer-social--item {
 		    display: inline-block;
 			margin-left: 10px;
 			margin-right: 10px;
 		}
+			.footer-social--item--link {
+				&:hover {color: $medium-gray;}
+			}
 	.footer-copyright {
 		margin: 0;
 	}

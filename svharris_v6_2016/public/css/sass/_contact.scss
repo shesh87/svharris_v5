@@ -1,0 +1,57 @@
+.contact--section {
+	margin-bottom: 70px;
+	@include bp(tablet-min) {
+	    width: 50%;
+		float: left;
+		padding-right: 40px;
+		margin-bottom: 0;
+	}
+}
+.contact--header {
+	@extend .hr-title;
+}
+.contactform--list {}
+	.contactform--field {
+	    display: block;
+	    margin-bottom: 15px;
+	}
+		.contact-field--item {
+		    display: block;
+		    width: 100%;
+		    margin-bottom: 5px;
+		    @include bp(small-desktop-min) {width: 80%;}
+
+			&__input {
+			    padding: 11px 5px 9px;
+			}
+			&__textarea {
+				@extend .contact-field--item__input;
+				resize: none;
+				min-height: 60px;
+			}
+		}
+
+	.contactform--field-btn {
+	    background: $logo-orange;
+	    border: none;
+	    color: white;
+	    padding: 10px 15px 6px;
+	    border-radius: 5px;
+	    &:hover {
+	    	background: darken($logo-orange, 8%);
+	    }
+	}
+
+.contact--bio {
+	margin-bottom: 15px;
+}
+	.contactlinks-list--item {
+		padding-left: 15px;
+    	margin-bottom: 15px;
+	}
+		.contactlinks-item-icon {
+			color: $logo-orange;
+			font-size: 18px;
+		    padding-right: 8px;
+		}
+		.contactlinks-item-link {}

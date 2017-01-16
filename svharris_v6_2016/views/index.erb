@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1">
-	<title>Sheonna Von Harris: </title> 
+	<title>Sheonna Von Harris</title> 
 	<link rel="shortcut icon" href="img/general/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/general/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="../css/all.css">
@@ -18,7 +18,7 @@
 		<nav class="navbar-nav">
 			<div class="logo">
 				<a href="#/portfolio">
-					<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
+					<img src="../img/svh-logo.png" class="logo-img" alt="Sheonna Von Harris logo">
 					<p class="logo-subtext">Sheonna Von Harris</p>
 				</a>
 			</div>
@@ -29,26 +29,6 @@
 				</li>
 			</ul>
 		</nav>
-		<!-- <nav class="navbar-nav">
-			<div class="logo">
-				<a href="#/portfolio">
-					<img src="../img/{{}}.png" class="logo-img" alt="Sheonna Von Harris logo">
-					<p class="logo-subtext">Sheonna Von Harris</p>
-				</a>
-			</div>
-			<button type="button" class="mobilenav fa fa-bars js-mobilenav"></button style="display: none;">
-			<ul class="navbar-nav-list js-navlist">
-				<li class="navbaritem" ng-repeat="navlink in navlinks">
-					<a href="#/{{navlink.http}}" class="navbaritem-link {{navlink.name}}">
-						<div class="navbaritem-link-roll">
-							<span class="rollitem">{{navlink.name}}</span>
-							<span class="rollitem">{{navlink.name}}</span>
-						</div>
-						<div class="bottom-line"></div>
-					</a>
-				</li>
-			</ul>
-		</nav> -->
 	</header>
 
 
@@ -65,8 +45,8 @@
 
 	<footer class="footer" ng-controller="FooterCtrl">
 		<ul class="footer-social">
-			<li class="footer-social-item" ng-repeat="smedia in smedias">
-				<a class="fa fa-{{smedia.name}}" href="http://{{smedia.http}}" target="_blank"></a>
+			<li class="footer-social--item" ng-repeat="smedia in smedias">
+				<a class="footer-social--item--link fa fa-{{smedia.name}}" href="http://{{smedia.http}}" target="_blank"></a>
 			</li>
 		</ul>
 		<p class="footer-copyright">
