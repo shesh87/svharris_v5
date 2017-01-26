@@ -1,0 +1,16 @@
+.blogpost-title {
+	@extend .hr-title;
+}
+	.blogpost-date {
+	    font-size: 18px;
+	    color: $logo-orange;
+	    margin: 20px 0;
+	}
+	.blogpost-post {
+	    &:first-letter {
+		    font-size: 27px;
+		}
+		@include bp(tablet-min) {
+	    	text-indent: 20px;
+		}
+	}

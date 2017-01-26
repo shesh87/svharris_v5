@@ -4,8 +4,14 @@ require "pry"
 require "sinatra/reloader" if development?
 require "json"
 require "logger"
+require 'mongo'
 require "json/ext"
 enable :logger
+enable :sessions
+
+client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'svh_website')
+db = client.database
+
 
 
 get '/' do
@@ -40,3 +46,9 @@ get '/contact' do
 	send_file 'views/partials/contact.html'
 end
 
+get '/career' do
+	collection = client[:resume]
+	history = []
+	collection.find.each { |doc| history << doc }
+	history.to_json
+end

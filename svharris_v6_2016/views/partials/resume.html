@@ -8,10 +8,10 @@
 
 	<section class="content content--history">
 		<h2 class="content-header">History</h2>
-		<div class="content-section" ng-repeat="career in careers" ng-mouseenter="count=3" ng-mouseleave="count=1">
+		<div class="content-section" ng-repeat="career in careers">
 			<ul class="history">
-				<li class="history-item">{{career.company}}</li>
 				<li class="history-item">{{career.timeline_start}} - {{career.timeline_end}}</li>
+				<li class="history-item">{{career.company}}</li>
 				<li class="history-item">{{career.title}}</li>
 				<ul class="history-item-nest">
 					<li class="history-item-nest-item" ng-repeat="fact in career.facts">{{fact}}</li>
@@ -36,7 +36,7 @@
 		<h2 class="content-header">Skills</h2>
 		<ul class="skills">
 			<li class="skills-list" ng-repeat="skill in skills">
-				<h4 class="skills-list-title">{{skill.category}}</h4>
+				<h4 class="skills-list-title">{{skill.title}}</h4>
 				<ul class="skills-sublist">
 					<li class="skills-sublist-item" ng-repeat="skill in skill.list">{{skill}}</li>
 				</ul>

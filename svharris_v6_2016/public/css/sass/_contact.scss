@@ -1,10 +1,15 @@
 .contact--section {
-	margin-bottom: 70px;
 	@include bp(tablet-min) {
 	    width: 50%;
 		float: left;
 		padding-right: 40px;
-		margin-bottom: 0;
+	}
+
+	&__form {
+		margin-bottom: 70px;
+		@include bp(tablet-min) {
+			margin-bottom: 0;
+		}
 	}
 }
 .contact--header {

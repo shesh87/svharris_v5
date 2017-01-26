@@ -1,12 +1,3 @@
-@viewport {
-		zoom: 1.0;
-		width: extend-to-zoom;
-}
-@-ms-viewport{
-		width: extend-to-zoom;
-		zoom: 1.0;
-}
-
 body {
 	font-family: $fontfamily-text, sans-serif;
 	font-weight: $normal;
@@ -113,9 +104,3 @@ input, button, textarea {
   overflow: auto;
 }
 
-.hr-title {
-	border-bottom: 2px solid $light-gray;
-    padding-bottom: 2px;
-    margin-bottom: 40px;
-    @include bp(tablet-min) {width: 60%;}
-}

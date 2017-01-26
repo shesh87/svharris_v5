@@ -14,6 +14,14 @@
 	    padding-left: 10px;
 	    padding-right: 10px;
 	}
+	
+	&:hover .item-title {
+		border-bottom: 1px solid $logo-orange;
+		padding-bottom: 5px;
+	}
+}
+.project-link {
+	&:hover {color: initial;}
 }
 .project-thumbnail {
     max-height: 180px;
@@ -25,13 +33,7 @@
 .project-title {
 	font-size: 1.75em;
 	padding-bottom: 6px;
-
-	.project--list:hover & {
-		border-bottom: 1px solid $logo-orange;
-		padding-bottom: 5px;
-	}
+	margin-bottom: 6px;
 }
-.project-content {
-    margin-top: 10px;
-}
+.project-content {}
 

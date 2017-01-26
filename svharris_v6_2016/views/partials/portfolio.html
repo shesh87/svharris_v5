@@ -7,8 +7,8 @@
 		<ul class="project--body">
 			<li class="project--list" ng-repeat="content in project.contents">
 				<a class="project-link" href="#/projects/{{content.link}}">
-					<img class="project-thumbnail" src="/img/{{content.thumbnail}}" alt="{{content.alttext}}">
-					<h3 class="project-title">{{content.title}}</h3>
+					<img class="project-thumbnail" src="/img/projects/{{content.thumbnail}}" alt="{{content.alttext}}">
+					<h3 class="project-title item-title">{{content.title}}</h3>
 					<p class="project-content">{{content.description}}</p>
 				</a>
 			</li>

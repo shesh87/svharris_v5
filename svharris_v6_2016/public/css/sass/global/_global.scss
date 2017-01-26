@@ -1,0 +1,43 @@
+.container {
+	min-width: 320px;
+	padding: 0 15px;
+	margin: 0 auto;
+	@include bp(small-desktop-min) {
+	    max-width: 1106px;
+	}
+	@include bp(medium-desktop-min) {
+		padding: 0;
+	}
+}
+
+.center-div {
+	margin: 0 auto;
+	float: none !important;
+}
+
+.main {
+	@extend .container;
+	min-height: 550px;
+	padding-bottom: 105px;
+	margin-top: 120px;
+	@include bp(tablet-min) {margin-top: 130px;}
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+.hr-title {
+	border-bottom: 2px solid $light-gray;
+    padding-bottom: 2px;
+    margin-bottom: 40px;
+    @include bp(tablet-min) {width: 60%;}
+}
+@viewport {
+		zoom: 1.0;
+		width: extend-to-zoom;
+}
+@-ms-viewport{
+		width: extend-to-zoom;
+		zoom: 1.0;
+}

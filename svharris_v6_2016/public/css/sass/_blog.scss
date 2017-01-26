@@ -1,0 +1,55 @@
+.blog-header {
+	@extend .hr-title;
+}
+	.blog-list--item {
+		@extend .project--list;
+		margin-bottom: 40px;
+		@include bp(tablet-min) {
+		    width: 50%;
+		    text-align: left;
+		    padding-left: 0;
+		    padding-right: 0;
+		    &:nth-child(odd) {
+		    	padding-right: 25px;
+		    }
+		    &:nth-child(even) {
+			    padding-left: 25px;
+		    }
+		}
+	}
+		.blog-item-link {
+		    @extend .project-link;
+		}
+		.blog-link-photo {
+			@extend .project-thumbnail;
+			@include bp(tablet-min) {
+				max-height: 100%;
+			}
+		}
+		.blog-link-date {
+			color: $logo-orange;
+		    margin-bottom: 5px;
+		    margin-top: 15px;
+		}
+		.blog-link-title {
+			@extend .project-title;
+		}
+		.blog-link-snippet {}
+
+			.blog-link-more {
+				color: $logo-orange;
+				padding-left: 10px;
+				&:visited {color: $logo-orange;}
+
+				@include bp(tablet-min) {
+					display: block;
+					padding-left: 0;
+				}
+			}
+	.blog-item-break {
+    	border-bottom: 2px solid $light-gray;
+	    margin: 12px 0;
+	    @include bp(tablet-min) {
+			display: none;
+		}
+	}

@@ -34,7 +34,7 @@ app.config(function($routeProvider) {
 app.factory('blogService', function(linkService) {
 	var blogEntries = [
 		{
-			date: new Date(), // new Date()
+			date: new Date('Thu Jan 3 2016'), // new Date()
 			title: 'Don\'t Forget Sinatra',
 			image: 'sinatra.jpg',
 			post: 'Recently have only been coding and producing projects in Rails so I could get a feel for the framework. However, the other day I wanted to try writing a simple app in Sinatra and that\'s when I realized I had FORGETTEN Sinatra!'
@@ -48,7 +48,7 @@ app.factory('blogService', function(linkService) {
 		{
 			date: new Date('Thu Mar 23 2016'),
 			title: 'U.S.A. only $3.99',
-			image: 'something.jpg',
+			image: '',
 			post: 'Bacon ipsum dolor amet shank tenderloin drumstick, corned beef pork chop chuck fatback landjaeger pig sausage pastrami tail venison biltong filet mignon. Cupim pig jowl chicken. Kevin hamburger biltong strip steak fatback jerky meatloaf, kielbasa bacon ham hock pork.'
 		}
 	];
@@ -101,6 +101,7 @@ app.factory('navigationService', function() {
 		}
 	};
 });
+
 
 app.factory("socialMediaService", function() {
 	var socialmedia = [
@@ -271,82 +272,27 @@ app.factory("projectService", function(linkService) {
 });
 
 
+app.service('apiService', function($http) {
+
+	this.getData = function (database, callbackFunc) {
+		$http({
+			method: 'GET',
+			url: '/' + database
+		}).success(function(data){
+			// With the data succesfully returned, call our callback
+			callbackFunc(data);
+		}).error(function(){
+			alert("error");
+		});
+	};
+});
+
+
 app.factory('carrerService', function() {
-	var pastCareers = [
-		{
-			company: 'bizcard xpress',
-			timeline_start: 2011,
-			timeline_end: 2012,
-			title: 'graphics engineer',
-			facts: ['number 1.2 Bacon ipsum dolor amet meatball landjaeger jerky, brisket prosciutto rump corned beef pork belly ham burgdoggen bresaola kevin t-bone pancetta.', 'number 2.2 Capicola t-bone cupim flank swine chuck prosciutto turkey shankle pastrami ham turducken.', 'Sirloin frankfurter leberkas, tongue rump beef turducken salami alcatra filet mignon chicken landjaeger.']
-		},
-		{
-			company: 'bside studios',
-			timeline_start: 2012,
-			timeline_end: 2012,
-			title: 'web intern',
-			facts: ['number 1.2 Bacon ipsum dolor amet meatball landjaeger jerky, brisket prosciutto rump corned beef pork belly ham burgdoggen bresaola kevin t-bone pancetta.', 'number 2.2 Capicola t-bone cupim flank swine chuck prosciutto turkey shankle pastrami ham turducken.', 'Sirloin frankfurter leberkas, tongue rump beef turducken salami alcatra filet mignon chicken landjaeger.']
-		},
-		{
-			company: 'npsapps',
-			timeline_start: 2012,
-			timeline_end: 2014,
-			title: 'mobile app designer',
-			facts: ['number 1 Bacon ipsum dolor amet meatball landjaeger jerky, brisket prosciutto rump corned beef pork belly ham burgdoggen bresaola kevin t-bone pancetta.', 'number 2 Capicola t-bone cupim flank swine chuck prosciutto turkey shankle pastrami ham turducken.', 'Sirloin frankfurter leberkas, tongue rump beef turducken salami alcatra filet mignon chicken landjaeger.']
-		}
-	];
 
-	var schools = [
-		{
-			name: 'university of central florida',
-			timeline_start: 2005,
-			timeline_end: 2008,
-			major: 'multimedia'
-		},
-		{
-			name: 'broward college',
-			timeline_start: 2010,
-			timeline_end: 2012,
-			major: 'grahpic design',
-			degree: 'graphic technology A.S.'
-		},
-		{
-			name: 'valencia community college',
-			timeline_start: 2009,
-			timeline_end: 2010,
-			major: 'graphic design',
-			degree: 'certificate'
-		}
-
-	];
-
-	var skills = [
-		{
-			category: 'operating systems',
-			list: ['windows vista /7/ 8/10', 'mac OS X yosemite/el capitan/sierra']
-		},
-		{
-			category: 'programing languages',
-			list: [ 'javascript', 'ruby', 'html', 'css']
-		},
-		{
-			category: 'databases',
-			list: ['mongodb']
-		},
-		{
-			category: 'graphic design',
-			list: ['photoshop', 'illustration', 'indesign', 'pageplus', 'photoplus', 'drawplus']
-		},
-		{
-			category: 'web development',
-			list: ['angular', 'rails', 'ajax', 'json', 'jQuery', 'bootstrap', 'APIs', 'sinatra', 'wordpress', 'Drupal', 'git']
-		}
-	];
-
-	pastCareers.forEach(function(n) {
-		var j = n.facts[0];
-		n.factOne = j;
-	});
+	var skills = [];
+	var education = [];
+	var jobs = [];
 
 	function compare(a,b) {
 		if (a.timeline_start < b.timeline_start) {
@@ -358,19 +304,45 @@ app.factory('carrerService', function() {
 		return 0;
 	}
 
+	function convertDate(array) {
+		for (var i =0; i < array.length; i ++) {
+			Date.parse(array[i].timeline_start);
+			// map to new array
+		}
+	}
+
+	function getResume (array) {
+		for (var i =0; i < array.length; i ++) {
+			if (array[i].category === 'jobs') {
+				jobs.push(array[i]);
+			} else if (array[i].category === 'skills') {
+				skills.push(array[i]);
+			} else if (array[i].category === 'education') {
+				education.push(array[i]);
+			}
+		}
+
+		// convertDate(jobs);
+	}
+
+	
+
 	return {
-		getCareers: function() {
-			pastCareers.sort(compare);
-			return pastCareers;
+		getJobs: function(array) {
+			getResume(array);
+			// pastCareers.sort(compare);
+			return jobs;
 		},
 		getSchools: function() {
-			schools.sort(compare);
-			return schools;
+			education.sort(compare);
+			return education;
 		},
 		getSkills: function() {
 			return skills;
 		}
 	};
+
+
 });
 
 
@@ -431,8 +403,16 @@ app.controller('BlogCtrl', function($scope, blogService, linkService) {
 	$scope.post = linkService.findId(p);
 });
 
-app.controller('ResumeCtrl', function($scope, carrerService) {
-	$scope.careers = carrerService.getCareers();
+app.controller('ResumeCtrl', function($scope, carrerService, apiService) {
+	$scope.careers = null;
+	apiService.getData('career', function(response) {
+		// carrerService.getResume(response);
+		$scope.careers = carrerService.getJobs(response);
+		$scope.schools = carrerService.getSchools();
+		$scope.skills = carrerService.getSkills();
+		console.log(response);
+	});
+	
 	$scope.schools = carrerService.getSchools();
 	$scope.skills = carrerService.getSkills();
 	// $scope.getRating = function(rate) {

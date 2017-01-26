@@ -1,13 +1,8 @@
 
-@import "normalize";
-@import "variables";
-@import "mixins";
-@import "base";
-@import "font-awesome";
-@import "flexslider";
-@import "grid";
-@import "header";
-@import "footer";
-@import "style";
+@import "base/all";
+@import "global/all";
 @import "portfolio";
 @import "contact";
+@import "resume";
+@import "blog";
+@import "posttemp";

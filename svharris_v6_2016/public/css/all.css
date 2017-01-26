@@ -446,14 +446,6 @@ input:focus, button:focus, textarea:focus {
 .clearfix {
   overflow: auto; }
 
-.hr-title, .project-category, .contact--header {
-  border-bottom: 2px solid #eeeeee;
-  padding-bottom: 2px;
-  margin-bottom: 40px; }
-  @media only screen and (min-width: 768px) {
-    .hr-title, .project-category, .contact--header {
-      width: 60%; } }
-
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2568,16 +2560,22 @@ html[xmlns] .flexslider .slides {
 
 .main {
   min-height: 550px;
+  padding-bottom: 105px;
   margin-top: 120px; }
+  @media only screen and (min-width: 768px) {
+    .main {
+      margin-top: 130px; } }
 
-.button-container {
-  margin: 0 16px 0;
-  clear: both; }
+.clearfix {
+  overflow: auto; }
 
-.button-container .next {
-  float: right;
-  display: inline-block;
-  font-size: 40px; }
+.hr-title, .project-category, .contact--header, .blog-header, .blogpost-title {
+  border-bottom: 2px solid #eeeeee;
+  padding-bottom: 2px;
+  margin-bottom: 40px; }
+  @media only screen and (min-width: 768px) {
+    .hr-title, .project-category, .contact--header, .blog-header, .blogpost-title {
+      width: 60%; } }
 
 @viewport {
   zoom: 1.0;
@@ -2593,48 +2591,44 @@ html[xmlns] .flexslider .slides {
 .project-category {
   text-transform: capitalize; }
 
-.project--list {
+.project--list, .blog-list--item {
   text-align: center; }
   @media only screen and (min-width: 768px) {
-    .project--list {
+    .project--list, .blog-list--item {
       display: inline-block;
       width: 25%;
       text-align: left;
       padding-left: 10px;
       padding-right: 10px; } }
-
-.project-thumbnail {
-  max-height: 180px;
-  margin-bottom: 20px; }
-  @media only screen and (min-width: 768px) {
-    .project-thumbnail {
-      max-height: 220px; } }
-
-.project-title {
-  font-size: 1.75em;
-  padding-bottom: 6px; }
-  .project--list:hover .project-title {
+  .project--list:hover .item-title, .blog-list--item:hover .item-title {
     border-bottom: 1px solid #EB7F00;
     padding-bottom: 5px; }
 
-.project-content {
-  margin-top: 10px; }
+.project-link:hover, .blog-item-link:hover {
+  color: initial; }
 
-.contact--section {
-  margin-bottom: 70px;
-  /*&__form {	
-	    margin-bottom: 40px;
-	    @include bp(tablet-min) {margin-bottom: 0;}
-	}
-	&__about {
-		margin-bottom: 70px;
-		@include bp(tablet-min) {margin-bottom: 0;}
-	}*/ }
+.project-thumbnail, .blog-link-photo {
+  max-height: 180px;
+  margin-bottom: 20px; }
   @media only screen and (min-width: 768px) {
-    .contact--section {
-      width: 50%;
-      float: left;
-      padding-right: 40px;
+    .project-thumbnail, .blog-link-photo {
+      max-height: 220px; } }
+
+.project-title, .blog-link-title {
+  font-size: 1.75em;
+  padding-bottom: 6px;
+  margin-bottom: 6px; }
+
+@media only screen and (min-width: 768px) {
+  .contact--section {
+    width: 50%;
+    float: left;
+    padding-right: 40px; } }
+
+.contact--section__form {
+  margin-bottom: 70px; }
+  @media only screen and (min-width: 768px) {
+    .contact--section__form {
       margin-bottom: 0; } }
 
 .contactform--field {
@@ -2674,3 +2668,54 @@ html[xmlns] .flexslider .slides {
   color: #EB7F00;
   font-size: 18px;
   padding-right: 8px; }
+
+.blog-list--item {
+  margin-bottom: 40px; }
+  @media only screen and (min-width: 768px) {
+    .blog-list--item {
+      width: 50%;
+      text-align: left;
+      padding-left: 0;
+      padding-right: 0; }
+      .blog-list--item:nth-child(odd) {
+        padding-right: 25px; }
+      .blog-list--item:nth-child(even) {
+        padding-left: 25px; } }
+
+@media only screen and (min-width: 768px) {
+  .blog-link-photo {
+    max-height: 100%; } }
+
+.blog-link-date {
+  color: #EB7F00;
+  margin-bottom: 5px;
+  margin-top: 15px; }
+
+.blog-link-more {
+  color: #EB7F00;
+  padding-left: 10px; }
+  .blog-link-more:visited {
+    color: #EB7F00; }
+  @media only screen and (min-width: 768px) {
+    .blog-link-more {
+      display: block;
+      padding-left: 0; } }
+
+.blog-item-break {
+  border-bottom: 2px solid #eeeeee;
+  margin: 12px 0; }
+  @media only screen and (min-width: 768px) {
+    .blog-item-break {
+      display: none; } }
+
+.blogpost-date {
+  font-size: 18px;
+  color: #EB7F00;
+  margin: 20px 0; }
+
+.blogpost-post:first-letter {
+  font-size: 27px; }
+
+@media only screen and (min-width: 768px) {
+  .blogpost-post {
+    text-indent: 20px; } }
