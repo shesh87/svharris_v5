@@ -184,6 +184,9 @@ app.factory("projectService", function(linkService) {
 		getAllProjects: function(array) {
 			linkService.createLink(array);
 			return sections(array);
+		},
+		projects: function() {
+			return allProjects;
 		}
 	};
 });
@@ -194,7 +197,8 @@ app.service('apiService', function($http) {
 	this.getData = function (database, callbackFunc) {
 		$http({
 			method: 'GET',
-			url: '/' + database
+			url: '/' + database,
+			cache: true
 		}).success(function(data){
 			// With the data successfully returned, call our callback
 			callbackFunc(data);
@@ -256,8 +260,8 @@ app.factory('linkService', function($routeParams) {
 	function pageId(array) {
 		var currentId = $routeParams.id;
 		for (var i = 0; i < array.length; i++) {
-			if (array[i].link === currentId) {
-				return array[i];
+			if (array[i].contents[0].link === currentId) {
+				return array[i].contents[0];
 			}
 		}
 	}
@@ -283,13 +287,15 @@ app.factory('linkService', function($routeParams) {
 
 
 
-app.controller('PortfolioCtrl', function($scope, projectService) {
-	$scope.allProjects = projectService.getSections();
+app.controller('PortfolioCtrl', function($scope, projectService, apiService) {
+	apiService.getData('project', function(response) {
+		$scope.allProjects = projectService.getAllProjects(response);
+	});
 });
 
 
 app.controller('ProjectCtrl', function($scope, projectService, linkService) {
-	var projID = projectService.getAllProjects();
+	var projID = projectService.projects();
 	$scope.projectDetails = linkService.findId(projID);
 });
 

@@ -24,13 +24,17 @@
 				<span>Company:</span><br>
 				{{projectDetails.company}}
 			</li>
-			<li>
+			<li> <!-- remove? -->
 				<span>Status:</span><br>
 				{{projectDetails.status}}
 			</li>
 			<li>
 				<span>Objective:</span><br>
 				{{projectDetails.objective}}
+			</li>
+			<li ng-hide="!projectDetails.repo">
+				<span>Repo Link:</span><br>
+				{{projectDetails.repo}}
 			</li>
 			<li>
 				<span>Year:</span><br>

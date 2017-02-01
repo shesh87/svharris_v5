@@ -52,3 +52,10 @@ get '/career' do
 	collection.find.each { |doc| history << doc }
 	history.to_json
 end
+
+get '/project' do
+	collection = client[:portfolio]
+	projects = []
+	collection.find.each { |doc| projects << doc }
+	projects.to_json
+end
