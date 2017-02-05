@@ -59,3 +59,10 @@ get '/project' do
 	collection.find.each { |doc| projects << doc }
 	projects.to_json
 end
+
+get '/blogentries' do 
+	collection = client[:blog]
+	blogentries = []
+	collection.find.each { |doc| blogentries << doc }
+	blogentries.to_json
+end

@@ -1,5 +1,9 @@
 var app = angular.module('myApp', ['ngRoute']);
 
+app.run(function($rootScope) {
+	$rootScope.database = [];
+});
+
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/portfolio', {
@@ -8,7 +12,7 @@ app.config(function($routeProvider) {
 		})
 		.when('/projects/:id', {
 			templateUrl: '/projects/:id',
-			controller: 'ProjectCtrl'
+			controller: 'PortfolioCtrl'
 		})
 		.when('/resume', {
 			templateUrl: '/resume',
@@ -30,49 +34,6 @@ app.config(function($routeProvider) {
 		redirectTo: '/portfolio'
 	});
 });
-
-app.factory('blogService', function(linkService) {
-	var blogEntries = [
-		{
-			date: new Date('Thu Jan 3 2016'), // new Date()
-			title: 'Don\'t Forget Sinatra',
-			image: 'sinatra.jpg',
-			post: 'Recently have only been coding and producing projects in Rails so I could get a feel for the framework. However, the other day I wanted to try writing a simple app in Sinatra and that\'s when I realized I had FORGETTEN Sinatra!'
-		},
-		{
-			date: new Date('Thu Apr 3 2016'),
-			title: 'Bacon ipsum',
-			image: 'bacon.jpg',
-			post: 'Bacon ipsum dolor amet shank tenderloin drumstick, corned beef pork chop biltong filet mignon.'
-		},
-		{
-			date: new Date('Thu Mar 23 2016'),
-			title: 'U.S.A. only $3.99',
-			image: '',
-			post: 'Bacon ipsum dolor amet shank tenderloin drumstick, corned beef pork chop chuck fatback landjaeger pig sausage pastrami tail venison biltong filet mignon. Cupim pig jowl chicken. Kevin hamburger biltong strip steak fatback jerky meatloaf, kielbasa bacon ham hock pork.'
-		}
-	];
-
-	linkService.createLink(blogEntries);
-
-	function shorten() {
-		for (var i = 0; i < blogEntries.length; i++) {
-			if (blogEntries[i].post.length > 100) {
-				var shorten = blogEntries[i].post.substring(0, 100) + '...';
-				blogEntries[i].shortenedPost = shorten;
-			}
-		}
-		return blogEntries;
-	}
-
-	return {
-		getEntriesShort: shorten,
-		getEntries: function() {
-			return blogEntries;
-		}
-	};
-});
-
 
 
 app.factory('navigationService', function() {
@@ -135,14 +96,69 @@ app.factory("socialMediaService", function() {
 });
 
 
+app.service('apiService', function($http, $rootScope) {
+
+	this.getData = function (database, callbackFunc) {
+		$http({
+			method: 'GET',
+			url: '/' + database,
+			cache: true
+		}).success(function(data){
+			$rootScope.database = data;
+			callbackFunc(data);
+		}).error(function(){
+			// console.log("server call unsuccessful");
+		});
+	};
+});
+
+
+app.factory('blogService', function(linkService) {
+	var posts = [];	
+
+	function shorten(blog) {
+
+		for (var i = 0; i < blog.length; i++) {
+			if (blog[i].post.length > 100) {
+				var shorten = blog[i].post.substring(0, 100) + '...';
+				blog[i].shortenedPost = shorten;
+				posts.push(blog[i]);
+			} else {
+				blog[i].shortenedPost = blog[i].post;
+				posts.push(blog[i]);
+			}
+		}
+		posts.sort(compare);
+		return posts;
+	}
+
+	function compare(a,b) {
+		if (a.date< b.date) {
+			return -1;
+		}
+		if (a.date > b.date) {
+			return 1;
+		}
+		return 0;
+	}
+
+
+	return {
+		getEntries: function(array) {
+			linkService.createLink(array);
+			return shorten(array);
+		},
+		getPosts: function() {
+			return posts;
+		}
+	};
+});
+
+
 app.factory("projectService", function(linkService) {
 
-	// var projects = [];
-
-
-	// linkService.createLink(projects);
-
 	var allProjects = [];
+
 	function addObj(obj, index) {
 		allProjects[index].contents.push(obj);
 	}
@@ -153,7 +169,7 @@ app.factory("projectService", function(linkService) {
 		};
 		allProjects.push(newObj);
 	}
-	function findCate(obj) {
+	function findCat(obj) {
 		if (allProjects.length === 0) {
 			createObj(obj, obj.category);
 		} else {
@@ -174,7 +190,7 @@ app.factory("projectService", function(linkService) {
 
 	function sections(projects) {
 		for (var i = 0; i < projects.length; i++) {
-			findCate(projects[i]);
+			findCat(projects[i]);
 		}
 		return allProjects;
 	}	
@@ -191,22 +207,6 @@ app.factory("projectService", function(linkService) {
 	};
 });
 
-
-app.service('apiService', function($http) {
-
-	this.getData = function (database, callbackFunc) {
-		$http({
-			method: 'GET',
-			url: '/' + database,
-			cache: true
-		}).success(function(data){
-			// With the data successfully returned, call our callback
-			callbackFunc(data);
-		}).error(function(){
-			console.log("server call unsuccessful");
-		});
-	};
-});
 
 
 app.factory('carrerService', function() {
@@ -286,42 +286,58 @@ app.factory('linkService', function($routeParams) {
 //////////////////////////////////////////////////////////////////////////
 
 
-
-app.controller('PortfolioCtrl', function($scope, projectService, apiService) {
-	apiService.getData('project', function(response) {
-		$scope.allProjects = projectService.getAllProjects(response);
-	});
-});
-
-
-app.controller('ProjectCtrl', function($scope, projectService, linkService) {
-	var projID = projectService.projects();
-	$scope.projectDetails = linkService.findId(projID);
-});
-
-
 app.controller('HeaderCtrl', function($scope, navigationService) {
 	$scope.navlinks = null;
 	$scope.navlinks = navigationService.getLinks();
 });
 
-
 app.controller('FooterCtrl', function($scope, socialMediaService) {
 	$scope.smedias = socialMediaService.getSocial();
 });
 
-app.controller('BlogCtrl', function($scope, blogService, linkService) {
-	$scope.entries = blogService.getEntriesShort();
-	var p = blogService.getEntries();
-	$scope.post = linkService.findId(p);
+app.controller('PortfolioCtrl', function($scope, projectService, apiService, linkService) {
+	var p = projectService.projects();
+	if (p.length === 0) {
+		apiService.getData('project', function(response) {
+			$scope.allProjects = projectService.getAllProjects(response);
+		});
+	} else {
+		$scope.allProjects = p;
+	}
+
+	$scope.projectDetails = linkService.findId(p);
 });
 
-app.controller('ResumeCtrl', function($scope, carrerService, apiService) {
-	apiService.getData('career', function(response) {
-		$scope.careers = carrerService.getJobs(response);
+
+app.controller('BlogCtrl', function($scope, blogService, linkService, apiService) {
+	var blg = blogService.getPosts();
+	if (blg.length === 0) {
+		apiService.getData('blogentries', function(response) {
+			$scope.entries = blogService.getEntries(response);
+		});
+	} else {
+		$scope.entries = blg;
+	}
+	// $scope.post = linkService.findId(blg);
+});
+
+
+app.controller('ResumeCtrl', function($scope, $rootScope, carrerService, apiService) {
+	var r = $rootScope.database;
+	if (r.length === 0) {
+		apiService.getData('career', function(response) {
+			$scope.careers = carrerService.getJobs(response);
+			$scope.schools = carrerService.getSchools();
+			$scope.skills = carrerService.getSkills();
+		});
+	} else {
+		$scope.careers = carrerService.getJobs(r);
 		$scope.schools = carrerService.getSchools();
 		$scope.skills = carrerService.getSkills();
-	});
+	}
+
+	
+
 	// $scope.getRating = function(rate) {
 	// 	var indexArray = [];
 	// 	for (var i=0; i < rate; i++) {
