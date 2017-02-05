@@ -1,9 +1,5 @@
 var app = angular.module('myApp', ['ngRoute']);
 
-app.run(function($rootScope) {
-	$rootScope.database = [];
-});
-
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/portfolio', {
@@ -96,7 +92,7 @@ app.factory("socialMediaService", function() {
 });
 
 
-app.service('apiService', function($http, $rootScope) {
+app.service('apiService', function($http) {
 
 	this.getData = function (database, callbackFunc) {
 		$http({
@@ -104,7 +100,6 @@ app.service('apiService', function($http, $rootScope) {
 			url: '/' + database,
 			cache: true
 		}).success(function(data){
-			$rootScope.database = data;
 			callbackFunc(data);
 		}).error(function(){
 			// console.log("server call unsuccessful");
@@ -117,7 +112,6 @@ app.factory('blogService', function(linkService) {
 	var posts = [];	
 
 	function shorten(blog) {
-
 		for (var i = 0; i < blog.length; i++) {
 			if (blog[i].post.length > 100) {
 				var shorten = blog[i].post.substring(0, 100) + '...';
@@ -157,25 +151,33 @@ app.factory('blogService', function(linkService) {
 
 app.factory("projectService", function(linkService) {
 
+	var allCategories = [];
 	var allProjects = [];
 
+	function setProjects(array, callbackFunc) {
+		for (var i=0; i<array.length; i++) {
+			allProjects.push(array[i]);
+		}
+		callbackFunc(allProjects);
+	}
+
 	function addObj(obj, index) {
-		allProjects[index].contents.push(obj);
+		allCategories[index].contents.push(obj);
 	}
 	function createObj(obj, name) {
 		var newObj = {
 			category: name,
 			contents: [obj]
 		};
-		allProjects.push(newObj);
+		allCategories.push(newObj);
 	}
 	function findCat(obj) {
-		if (allProjects.length === 0) {
+		if (allCategories.length === 0) {
 			createObj(obj, obj.category);
 		} else {
 			var objCount = 0;
-			for (var i = 0; i < allProjects.length; i++) {
-				if (obj.category === allProjects[i].category) { // web.intoam === web.kingtut
+			for (var i = 0; i < allCategories.length; i++) {
+				if (obj.category === allCategories[i].category) { // web.intoam === web.kingtut
 					objCount += 1;
 					var index = i;
 				}
@@ -192,16 +194,22 @@ app.factory("projectService", function(linkService) {
 		for (var i = 0; i < projects.length; i++) {
 			findCat(projects[i]);
 		}
-		return allProjects;
+		return allCategories;
 	}	
 
 
 	return {
-		getAllProjects: function(array) {
+		setCategories: function(array) {
 			linkService.createLink(array);
 			return sections(array);
 		},
-		projects: function() {
+		getCategories: function() {
+			return allCategories;
+		},
+		setProjects: function(array, callbackFunc) {
+			setProjects(array, callbackFunc);
+		},
+		getProjects: function() {
 			return allProjects;
 		}
 	};
@@ -209,8 +217,9 @@ app.factory("projectService", function(linkService) {
 
 
 
-app.factory('carrerService', function() {
+app.factory('careerService', function() {
 
+	var resume = [];
 	var skills = [];
 	var education = [];
 	var jobs = [];
@@ -234,15 +243,26 @@ app.factory('carrerService', function() {
 			} else if (array[i].category === 'education') {
 				education.push(array[i]);
 			}
+			resume.push(array[i]);
 		}
+	}
+
+	function checkResume () {
+		return resume;
 	}
 
 	
 
 	return {
-		getJobs: function(array) {
+		checkResume: function() {
+			return checkResume();
+		},
+		setJobs: function(array) {
 			getResume(array);
 			jobs.sort(compare);
+			return jobs;
+		},
+		getJobs: function() {
 			return jobs;
 		},
 		getSchools: function() {
@@ -260,8 +280,8 @@ app.factory('linkService', function($routeParams) {
 	function pageId(array) {
 		var currentId = $routeParams.id;
 		for (var i = 0; i < array.length; i++) {
-			if (array[i].contents[0].link === currentId) {
-				return array[i].contents[0];
+			if (array[i].link === currentId) {
+				return array[i];
 			}
 		}
 	}
@@ -296,16 +316,17 @@ app.controller('FooterCtrl', function($scope, socialMediaService) {
 });
 
 app.controller('PortfolioCtrl', function($scope, projectService, apiService, linkService) {
-	var p = projectService.projects();
+	var p = projectService.getCategories();
 	if (p.length === 0) {
 		apiService.getData('project', function(response) {
-			$scope.allProjects = projectService.getAllProjects(response);
+			$scope.allProjects = projectService.setCategories(response);
+			$scope.projectDetails = linkService.findId(response);
+			projectService.setProjects(response);
 		});
 	} else {
 		$scope.allProjects = p;
+		$scope.projectDetails = linkService.findId(projectService.getProjects());
 	}
-
-	$scope.projectDetails = linkService.findId(p);
 });
 
 
@@ -314,26 +335,27 @@ app.controller('BlogCtrl', function($scope, blogService, linkService, apiService
 	if (blg.length === 0) {
 		apiService.getData('blogentries', function(response) {
 			$scope.entries = blogService.getEntries(response);
+			$scope.post = linkService.findId(response);
 		});
 	} else {
 		$scope.entries = blg;
+		$scope.post = linkService.findId(blg);
 	}
-	// $scope.post = linkService.findId(blg);
 });
 
 
-app.controller('ResumeCtrl', function($scope, $rootScope, carrerService, apiService) {
-	var r = $rootScope.database;
+app.controller('ResumeCtrl', function($scope, careerService, apiService) {
+	var r = careerService.checkResume();
 	if (r.length === 0) {
 		apiService.getData('career', function(response) {
-			$scope.careers = carrerService.getJobs(response);
-			$scope.schools = carrerService.getSchools();
-			$scope.skills = carrerService.getSkills();
+			$scope.careers = careerService.setJobs(response);
+			$scope.schools = careerService.getSchools();
+			$scope.skills = careerService.getSkills();
 		});
 	} else {
-		$scope.careers = carrerService.getJobs(r);
-		$scope.schools = carrerService.getSchools();
-		$scope.skills = carrerService.getSkills();
+		$scope.careers = careerService.getJobs(r);
+		$scope.schools = careerService.getSchools();
+		$scope.skills = careerService.getSkills();
 	}
 
 	
