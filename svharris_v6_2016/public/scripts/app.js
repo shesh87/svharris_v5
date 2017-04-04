@@ -38,14 +38,14 @@ app.factory('navigationService', function() {
 			name: 'portfolio',
 			http: 'portfolio'
 		},
-		{
-			name: 'resume',
-			http: 'resume'
-		},
-		{
-			name: 'blog',
-			http: 'blog'
-		},
+		// {
+		// 	name: 'resume',
+		// 	http: 'resume'
+		// },
+		// {
+		// 	name: 'blog',
+		// 	http: 'blog'
+		// },
 		{
 			name: 'contact',
 			http: 'contact'

@@ -8,21 +8,23 @@
 	<link rel="icon" href="img/general/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="../css/all.css">
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ng-cloak class="ng-cloak">
 
 	<!--NAVIGATION ROW-->
-	<header id="top" class="navbar" ng-controller="HeaderCtrl">
-		<nav class="navbar-nav">
-			<div class="logo">
-				<a href="#/portfolio">
+	<header id="top" class="header" ng-controller="HeaderCtrl">
+		<nav class="navbar">
+			<div class="navbar--logo">
+				<a href="#/portfolio" class="navbaritem--link">
 					<img src="../img/svh-logo.png" class="logo-img" alt="Sheonna Von Harris logo">
 					<p class="logo-subtext">Sheonna Von Harris</p>
 				</a>
 			</div>
-			<button type="button" class="mobilenav fa fa-bars js-mobilenav"></button style="display: none;">
-			<ul class="navbar-nav-list js-navlist">
+			<div class="navbar--mobilenav">
+				<button type="button" class="mobilenav-item fa fa-bars js-mobilenav"></button style="display: none;">
+			</div>
+			<ul class="navbar--list js-navlist">
 				<li class="navbaritem" ng-repeat="navlink in navlinks">
-					<a href="#/{{navlink.http}}" class="navbaritem-link">{{navlink.name}}</a>
+					<a href="#/{{navlink.http}}" class="navbaritem--link navbaritem--link__mobile">{{navlink.name}}</a>
 				</li>
 			</ul>
 		</nav>
@@ -32,7 +34,7 @@
 
 
 	<!--MAIN PROJECT-->
-	<main class="main" ng-view></main>
+	<main class="main" ng-view autoscroll="true"></main>
 	
 
 

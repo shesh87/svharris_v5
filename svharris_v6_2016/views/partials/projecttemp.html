@@ -3,47 +3,50 @@
 	<span class="backbtn-text">back to portfolio</span>
 </a>
 
-<div class="project-main">
-	<h4>{{projectDetails.title}}</h4>
-	<!--PROJECT IMAGE SLIDER-->
-	<div class="proj-img-container col-sm-9">
-		<div class="flexslider">
-			<ul class="slides">
-			  <li class="" ng-repeat="photo in projectDetails.photos">
-			  	<img src="/img/projects/{{photo.name}}" alt="{{photo.alttext}}">
-			  </li>
-			</ul>
-		</div>
+<div class="projecttemp">
+	<!--PROJECT BIO-->
+	<div class="projecttemp--tempsubject">
+		<h4 class="tempsubject--title">{{projectDetails.title}}</h4>
+		<ul class="tempsubject--list">
+			<li class="tempsubject--item tempsubject--item__company">
+				<span class="tempsubject--item-title">Company:</span>
+				<p class="tempsubject--context">{{projectDetails.company}}</p>
+			</li>
+			<li class="tempsubject--item tempsubject--item__status">
+				<span class="tempsubject--item-title">Status:</span>
+				<p class="tempsubject--context">{{projectDetails.status}}</p>
+			</li>
+			<li class="tempsubject--item tempsubject--item__objective">
+				<span class="tempsubject--item-title">Objective:</span>
+				<p class="tempsubject--context">{{projectDetails.objective}}</p>
+			</li>
+			<li ng-hide="!projectDetails.repo" class="tempsubject--item tempsubject--item__repo">
+				<span class="tempsubject--item-title">Repo Link:</span>
+				<p class="tempsubject--context">
+					<a href="{{projectDetails.repo}}"></a>
+				</p>
+			</li>
+			<li class="tempsubject--item tempsubject--item__year">
+				<span class="tempsubject--item-title">Year:</span>
+				<p class="tempsubject--context">{{projectDetails.year}}</p>
+			</li>
+			<li class="tempsubject--item tempsubject--item__tools">
+				<span class="tempsubject--item-title">Tools:</span>
+				<p class="tempsubject--context">
+					<ul class="tempsubject--list">
+						<li ng-repeat="tool in projectDetails.tools" class="tempsubject--item tempsubject--item__tools">{{tool}}</li>
+					</ul>
+				</p>
+			</li>
+		</ul>
 	</div>
 
-	<!--PROJECT BIO-->
-	<div class="project-txt-container project-txt col-sm-3">
-		<h4>{{projectDetails.title}}</h4>
-		<ul>
-			<li>
-				<span>Company:</span><br>
-				{{projectDetails.company}}
-			</li>
-			<li> <!-- remove? -->
-				<span>Status:</span><br>
-				{{projectDetails.status}}
-			</li>
-			<li>
-				<span>Objective:</span><br>
-				{{projectDetails.objective}}
-			</li>
-			<li ng-hide="!projectDetails.repo">
-				<span>Repo Link:</span><br>
-				{{projectDetails.repo}}
-			</li>
-			<li>
-				<span>Year:</span><br>
-				{{projectDetails.year}}
-			</li>
-			<li>
-				<span>Tools:</span><br>
-				{{projectDetails.tools}}
-			</li>
+		<!--PROJECT IMAGE SLIDER-->
+	<div class="projecttemp--gallery">
+		<ul class="gallery--list">
+		  <li class="gallery--item" ng-repeat="photo in projectDetails.photos">
+		  	<img src="/img/projects/{{photo}}" class="gallery--photo">
+		  </li>
 		</ul>
 	</div>
 </div>

@@ -9,7 +9,7 @@ require "json/ext"
 enable :logger
 enable :sessions
 
-client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'svh_website')
+client = Mongo::Client.new([ '127.0.0.1:4321' ], :database => 'svh_website')
 db = client.database
 
 
