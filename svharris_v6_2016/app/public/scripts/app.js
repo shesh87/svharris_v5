@@ -26,6 +26,10 @@ app.config(function($routeProvider) {
 			templateUrl: '/contact',
 			controller: 'ContactCtrl'
 		})
+		.when('/thankyou', {
+			templateUrl: '/thankyou',
+			controller: 'ResponseCtrl'
+		})
 	.otherwise({
 		redirectTo: '/portfolio'
 	});
@@ -357,9 +361,6 @@ app.controller('ResumeCtrl', function($scope, careerService, apiService) {
 		$scope.schools = careerService.getSchools();
 		$scope.skills = careerService.getSkills();
 	}
-
-	
-
 	// $scope.getRating = function(rate) {
 	// 	var indexArray = [];
 	// 	for (var i=0; i < rate; i++) {
@@ -369,7 +370,6 @@ app.controller('ResumeCtrl', function($scope, careerService, apiService) {
 	// };
 });
 
-app.controller('ContactCtrl', function($scope, socialMediaService) {
-	$scope.smedias = socialMediaService.getSocial();
-});
+app.controller('ContactCtrl', function() {});
 
+app.controller('ResponseCtrl', function() {});

@@ -1,0 +1,50 @@
+
+<section class="contact--section contact--section__form">
+	<h3 class="contact--header contact--header__form">MESSAGE ME</h3>
+	<form action="/talktome" method="POST" class="contactform--list">
+		<input type="hidden" name="recipient" value="hello@svharris.com">
+		<label class="contactform--field" for="name">
+			<span class="contact-field--item contact-field--item__name">Name:</span>
+			<input class="contact-field--item contact-field--item__input" type="text" id="name" name="name" placeholder="Name">
+			<div class="js-errormsg formfields-item-errormsg"><%=@firstn%></div>
+		</label>
+		<label class="contactform--field" for="email">
+			<span class="contact-field--item contact-field--item__email">Email:</span>
+			<input class="contact-field--item contact-field--item__input" type="email" id="email" name="email" placeholder="Email">
+			<div class="js-errormsg formfields-item-errormsg"><%=@firstn%></div>
+		</label>
+		<label class="contactform--field" for="subject">
+			<span class="contact-field--item contact-field--item__subject">Subject:</span>
+			<input class="contact-field--item contact-field--item__input" type="textfield" id="subject" name="subject" placeholder="Subject">
+		</label>
+		<label class="contactform--field" for="message">
+			<span class="contact-field--item contact-field--item__message">Message:</span>
+			<textarea class="contact-field--item contact-field--item__textarea" id="message" name="message" placeholder="Message"></textarea>
+		</label>
+		<button class="contactform--field-btn" type="submit">Submit</button>
+		<input type="hidden" name="thankyou">
+	</form>
+</section>
+
+<section class="contact--section contact--section__about">
+	<h3 class="contact--header contact--header__
+	about">CONTACT ME</h3>
+	<div class="contact--bio">
+		<p class="contact--bio-text">Hello! Thanks for visiting my portfolio website. Please get in touch with me if you want to discuss career opportunities, freelance gigs or if you just want to say "Hi".</p>
+	</div>
+	<div class="contact--links">
+		<ul class="contactlinks-list">
+			<li class="contactlinks-list--item">
+				<a class="contactlinks-item-link" href="tel:14074541721">
+					<span class="contactlinks-item-icon fa fa-phone"></span>
+					(407) 454-1721</a>
+			</li>
+			<li class="contactlinks-list--item">
+				<a class="contactlinks-item-link" href="mailto:svonharris@gmail.com">
+					<span class="contactlinks-item-icon fa fa-envelope"></span>
+					svonharris@gmail.com
+				</a>
+			</li>
+		</ul>
+	</div>
+</section>

@@ -1,11 +1,16 @@
 require "rubygems"
+require 'dotenv/load'
+# This tells dotenv to read the .env file and set the appropriate variables
+Dotenv.load
 require "sinatra"
 require "pry"
 require "sinatra/reloader" if development?
 require "json"
 require "logger"
-require 'mongo'
+require "mongo"
 require "json/ext"
+require "./controllers/formvalidation"
+require "./controllers/mailer"
 enable :logger
 enable :sessions
 
@@ -44,6 +49,31 @@ end
 
 get '/contact' do
 	send_file 'views/partials/contact.html'
+end
+
+post '/talktome' do
+	session[:data] = Customer.new
+	session[:data].parseForm(params)
+	
+	# if session[:data].birthname(session[:data].name) === false 
+	# 	session[:data].errors.push("name")
+	# end
+	session[:data].email
+	collectError = session[:data].anyErrors
+
+	if collectError === false
+		#send to mailer
+		mailer = Mailer.new
+		mailer.awesome_email(params)
+		redirect to('/thankyou')
+	else
+		session[:printError] = collectError
+		redirect to('/errorpage')
+	end
+end
+
+get '/thankyou' do
+	erb :thankyou
 end
 
 get '/career' do
