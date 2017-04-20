@@ -6,11 +6,10 @@ gem 'json'
 gem 'bson'
 gem 'mongo'
 gem 'mail'
-
+gem 'pry'
 
 
 group :development, :test do
-	gem 'pry'
 	gem 'sinatra-contrib'
 	gem 'sinatra-reloader'
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console

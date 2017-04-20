@@ -14,8 +14,8 @@ require "./controllers/mailer"
 enable :logger
 enable :sessions
 
-client = Mongo::Client.new([ ENV['MONGO_LOCAL'] ], :database => 'svh_website')
-db = client.database
+# client = Mongo::Client.new([ "127.0.0.1:4321" ], :database => 'svh_website')
+# db = client.database
 
 
 
@@ -55,9 +55,7 @@ post '/talktome' do
 	session[:data] = Customer.new
 	session[:data].parseForm(params)
 	
-	# if session[:data].birthname(session[:data].name) === false 
-	# 	session[:data].errors.push("name")
-	# end
+	session[:data].fullname
 	session[:data].email
 	collectError = session[:data].anyErrors
 
@@ -68,8 +66,30 @@ post '/talktome' do
 		redirect to('/thankyou')
 	else
 		session[:printError] = collectError
-		redirect to('/errorpage')
+		redirect to('/error')
 	end
+end
+
+post '/talktome_js', :provides => :json do
+	session[:data] = Customer.new
+	session[:data].parseForm(params)
+	# binding.pry
+	session[:data].fullname
+	session[:data].email
+	
+	collectError = session[:data].anyErrors
+	if collectError === false
+		#send to mailer
+		mailer = Mailer.new
+		mailer.awesome_email(params)
+		halt 200, {:status => 200}.to_json	
+	else
+		halt 400, {:status => 400, :data => collectError}.to_json
+	end
+end
+
+get '/error' do
+	erb :error
 end
 
 get '/thankyou' do

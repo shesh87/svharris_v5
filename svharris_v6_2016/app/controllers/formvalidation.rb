@@ -1,3 +1,7 @@
+
+require "json"
+require "json/ext"
+
 class Customer
 	attr_accessor :name, :emailaddress
 	
@@ -18,24 +22,19 @@ class Customer
 		form.each { |key, value| 
 			if key === "name"
 				@name = value
-				# binding.pry
 			elsif key === "email"
 				@emailaddress = value
-			elsif key === "subject"
-				@subject = value
-			elsif key === "message"
-				@message = value
 			end
 		}
 	end
 
-	def birthname(birthname)
+	def fullname
 		# binding.pry
-		if birthname === "" || birthname === " "
-			return false
+		if @name === "" || @name === " "
+			@errors << "false"
 		else
-			fn = birthname
-			if /\d/.match(fn) || /\W/.match(fn) # is a digit or is not a-z/0-9
+			fln = @name
+			if /\d/.match(fln) || /\s{2,}/.match(fln) # is a digit or is not a-z/0-9
 				return false
 			end
 		end

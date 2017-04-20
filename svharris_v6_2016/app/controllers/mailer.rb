@@ -24,16 +24,18 @@ class Mailer
     @email = details[:email]
     subject = details[:subject]
     @content = details[:message]
+    @sender = details[:email]
+    @to = ENV['GMAIL_USER']
     
     # Not doing this will mean your template wont use your instance level variables
     b = binding
-    
+    # pry
     mail = Mail.new
-    mail.to = ENV['GMAIL_USER']
-    mail.from = "hello@svharris.com"
+    mail.to = @to
+    mail.from = @sender
     mail.subject = subject
     mail.body = ERB.new(File.read("./views/emailer.html.erb")).result(b)
-    
+    # pry
     mail.deliver!
   end
 

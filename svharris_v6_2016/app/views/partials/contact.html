@@ -1,28 +1,26 @@
-
 <section class="contact--section contact--section__form">
 	<h3 class="contact--header contact--header__form">MESSAGE ME</h3>
-	<form action="/talktome" method="POST" class="contactform--list">
-		<input type="hidden" name="recipient" value="hello@svharris.com">
+	<form action="/talktome" method="POST" ng-controller="ContactCtrl" id="js-contact" name="contact_form" class="contactform--list" novalidate>
 		<label class="contactform--field" for="name">
-			<span class="contact-field--item contact-field--item__name">Name:</span>
-			<input class="contact-field--item contact-field--item__input" type="text" id="name" name="name" placeholder="Name">
-			<div class="js-errormsg formfields-item-errormsg"><%=@firstn%></div>
+			<span class="contact-field--item contact-field--item__name">Name*</span>
+			<input class="contact-field--item contact-field--item__input" type="text" id="name" name="name" ng-model="form.name" autocomplete="given-name" pattern="[a-z][A-Z]" required />
+			<div class="js-errormsg contact-field--item__errormsg"></div>
 		</label>
 		<label class="contactform--field" for="email">
-			<span class="contact-field--item contact-field--item__email">Email:</span>
-			<input class="contact-field--item contact-field--item__input" type="email" id="email" name="email" placeholder="Email">
-			<div class="js-errormsg formfields-item-errormsg"><%=@firstn%></div>
+			<span class="contact-field--item contact-field--item__email">Email*</span>
+			<input class="contact-field--item contact-field--item__input" type="text" id="email" name="email" ng-model="form.email" autocomplete="email" required />
+			<div class="js-errormsg contact-field--item__errormsg"></div>
 		</label>
 		<label class="contactform--field" for="subject">
-			<span class="contact-field--item contact-field--item__subject">Subject:</span>
-			<input class="contact-field--item contact-field--item__input" type="textfield" id="subject" name="subject" placeholder="Subject">
+			<span class="contact-field--item contact-field--item__subject">Subject</span>
+			<input class="contact-field--item contact-field--item__input" type="textfield" id="subject" name="subject" ng-model="form.subject">
 		</label>
 		<label class="contactform--field" for="message">
-			<span class="contact-field--item contact-field--item__message">Message:</span>
-			<textarea class="contact-field--item contact-field--item__textarea" id="message" name="message" placeholder="Message"></textarea>
+			<span class="contact-field--item contact-field--item__message">Message</span>
+			<textarea class="contact-field--item contact-field--item__textarea" id="message" name="message" ng-model="form.message"></textarea>
 		</label>
-		<button class="contactform--field-btn" type="submit">Submit</button>
-		<input type="hidden" name="thankyou">
+		<p class="formfineprint">*Required fields</p>
+		<button type="submit" id="js-submit" value="Submit" ng-click="submit" class="contactform--field-btn">Submit</button>
 	</form>
 </section>
 

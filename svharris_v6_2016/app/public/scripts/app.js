@@ -1,58 +1,54 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(function($routeProvider) {
 	$routeProvider
-		.when('/portfolio', {
-			templateUrl: '/portfolio',
-			controller: 'PortfolioCtrl'
+		.when("/portfolio", {
+			templateUrl: "/portfolio",
+			controller: "PortfolioCtrl"
 		})
-		.when('/projects/:id', {
-			templateUrl: '/projects/:id',
-			controller: 'PortfolioCtrl'
+		.when("/projects/:id", {
+			templateUrl: "/projects/:id",
+			controller: "PortfolioCtrl"
 		})
-		.when('/resume', {
-			templateUrl: '/resume',
-			controller: 'ResumeCtrl'
+		.when("/resume", {
+			templateUrl: "/resume",
+			controller: "ResumeCtrl"
 		})
-		.when('/blog', {
-			templateUrl: '/blog',
-			controller: 'BlogCtrl'
+		.when("/blog", {
+			templateUrl: "/blog",
+			controller: "BlogCtrl"
 		})
-		.when('/blog/:id', {
-			templateUrl: '/blog/:id',
-			controller: 'BlogCtrl'
+		.when("/blog/:id", {
+			templateUrl: "/blog/:id",
+			controller: "BlogCtrl"
 		})
-		.when('/contact', {
-			templateUrl: '/contact',
-			controller: 'ContactCtrl'
-		})
-		.when('/thankyou', {
-			templateUrl: '/thankyou',
-			controller: 'ResponseCtrl'
+		.when("/contact", {
+			templateUrl: "/contact",
+			controller: "ContactCtrl"
 		})
 	.otherwise({
-		redirectTo: '/portfolio'
+		redirectTo: "/portfolio"
 	});
 });
 
 
-app.factory('navigationService', function() {
+app.factory("navigationService", function() {
 	var navlinks = [
 		{
-			name: 'portfolio',
-			http: 'portfolio'
+			name: "portfolio",
+			http: "portfolio"
 		},
 		// {
-		// 	name: 'resume',
-		// 	http: 'resume'
+		// 	name: "resume",
+		// 	http: "resume"
 		// },
 		// {
-		// 	name: 'blog',
-		// 	http: 'blog'
+		// 	name: "blog",
+		// 	http: "blog"
 		// },
 		{
-			name: 'contact',
-			http: 'contact'
+			name: "contact",
+			http: "contact"
 		}
 	];
 
@@ -96,29 +92,50 @@ app.factory("socialMediaService", function() {
 });
 
 
-app.service('apiService', function($http) {
-
-	this.getData = function (database, callbackFunc) {
+app.service("apiService", function($http) {
+	this.getData = function (database, method, callbackFunc) {
 		$http({
-			method: 'GET',
-			url: '/' + database,
+			method: method,
+			url: "/" + database,
 			cache: true
 		}).success(function(data){
 			callbackFunc(data);
 		}).error(function(){
-			// console.log("server call unsuccessful");
+			console.log("server call unsuccessful");
 		});
 	};
 });
 
+app.service("validationService", function($http) {
+	this.validate = function(formData, callbackFunc) {
+		var contactForm = verification(formData);
+		if (contactForm === false) {
+			console.log("errors on page");
+		} else {
+			$http({
+				method: "POST",
+				url: "/talktome_js",
+				dataType: "json",
+				params: formData,
+				paramSerializer: "$httpParamSerializerJQLike",
+				headers: {"Content-Type": "application/x-www-form-urlencoded"}
+			}).success(function(status) {
+				callbackFunc(status);
+			}).error(function(status) {
+				callbackFunc(status);
+			});
+		}
+	};
+});
 
-app.factory('blogService', function(linkService) {
+
+app.factory("blogService", function(linkService) {
 	var posts = [];	
 
 	function shorten(blog) {
 		for (var i = 0; i < blog.length; i++) {
 			if (blog[i].post.length > 100) {
-				var shorten = blog[i].post.substring(0, 100) + '...';
+				var shorten = blog[i].post.substring(0, 100) + "...";
 				blog[i].shortenedPost = shorten;
 				posts.push(blog[i]);
 			} else {
@@ -322,7 +339,7 @@ app.controller('FooterCtrl', function($scope, socialMediaService) {
 app.controller('PortfolioCtrl', function($scope, projectService, apiService, linkService) {
 	var p = projectService.getCategories();
 	if (p.length === 0) {
-		apiService.getData('project', function(response) {
+		apiService.getData("project", "GET", function(response) {
 			$scope.allProjects = projectService.setCategories(response);
 			$scope.projectDetails = linkService.findId(response);
 			projectService.setProjects(response);
@@ -337,7 +354,7 @@ app.controller('PortfolioCtrl', function($scope, projectService, apiService, lin
 app.controller('BlogCtrl', function($scope, blogService, linkService, apiService) {
 	var blg = blogService.getPosts();
 	if (blg.length === 0) {
-		apiService.getData('blogentries', function(response) {
+		apiService.getData('blogentries', "GET", function(response) {
 			$scope.entries = blogService.getEntries(response);
 			$scope.post = linkService.findId(response);
 		});
@@ -348,10 +365,10 @@ app.controller('BlogCtrl', function($scope, blogService, linkService, apiService
 });
 
 
-app.controller('ResumeCtrl', function($scope, careerService, apiService) {
+app.controller("ResumeCtrl", function($scope, careerService, apiService) {
 	var r = careerService.checkResume();
 	if (r.length === 0) {
-		apiService.getData('career', function(response) {
+		apiService.getData("career", "GET", function(response) {
 			$scope.careers = careerService.setJobs(response);
 			$scope.schools = careerService.getSchools();
 			$scope.skills = careerService.getSkills();
@@ -370,6 +387,38 @@ app.controller('ResumeCtrl', function($scope, careerService, apiService) {
 	// };
 });
 
-app.controller('ContactCtrl', function() {});
+app.controller("ContactCtrl", function($scope, validationService) {
+	// $("#js-submit").click(function(e) {
+	// 	e.preventDefault();
+	// 	ver($("#js-contact"), function(data) {
+	// 		validationService.validate(data, function(response) {
+	// 			if (response.status === 200) {
+	// 				console.log(response.status);
+	// 				$("#js-contact").html("<p class=\"contact--header contact--header__response\">HELLO THANKS FOR WRITING!<br>You will receive a response from me within 24-48 hours.</p>");
+	// 			} else {
+	// 				console.log(response.status);
+	// 			}
+	// 		});
+	// 	});
+	// });
 
-app.controller('ResponseCtrl', function() {});
+	// function ver(fields, callbackFunc) {
+	// 	var inputs = [];
+	// 	$(fields).find("input").each(function() {
+	// 		inputs.push($(this));
+	// 	});
+	// 	var form = {};
+	// 	for (var i=0; i<inputs.length; i++) {
+	// 		var n = inputs[i].attr("name");
+	// 		var v = inputs[i].val();
+	// 		form[n] = v;
+	// 	}
+	// 	callbackFunc(form);
+	// }
+
+});
+
+
+
+
+

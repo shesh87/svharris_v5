@@ -15,6 +15,7 @@
 .contact--header {
 	@extend .hr-title;
 }
+.contact--header__response {border: none;}
 .contactform--list {}
 	.contactform--field {
 	    display: block;
@@ -34,6 +35,11 @@
 				resize: none;
 				min-height: 60px;
 			}
+		}
+		.contact-field--item__errormsg {
+		    display: block;
+		    color: red;
+		    margin-top: 10px;
 		}
 
 	.contactform--field-btn {
