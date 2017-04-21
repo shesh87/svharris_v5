@@ -1,33 +1,37 @@
 /* eslint-env node */
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var eslint = require('gulp-eslint');
+var gulp = require("gulp");
+var sass = require("gulp-sass");
+var autoprefixer = require("gulp-autoprefixer");
+var eslint = require("gulp-eslint");
 // var browserSync = require('browser-sync').create();
+var concat = require("gulp-concat");
+var uglify = require("gulp-uglify");
+var cssnano = require("gulp-cssnano");
 
-gulp.task('default', ['styles', 'lint'], function() {
-	gulp.watch('app/public/css/sass/**/*.scss', ['styles']);
-	gulp.watch('app/public/scripts/*.js', ['lint']);
+gulp.task("default", ["styles", "lint"], function() {
+	gulp.watch("app/public/css/sass/**/*.scss", ["styles"]);
+	gulp.watch("app/public/scripts/*.js", ["lint"]);
+	gulp.watch("app/public/scripts/*.js", ["scripts"]);
 	// browserSync.init({
-	// 	server: './views/index.erb'
+	// 	server: "./views/index.erb"
 	// });
 });
 
-gulp.task('styles', function() {
-	gulp.src('app/public/css/sass/all.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions']
-		}))
-		.pipe(gulp.dest('./app/public/css'));
-		// .pipe(browserSync.stream());
+gulp.task("styles", function() {
+	gulp.src("app/public/css/sass/all.scss")
+		.pipe(sass().on("error", sass.logError))
+		.pipe(autoprefixer("last 2 versions"))
+		.pipe(gulp.dest("app/public/css"))
+		.pipe(cssnano())
+		.pipe(gulp.dest("app/public/css"));
 });
 
-gulp.task('lint', function () {
+gulp.task("lint", function () {
 	return gulp.src([
-		'!app/public/scripts/jquery.flexslider-min.js',
-		'app/public/scripts/*.js'
+		"!app/public/scripts/angular__1.2.26.min.js", 
+		"!app/public/scripts/angular-route__1.2.26.min.js",
+		"app/public/scripts/**/*.js"
 	])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
@@ -39,3 +43,19 @@ gulp.task('lint', function () {
 		// lint error, return the stream and pipe to failOnError last.
 		.pipe(eslint.failOnError());
 });
+
+gulp.task("scripts", function() {
+	return gulp.src(["app/public/scripts/angular__1.2.26.min.js", 
+		"app/public/scripts/angular-route__1.2.26.min.js", 
+		"app/public/scripts/app.js",
+		"app/public/scripts/function.js",
+		"app/public/scripts/validation.js"])
+	.pipe(concat("all.js"))
+    .pipe(gulp.dest("app/./public/scripts"))
+    .pipe(uglify())
+    .pipe(gulp.dest("app/./public/scripts"));
+});
+
+
+
+

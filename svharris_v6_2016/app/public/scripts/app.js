@@ -1,6 +1,6 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
-app.config(function($routeProvider) {
+app.config(["$routeProvider", function($routeProvider) {
 	$routeProvider
 		.when("/portfolio", {
 			templateUrl: "/portfolio",
@@ -29,7 +29,7 @@ app.config(function($routeProvider) {
 	.otherwise({
 		redirectTo: "/portfolio"
 	});
-});
+}]);
 
 
 app.factory("navigationService", function() {
@@ -92,7 +92,7 @@ app.factory("socialMediaService", function() {
 });
 
 
-app.service("apiService", function($http) {
+app.service("apiService", ["$http", function($http) {
 	this.getData = function (database, method, callbackFunc) {
 		$http({
 			method: method,
@@ -104,9 +104,9 @@ app.service("apiService", function($http) {
 			console.log("server call unsuccessful");
 		});
 	};
-});
+}]);
 
-app.service("validationService", function($http) {
+app.service("validationService", ["$http", function($http) {
 	this.validate = function(formData, callbackFunc) {
 		var contactForm = verification(formData);
 		if (contactForm === false) {
@@ -126,10 +126,10 @@ app.service("validationService", function($http) {
 			});
 		}
 	};
-});
+}]);
 
 
-app.factory("blogService", function(linkService) {
+app.factory("blogService", ["linkService", function(linkService) {
 	var posts = [];	
 
 	function shorten(blog) {
@@ -167,19 +167,18 @@ app.factory("blogService", function(linkService) {
 			return posts;
 		}
 	};
-});
+}]);
 
 
-app.factory("projectService", function(linkService) {
+app.factory("projectService", ["linkService", function(linkService) {
 
 	var allCategories = [];
 	var allProjects = [];
 
-	function setProjects(array, callbackFunc) {
+	function setProjects(array) {
 		for (var i=0; i<array.length; i++) {
 			allProjects.push(array[i]);
 		}
-		callbackFunc(allProjects);
 	}
 
 	function addObj(obj, index) {
@@ -227,18 +226,18 @@ app.factory("projectService", function(linkService) {
 		getCategories: function() {
 			return allCategories;
 		},
-		setProjects: function(array, callbackFunc) {
-			setProjects(array, callbackFunc);
+		setProjects: function(array) {
+			setProjects(array);
 		},
 		getProjects: function() {
 			return allProjects;
 		}
 	};
-});
+}]);
 
 
 
-app.factory('careerService', function() {
+app.factory("careerService", function() {
 
 	var resume = [];
 	var skills = [];
@@ -257,11 +256,11 @@ app.factory('careerService', function() {
 
 	function getResume (array) {
 		for (var i =0; i < array.length; i ++) {
-			if (array[i].category === 'jobs') {
+			if (array[i].category === "jobs") {
 				jobs.push(array[i]);
-			} else if (array[i].category === 'skills') {
+			} else if (array[i].category === "skills") {
 				skills.push(array[i]);
-			} else if (array[i].category === 'education') {
+			} else if (array[i].category === "education") {
 				education.push(array[i]);
 			}
 			resume.push(array[i]);
@@ -297,7 +296,7 @@ app.factory('careerService', function() {
 });
 
 
-app.factory('linkService', function($routeParams) {
+app.factory("linkService", ["$routeParams", function($routeParams) {
 	function pageId(array) {
 		var currentId = $routeParams.id;
 		for (var i = 0; i < array.length; i++) {
@@ -309,7 +308,7 @@ app.factory('linkService', function($routeParams) {
 
 	function linkGenerator(elm, index, array) {
 		var title = array[index].title;
-		var link = title.replace(/[^\w\s]/g, '').split(' ').join('-').toLowerCase();
+		var link = title.replace(/[^\w\s]/g, "").split(" ").join("-").toLowerCase();
 		array[index].link = link;
 	}
 
@@ -321,40 +320,40 @@ app.factory('linkService', function($routeParams) {
 			array.forEach(linkGenerator);
 		}
 	};
-});
+}]);
 
 
 //////////////////////////////////////////////////////////////////////////
 
 
-app.controller('HeaderCtrl', function($scope, navigationService) {
+app.controller("HeaderCtrl", ["$scope", "navigationService", function($scope, navigationService) {
 	$scope.navlinks = null;
 	$scope.navlinks = navigationService.getLinks();
-});
+}]);
 
-app.controller('FooterCtrl', function($scope, socialMediaService) {
+app.controller("FooterCtrl", ["$scope", "socialMediaService", function($scope, socialMediaService) {
 	$scope.smedias = socialMediaService.getSocial();
-});
+}]);
 
-app.controller('PortfolioCtrl', function($scope, projectService, apiService, linkService) {
+app.controller("PortfolioCtrl", ["$scope", "projectService", "apiService", "linkService", function($scope, projectService, apiService, linkService) {
 	var p = projectService.getCategories();
 	if (p.length === 0) {
 		apiService.getData("project", "GET", function(response) {
-			$scope.allProjects = projectService.setCategories(response);
+			$scope.myProjects = projectService.setCategories(response);
 			$scope.projectDetails = linkService.findId(response);
 			projectService.setProjects(response);
 		});
 	} else {
-		$scope.allProjects = p;
+		$scope.myProjects = p;
 		$scope.projectDetails = linkService.findId(projectService.getProjects());
 	}
-});
+}]);
 
 
-app.controller('BlogCtrl', function($scope, blogService, linkService, apiService) {
+app.controller("BlogCtrl", ["$scope", "blogService", "linkService", "apiService", function($scope, blogService, linkService, apiService) {
 	var blg = blogService.getPosts();
 	if (blg.length === 0) {
-		apiService.getData('blogentries', "GET", function(response) {
+		apiService.getData("blogentries", "GET", function(response) {
 			$scope.entries = blogService.getEntries(response);
 			$scope.post = linkService.findId(response);
 		});
@@ -362,10 +361,10 @@ app.controller('BlogCtrl', function($scope, blogService, linkService, apiService
 		$scope.entries = blg;
 		$scope.post = linkService.findId(blg);
 	}
-});
+}]);
 
 
-app.controller("ResumeCtrl", function($scope, careerService, apiService) {
+app.controller("ResumeCtrl", ["$scope", "careerService", "apiService", function($scope, careerService, apiService) {
 	var r = careerService.checkResume();
 	if (r.length === 0) {
 		apiService.getData("career", "GET", function(response) {
@@ -385,38 +384,37 @@ app.controller("ResumeCtrl", function($scope, careerService, apiService) {
 	// 	}
 	// 	return indexArray;
 	// };
-});
+}]);
 
-app.controller("ContactCtrl", function($scope, validationService) {
-	// $("#js-submit").click(function(e) {
-	// 	e.preventDefault();
-	// 	ver($("#js-contact"), function(data) {
-	// 		validationService.validate(data, function(response) {
-	// 			if (response.status === 200) {
-	// 				console.log(response.status);
-	// 				$("#js-contact").html("<p class=\"contact--header contact--header__response\">HELLO THANKS FOR WRITING!<br>You will receive a response from me within 24-48 hours.</p>");
-	// 			} else {
-	// 				console.log(response.status);
-	// 			}
-	// 		});
-	// 	});
-	// });
+app.controller("ContactCtrl", ["$scope", "validationService", function($scope, validationService) {
+	$("#js-submit").click(function(e) {
+		e.preventDefault();
+		ver($("#js-contact"), function(data) {
+			validationService.validate(data, function(response) {
+				if (response.status === 200) {
+					console.log(response.status);
+					$("#js-contact").html("<p class=\"contact--header contact--header__response\">THANKS FOR WRITING!<br>You will receive a response from me within 24-48 hours.</p>");
+				} else {
+					console.log(response.status);
+				}
+			});
+		});
+	});
 
-	// function ver(fields, callbackFunc) {
-	// 	var inputs = [];
-	// 	$(fields).find("input").each(function() {
-	// 		inputs.push($(this));
-	// 	});
-	// 	var form = {};
-	// 	for (var i=0; i<inputs.length; i++) {
-	// 		var n = inputs[i].attr("name");
-	// 		var v = inputs[i].val();
-	// 		form[n] = v;
-	// 	}
-	// 	callbackFunc(form);
-	// }
-
-});
+	function ver(fields, callbackFunc) {
+		var inputs = [];
+		$(fields).find("input").each(function() {
+			inputs.push($(this));
+		});
+		var form = {};
+		for (var i=0; i<inputs.length; i++) {
+			var n = inputs[i].attr("name");
+			var v = inputs[i].val();
+			form[n] = v;
+		}
+		callbackFunc(form);
+	}
+}]);
 
 
 

@@ -20,27 +20,27 @@ function verification(form) {
 		switch(n) {
 		case "phone":
 			var pn = phoneNumber(v);
-			message(pn,"phone","Must have 10 digits",n,v);    
+			message(pn,"phone","Must have 10 digits");    
 			break;
 		
 		case "fname":
 			var fn = birthName(v);
-			message(fn,"firstname","Alphabetical characters only",n,v); 
+			message(fn,"firstname","Alphabetical characters only"); 
 			break;
 		
 		case "lname":
 			var ln = birthName(v);
-			message(ln,"lastname","Alphabetical characters only",n,v);
+			message(ln,"lastname","Alphabetical characters only");
 			break;
 		
 		case "name":
 			var fln = fullName(v);
-			message(fln,"name","Alphabetical characters only",n,v);
+			message(fln,"name","Alphabetical characters only");
 			break;
 		
 		case "email":
 			var eaddy = emailAddres(v);
-			message(eaddy,"email","Email is incorrect",n,v);
+			message(eaddy,"email","Email is incorrect");
 			break;
 
 		default:
@@ -48,7 +48,7 @@ function verification(form) {
 		}
 	});
 
-	function message(patternval,field,text,name,value) {
+	function message(patternval,field,text) {
 		if (patternval === false) {
 			correctInputs.push("false");
 			errorMsg(field, text);

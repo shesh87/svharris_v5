@@ -14,17 +14,13 @@ require "./controllers/mailer"
 enable :logger
 enable :sessions
 
-# client = Mongo::Client.new([ "127.0.0.1:4321" ], :database => 'svh_website')
-# db = client.database
+client = Mongo::Client.new([ "127.0.0.1:4321" ], :database => 'svh_website')
+db = client.database
 
 
 
 get '/' do
 	erb :index
-end
-
-get '/404.html' do
-	send_file 'views/partials/404.html'
 end
 
 get '/portfolio' do
