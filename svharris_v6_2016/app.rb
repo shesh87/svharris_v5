@@ -9,42 +9,27 @@ require "json"
 require "logger"
 require "mongo"
 require "json/ext"
-require "./controllers/formvalidation"
-require "./controllers/mailer"
+require "./models/formvalidation"
+require "./models/mailer"
 enable :logger
 enable :sessions
 
-client = Mongo::Client.new([ "127.0.0.1:4321" ], :database => 'svh_website')
+client = Mongo::Client.new([ "127.0.0.1:27017" ], :database => 'svh_website')
+# client = Mongo::Client.new([ "127.0.0.1:4321" ], :database => 'svh_website')
 db = client.database
 
 
 
-get '/' do
-	erb :index
+configure do
+	set :root, File.dirname(__FILE__)
+	# set :root, File.expand_path("public/app")
+	set :public_folder, "public/app"
 end
 
-get '/portfolio' do
-	send_file 'views/partials/portfolio.html'
-end
-
-get '/projects/:id' do
-	send_file 'views/partials/projecttemp.html'
-end
-
-get '/resume' do
-	send_file 'views/partials/resume.html'
-end
-
-get '/blog' do
-	send_file 'views/partials/blog.html'
-end
-
-get '/blog/:id' do
-	send_file 'views/partials/posttemp.html'
-end
-
-get '/contact' do
-	send_file 'views/partials/contact.html'
+get "/" do
+	content_type :html
+	File.read("public/app/index.html")
+	# send_file 'public/app/index.html'
 end
 
 post '/talktome' do

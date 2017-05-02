@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
+ruby "2.3.1"
 
 gem 'sinatra'
 gem 'logger'
 gem 'json'
-gem 'bson'
-gem 'mongo'
+gem 'bson', '~> 4.2', '>= 4.2.1'
+gem 'mongo', '~> 2.4', '>= 2.4.1'
 gem 'mail'
 gem 'pry'
+gem 'passenger'
 
 
 group :development, :test do

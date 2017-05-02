@@ -10,28 +10,27 @@ var uglify = require("gulp-uglify");
 var cssnano = require("gulp-cssnano");
 
 gulp.task("default", ["styles", "lint"], function() {
-	gulp.watch("app/public/css/sass/**/*.scss", ["styles"]);
-	gulp.watch("app/public/scripts/*.js", ["lint"]);
-	gulp.watch("app/public/scripts/*.js", ["scripts"]);
+	gulp.watch("public/app/css/sass/**/*.scss", ["styles"]);
+	gulp.watch("public/app/scripts/*.js", ["lint"]);
+	gulp.watch("public/app/scripts/*.js", ["scripts"]);
 	// browserSync.init({
 	// 	server: "./views/index.erb"
 	// });
 });
 
 gulp.task("styles", function() {
-	gulp.src("app/public/css/sass/all.scss")
+	gulp.src("public/app/css/sass/all.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(autoprefixer("last 2 versions"))
-		.pipe(gulp.dest("app/public/css"))
+		.pipe(gulp.dest("public/app/css"))
 		.pipe(cssnano())
-		.pipe(gulp.dest("app/public/css"));
+		.pipe(gulp.dest("public/app/css"));
 });
 
 gulp.task("lint", function () {
 	return gulp.src([
-		"!app/public/scripts/angular__1.2.26.min.js", 
-		"!app/public/scripts/angular-route__1.2.26.min.js",
-		"app/public/scripts/**/*.js"
+		"public/app/scripts/app.js",
+		"public/app/scripts/**/*.js"
 	])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
@@ -45,15 +44,17 @@ gulp.task("lint", function () {
 });
 
 gulp.task("scripts", function() {
-	return gulp.src(["app/public/scripts/angular__1.2.26.min.js", 
-		"app/public/scripts/angular-route__1.2.26.min.js", 
-		"app/public/scripts/app.js",
-		"app/public/scripts/function.js",
-		"app/public/scripts/validation.js"])
+	return gulp.src([
+		"public/app/scripts/angular__1.2.26.min.js",
+		"public/app/scripts/app.js", 
+		"public/app/scripts/angular-route__1.2.26.min.js",
+		"public/app/scripts/function.js",
+		"public/app/scripts/validation.js"
+	])
 	.pipe(concat("all.js"))
-    .pipe(gulp.dest("app/./public/scripts"))
+    .pipe(gulp.dest("public/app/scripts"))
     .pipe(uglify())
-    .pipe(gulp.dest("app/./public/scripts"));
+    .pipe(gulp.dest("public/app/scripts"));
 });
 
 

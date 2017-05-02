@@ -54,6 +54,9 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    passenger (5.1.2)
+      rack
+      rake (>= 0.8.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -122,12 +125,16 @@ DEPENDENCIES
   logger
   mail
   mongo
+  passenger
   pry
   sinatra
   sinatra-contrib
   sinatra-reloader
   spring
   web-console (~> 2.0)
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.13.0

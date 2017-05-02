@@ -2,28 +2,32 @@ var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(["$routeProvider", function($routeProvider) {
 	$routeProvider
+		.when("/", {
+			templateUrl: "views/partials/portfolio.html",
+			controller: "PortfolioCtrl"
+		})
 		.when("/portfolio", {
-			templateUrl: "/portfolio",
+			templateUrl: "views/partials/portfolio.html",
 			controller: "PortfolioCtrl"
 		})
 		.when("/projects/:id", {
-			templateUrl: "/projects/:id",
+			templateUrl: "views/partials/projecttemp.html",
 			controller: "PortfolioCtrl"
 		})
 		.when("/resume", {
-			templateUrl: "/resume",
+			templateUrl: "views/partials/resume.html",
 			controller: "ResumeCtrl"
 		})
 		.when("/blog", {
-			templateUrl: "/blog",
+			templateUrl: "views/partials/blog.html",
 			controller: "BlogCtrl"
 		})
 		.when("/blog/:id", {
-			templateUrl: "/blog/:id",
+			templateUrl: "views/partials/posttemp.html",
 			controller: "BlogCtrl"
 		})
 		.when("/contact", {
-			templateUrl: "/contact",
+			templateUrl: "views/partials/contact.html",
 			controller: "ContactCtrl"
 		})
 	.otherwise({
