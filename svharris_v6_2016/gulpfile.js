@@ -9,28 +9,28 @@ var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var cssnano = require("gulp-cssnano");
 
-gulp.task("default", ["styles", "lint"], function() {
-	gulp.watch("public/app/css/sass/**/*.scss", ["styles"]);
-	gulp.watch("public/app/scripts/*.js", ["lint"]);
-	gulp.watch("public/app/scripts/*.js", ["scripts"]);
+gulp.task("default", ["styles", "scripts"], function() {
+	gulp.watch("public/css/sass/**/*.scss", ["styles"]);
+	gulp.watch("public/scripts/*.js", ["lint"]);
+	gulp.watch("public/scripts/*.js", ["scripts"]);
 	// browserSync.init({
 	// 	server: "./views/index.erb"
 	// });
 });
 
 gulp.task("styles", function() {
-	gulp.src("public/app/css/sass/all.scss")
+	gulp.src("public/css/sass/all.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(autoprefixer("last 2 versions"))
-		.pipe(gulp.dest("public/app/css"))
+		.pipe(gulp.dest("public/css"))
 		.pipe(cssnano())
-		.pipe(gulp.dest("public/app/css"));
+		.pipe(gulp.dest("public/css"));
 });
 
 gulp.task("lint", function () {
 	return gulp.src([
-		"public/app/scripts/app.js",
-		"public/app/scripts/**/*.js"
+		"public/scripts/app.js",
+		"public/scripts/**/*.js"
 	])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
@@ -45,16 +45,16 @@ gulp.task("lint", function () {
 
 gulp.task("scripts", function() {
 	return gulp.src([
-		"public/app/scripts/angular__1.2.26.min.js",
-		"public/app/scripts/app.js", 
-		"public/app/scripts/angular-route__1.2.26.min.js",
-		"public/app/scripts/function.js",
-		"public/app/scripts/validation.js"
+		"public/scripts/angular__1.2.26.min.js",
+		"public/scripts/app.js", 
+		"public/scripts/angular-route__1.2.26.min.js",
+		"public/scripts/function.js",
+		"public/scripts/validation.js"
 	])
 	.pipe(concat("all.js"))
-    .pipe(gulp.dest("public/app/scripts"))
+    .pipe(gulp.dest("public/scripts"))
     .pipe(uglify())
-    .pipe(gulp.dest("public/app/scripts"));
+    .pipe(gulp.dest("public/scripts"));
 });
 
 

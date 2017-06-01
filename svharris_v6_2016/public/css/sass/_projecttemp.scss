@@ -1,0 +1,57 @@
+.projecttemp {
+	margin-top: 30px;
+	overflow: hidden;
+}
+.projecttemp--gallery {
+	@include bp(tablet-min) {
+		display: inline-block;
+		width: 70%;
+		padding-right: 30px;
+		float: left;
+	}
+}
+	.gallery--item {
+		margin-bottom: 40px;
+		@include bp(tablet-min) {
+			margin-bottom: 40px;
+		}
+	}
+
+.projecttemp--tempsubject {
+	@include bp(tablet-min) {
+	    display: inline-block;
+	    width: 30%;
+	    font-size: $font-size;
+	    position: fixed;
+	    right: 0;
+	}
+}
+	.tempsubject--title {
+		color: $logo-orange;
+    	margin-bottom: 20px;
+	}
+		.tempsubject--list {
+			@include bp(tablet-max) {
+		    	margin-bottom: 30px;
+			}
+		}
+			.tempsubject--item {
+				margin-bottom: 10px;
+
+				&__tools {
+				    display: inline-block;
+			        padding-right: 4px;
+					&:after {content: ",";}
+					&:last-child:after {display: none;}
+				}
+			}
+				.tempsubject--item-title {
+					display: block;
+					font-weight: $bold;
+					margin-bottom: 5px;
+				}
+				.tempsubject--link {
+				    color: $logo-orange;
+    				text-decoration: underline;
+    				&:visited {color: $logo-orange;}
+				}
